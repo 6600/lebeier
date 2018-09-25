@@ -1,0 +1,22 @@
+<!-- 音乐播放模板 -->
+<import src ="../template/template.wxml"/>
+ <template is="switch"/>
+ <view class='Crumbs'>
+  {{Crumbs}}
+</view>
+<view class='stage'>
+  <view class='stage-class'>
+    <view class='stage-content ' bindtap='JumpProduct'>
+      <image src='/image/index/xiaoban.png'></image>
+    </view>
+     <view class='stage-content'>
+       <image src='/image/index/zhongban.png'></image>
+    </view>
+     <view class='stage-content'>
+       <image src='/image/index/daban.png'></image>
+    </view>
+
+  </view>
+      <!-- 播放器 -->
+   <template is="Playback"/>
+</view>

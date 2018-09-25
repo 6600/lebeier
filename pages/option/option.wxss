@@ -1,0 +1,34 @@
+.option {
+  width: 100%;
+  overflow: hidden;
+  padding-bottom:  224rpx; 
+}
+.Four-seasons {
+  padding-top: 80rpx;
+  overflow: hidden;
+  padding-left: 65rpx;
+  width: 100%;
+
+}
+.option .option-Choice {
+
+  margin-right: 25rpx;
+  margin-bottom: 50rpx;
+  width: 300rpx;
+  height:380rpx;
+  float: left;
+  border-radius:4px;
+
+}
+.option-Choice>image{
+  width: 300rpx;
+  height: 390rpx;
+}
+/* 面包屑 */
+.Crumbs {
+  float:right;
+  font-size: 28rpx;
+  margin-top: 30rpx;
+  margin-right: 50rpx;
+}
+@import "../template/template.wxss";

@@ -1,0 +1,125 @@
+
+<view class="Broadcast">
+  <swiper class='home-swiper' indicator-dots="{true}" autoplay="true" circular  style='height:{{Hei}}'>
+    <swiper-item>
+      <image src='/image/index/_20180911132507.jpg' bindload="imgH" mode='aspectFill'></image>
+    </swiper-item>
+    <swiper-item>
+      <image src='/image/index/_20180911132513.png'bindload="imgH"  mode='aspectFill'></image>
+    </swiper-item>
+  </swiper>
+  <!-- 首页按钮 -->
+  <view wx:if="{{showBox === 'button'}}" class="login-btn">
+    <view class="home-login distance" 
+    bindtap="showButton">
+      登录
+    </view>
+    <view class="home-login" bindtap='homeshow' >
+      申请合作
+    </view>
+  </view>
+  <!-- 登录界面 -->
+  <view wx:elif="{{showBox === 'login'}}" class="login" >
+    <view class='login-tilte'>
+      <text>登录乐蓓儿音乐器</text>
+    </view>
+    <form bindsubmit="formSubmit" bindreset="formReset">
+      <view class='login-form frame '>
+      <view class='Title'>账号</view>
+      <view class='input-box'>
+        <input type='text' name="name" value="{{account}}" placeholder='请输入账号'></input>
+      </view>
+    </view>
+    <view class='login-form'>
+      <view class='Title'>密码</view>
+      <view class='input-box'>
+        <input type='password' name="password" value='{{password}}' placeholder='请输入密码'></input>
+      </view>
+    </view>
+    <view class='login-button '>
+      <view class='cancel' bindtap='cancel'>取消</view>
+      <view class='Signin' bindtap='SigninBtn' >登录</view>
+      <!-- <button class='cancel' formType="reset">取消</button>
+      <button class='Signin' formType="submit">登录</button> -->
+    </view>
+    </form>
+  </view>
+  <!-- //合作 -->
+  <view wx:elif="{{showBox === 'apply'}}" class="cooperation">
+    <view class='cooperation-tilte'>
+      <text>申请合作</text>
+    </view>
+    <view class='cooperation-form'>
+      <view class='Title '>
+        <text>机构名称*</text>
+      </view>
+      <view class='input-box'>
+        <input  type='text'placeholder='请输入机构名称'></input>
+      </view>
+    </view>
+    <view class='cooperation-form'>
+      <view class='Title '>
+        <text>联系人*</text>
+      </view>
+      <view class='input-box'>
+        <input type='text' placeholder='请输入联系人姓名'></input>
+      </view>
+    </view>
+    <view class='cooperation-form'>
+      <view class='Title '>
+        <text>手机号*</text>
+      </view>
+      <view class='input-box'>
+        <input type='text' placeholder='请输入手机号'></input>
+      </view>
+    </view>
+    <view class='cooperation-form'>
+      <view class='Title '>
+        <text>职务</text>
+      </view>
+      <view class='input-box'>
+        <input type='text' placeholder='请输入联系人职务'></input>
+      </view>
+    </view>
+    <view class='cooperation-form '>
+      <view class='Title '>
+        <text>描述</text>
+      </view>
+      <view class='input-box'>
+        <input type='text' placeholder='请输简单描述您的需求'></input>
+      </view>
+    </view>
+    <view class='cooperation-button '>
+      <view class='cancel' bindtap='cancel' >取消</view>
+      <view class='Signin' bindtap='apply'>申请</view>
+    </view>
+  </view>
+  <!-- //申请成功弹框 -->
+  <view wx:elif="{{showBox === 'applyTips'}}" class='Success'>
+    <view class='Success-tilte'>
+      <text>申请成功</text>
+    </view>
+    <view class='Success-Tips'>
+      <text class='words'>申请之后， 我们将尽快与您取得联系，很期待与您的合作</text>
+      <text class='phone'>北京乐蓓儿客服电话4008-000-000</text>
+    </view>
+    <view class='confirm' bindtap='cancel'>确认</view>
+  </view>
+  <!-- //首次修改密码 -->
+  <view wx:elif="{{showBox === 'changePassword'}}" class='first'>
+    <view class='first-tilte'>首次修改密码</view>
+    <view class='firstn-form frame '>
+      <view class='Title'>密码</view>
+      <view class='first-box'>
+        <input type='text' placeholder='请输入新密码'></input>
+      </view>
+    </view>
+        <view class='firstn-form frame '>
+      <view class='Title'>重复</view>
+      <view class='first-box'>
+        <input type='text' placeholder='请输入机构名称'></input>
+      </view>
+    </view>
+      <view class='confirm' bindtap='changePassword'>确认</view>
+  </view>
+</view>

@@ -1,0 +1,82 @@
+<!-- 音乐播放模板 -->
+<import src ="../template/template.wxml"/>
+<view class='player-box'>
+  <view class='player-list'>
+    <view class='list-one'>
+    第一章
+    </view>
+    <view class='player-content'>
+    xxxxxxxxxxxxx
+    </view>
+    <view class='player-btn'>
+      <view class='palyer-click'>
+        播放
+      </view>
+      <view class='palyer-data'>
+        时间
+      </view>  
+    </view>
+     <view class='player-content'>
+    xxxxxxxxxxxxx
+    </view>
+    <view class='player-btn'>
+      <view class='palyer-click'>
+        播放
+      </view>
+      <view class='palyer-data'>
+        时间
+      </view>  
+    </view>
+     <view class='player-content'>
+    xxxxxxxxxxxxx
+    </view>
+    <view class='player-btn'>
+      <view class='palyer-click'>
+        播放
+      </view>
+      <view class='palyer-data'>
+        时间
+      </view>  
+    </view>
+     <view class='list-one'>
+    第一章
+    </view>
+    <view class='player-content'>
+    xxxxxxxxxxxxx
+    </view>
+    <view class='player-btn'>
+      <view class='palyer-click'>
+        播放
+      </view>
+      <view class='palyer-data'>
+        时间
+      </view>  
+    </view>
+     <view class='player-content'>
+    xxxxxxxxxxxxx
+    </view>
+    <view class='player-btn'>
+      <view class='palyer-click'>
+        播放
+      </view>
+      <view class='palyer-data'>
+        时间
+      </view>  
+    </view>
+     <view class='player-content'>
+    xxxxxxxxxxxxx
+    </view>
+    <view class='player-btn'>
+      <view class='palyer-click'>
+        播放
+      </view>
+      <view class='palyer-data'>
+        时间
+      </view>  
+    </view>
+  </view>
+   <!-- 播放器 -->
+   <view class='music-player'>
+   <template is="Playback"/>
+   </view>
+</view>

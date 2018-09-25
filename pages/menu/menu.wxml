@@ -1,0 +1,151 @@
+<!-- 音乐播放模板 -->
+<!-- //选项 -->
+<!-- 面包屑 -->
+<view class='Crumbs'>
+  {{Crumbs}}
+</view>
+
+  <view class='tu' wx:if="{{flag}}">
+    <image src='/image/index/hengdian.png' bindtap='bindflag'></image>
+    <view class='options'></view>
+  </view>
+  <view class='tu' wx:if="{{!flag}}">
+      <image src='/image/index/shudian.png' bindtap='bindflag2'></image>
+      <view class='option'>
+        <view bindtap="SetButton">设置</view>
+        <view bindtap="toSettings">个人信息</view>
+      </view>
+  </view>
+  <view  wx:if="{{!flag}}" style='height:100rpx;width:100%;'>
+  
+  </view>
+
+<view class='player-box'>
+  <view class='player-list '>
+    <view class='list-one'catchtap="ClickUnfold" >
+     <image src='/image/index/xiala.png' wx:if="{{Open}}"></image>
+     <image src='/image/index/zuo.png' wx:if="{{!Open}}"></image>
+      第一章
+    </view>
+      <view class='Song list' wx:if="{{MenuConcealment}}">
+        <view class='song-name'catchtap="playshow">
+          <text>xxxxxxxxxxxxxxxxx</text>
+          <image src='/image/index/weixuan.png' wx:if="{{!Select}}"></image>
+          <image src='/image/index/xanzhong.png' wx:if="{{Select}}"></image>
+        </view>
+         <view class='Play-btn'wx:if="{{ButtonBisplay}}">
+            <view class='Playback-btn' catchtap='playbtn'>
+              播放
+            </view>
+            时间
+          </view>
+      </view>
+  </view>
+</view>
+<!-- 播放器 -->
+ <view class='Playback-box'>
+    <view class='Black-gum'>
+      <image src='/image/index/heijiao.png'></image>
+    </view>
+    <view class='suspend'  catchtap="PlayButton" >
+      <image wx:if="{{Playback}}" src='/image/index/ting.png'></image>
+      <image wx:if="{{!Playback}}" src='/image/index/kaishi.png'></image>
+    </view>
+    <view class='First' bindtap='TheLastSong'>
+      <image src='/image/index/xia.png'></image>
+    </view>
+    <view class='lower'bindtap='TheNext'>
+      <image src='/image/index/shang.png'></image>
+    </view>
+    <text class='Time'>时间</text>
+    <view class='Progress'>
+      <view class='Playback-bar'>
+      <view class='circular'></view>
+      </view>  
+    </view>
+    <text class='Total-time'>时间</text>
+  </view> 
+<!-- 切换盒子 -->
+<!-- <view class='menu-box' wx:if="{{!flag}}">
+  <view class='Set-up' catchtap='haha'>
+    <image catchtap='bindflag2' src='/image/index/shudian.png'></image>
+    设置
+    <view class='personal-data'catchtap='hahaha'>
+    个人资料
+      <view class='menu-list'catchtap='ha' >
+        <view class='menu-one'>
+          第一章
+        </view>
+        <view class='menu-content'>
+          xxxxxxxxxxxxx
+        </view>
+        <view class='menu-btn'>
+          <view class='menu-click'>
+            播放
+          </view>
+          <view class='menu-data'>
+            时间
+          </view>
+        </view>
+        <view class='menu-content'>
+          xxxxxxxxxxxxx
+        </view>
+        <view class='menu-btn'>
+          <view class='palyer-click'>
+            播放
+          </view>
+          <view class='menu-data'>
+            时间
+          </view>
+        </view>
+        <view class='menu-content'>
+          xxxxxxxxxxxxx
+        </view>
+        <view class='menu-btn'>
+          <view class='menu-click'>
+            播放
+          </view>
+          <view class='menu-data'>
+            时间
+          </view>
+        </view>
+ <view class='menu-one'>
+          第一章
+        </view>
+        <view class='menu-content'>
+          xxxxxxxxxxxxx
+        </view>
+        <view class='menu-btn'>
+          <view class='menu-click'>
+            播放
+          </view>
+          <view class='menu-data'>
+            时间
+          </view>
+        </view>
+        <view class='menu-content'>
+          xxxxxxxxxxxxx
+        </view>
+        <view class='menu-btn'>
+          <view class='palyer-click'>
+            播放
+          </view>
+          <view class='menu-data'>
+            时间
+          </view>
+        </view>
+        <view class='menu-content'>
+          xxxxxxxxxxxxx
+        </view>
+        <view class='menu-btn'>
+          <view class='menu-click'>
+            播放
+          </view>
+          <view class='menu-data'>
+            时间
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view> -->

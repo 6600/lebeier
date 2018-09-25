@@ -1,0 +1,295 @@
+
+.Broadcast {
+  position: relative;
+  overflow: hidden;
+}
+
+.Broadcast image {
+  width: 100%;
+  height: 100%;
+  border-radius: 6rpx;
+}
+
+.home-swiper {
+  /* height: 100%; */
+}
+/* 首页按钮 */
+.login-btn {
+  width: 526rpx;
+  position: absolute;
+  top: 800rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.login-btn .home-login {
+  border-radius:3px;
+  width: 526rpx;
+  height: 80rpx;
+  background-color: #ffc833;
+  text-align: center;
+  line-height: 80rpx;
+  box-shadow:1px 1px 10px #898989;
+}
+
+.login-btn .home-login  {
+  font-size: 26rpx;
+  color: #fff;
+}
+
+.distance {
+  margin-bottom: 20rpx;
+}
+/* 登录 */
+.Broadcast .login {
+  position: absolute;
+  width: 600rpx;
+  background-color: #eee;
+  top: 440rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  
+}
+.login-tilte{
+  height: 80rpx;
+  background-color: #ecefee;
+  font-size: 26rpx;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+.login-form {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  background-color: #fff;
+  overflow: hidden;
+  font-size: 28rpx;
+  line-height: 80rpx;
+}
+.login-form .Title {
+  width:60rpx;
+  margin:5px;
+  height:24px;
+  line-height:24px;
+  padding:0 5px;
+  border-right:1px solid #e6e6e6;
+}
+.login-form .input-box{
+  width:490rpx;
+  height:34px;
+}
+.login-form .input-box input {
+  width: 100%;
+  height: 100%;
+}
+
+.Broadcast .login>text {
+  font-size: 26rpxpx;
+  color: #828271;
+}
+
+.Broadcast .login .login-name>text {
+  font-size: 26rpx;
+  padding-right: 20rpx;
+}
+
+.Broadcast .login .login-name>input {
+  display: inline-block;
+  font-size: 26rpx;
+  color: #d7d7d5;
+}
+
+.Broadcast .login .login-pass {
+  height: 80rpx;
+  background-color: #fff;
+  padding-left: 40rpx;
+}
+
+.Broadcast .login .login-pass>text {
+  font-size: 26rpx;
+  padding-right: 20rpx;
+}
+
+.Broadcast .login .login-pass>input {
+  display: inline-block;
+  font-size: 26rpx;
+  color: #d7d7d5;
+}
+
+.login-button {
+  /* overflow: hidden; */
+  height: 80rpx;
+
+}
+
+.cancel {
+  text-align: center;
+  width: 50%;
+  height:80rpx;
+  line-height: 80rpx;
+  display: inline-block;
+  background-color: #eee;
+  font-size: 26rpx;
+  border-radius: 0;
+  border: none;
+}
+
+.Signin {
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  display: inline-block;
+  width: 50%;
+  background-color: #f7c720;
+  font-size: 26rpx;
+  border-radius: 0;
+  border: none;
+}
+
+.cancel::after ,.Signin::after {
+    border-radius: 0;
+}
+/* 合作 */
+
+.Broadcast .cooperation {
+  position: absolute;
+  top: 300rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 538rpx;
+  height: 540rpx;
+  background-color: #ccc;
+
+}
+
+.Broadcast .cooperation .cooperation-tilte {
+  height: 80rpx;
+  background-color: #ecefee;
+  font-size: 26rpx;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+.Broadcast .cooperation .cooperation-form {
+  width: 100%;
+  height: 80rpx;
+  background-color: #fff;
+  overflow: hidden;
+  font-size: 26rpx;
+  line-height: 80rpx;
+  display: flex;
+  border-bottom:1px solid #eeeeee;
+}
+
+.Broadcast .cooperation .cooperation-form .Title {
+  width:120rpx;
+  margin:12rpx 20rpx;
+  border-right:1px solid #eee;
+  height:60rpx;
+  line-height:60rpx;
+}
+.cooperation-form .input-box {
+  width: 375rpx;
+}
+.cooperation-form .input-box input {
+  height: 34px;
+  line-height: 34px;
+  font-size: 12px;
+}
+.frame {
+  margin-bottom: 2rpx;
+}
+/* 首次修改密码 */
+.first{
+  position: absolute;
+  width: 600rpx;
+  background-color: #eee;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  height:131px;
+}
+.first .first-tilte{
+  height: 80rpx;
+  background-color: #ecefee;
+  font-size: 26rpx;
+  text-align: center;
+  line-height: 80rpx;
+}
+.first .firstn-form {
+  width: 100%;
+  height: 80rpx;
+  background-color: #fff;
+  overflow: hidden;
+  font-size: 26rpx;
+  line-height: 80rpx;
+}
+.first .Title {
+  padding-left: 30rpx;
+  padding-right: 20rpx;
+  float: left;
+  width: 60rpx;
+}
+.first .first-box {
+  float: right;
+  width: 300rpx;
+  height: 80rpx;
+  padding-right: 80rpx;
+  padding-top: 16rpx;
+}
+.first .confirm {
+  width: 100%;
+  height: 28px;
+  text-align: center;
+  background-color:#ffc833; 
+  font-size: 26rpx;
+  line-height: 28px;
+}
+
+/* //申请成功 */
+.Success {
+  height: 140px;
+  position: absolute;
+  width: 600rpx;
+  background-color: #fff;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+.Success .Success-tilte {
+   height: 80rpx;
+   background-color: #ecefee;
+   font-size: 26rpx;
+   text-align: center;
+   line-height: 80rpx;
+}
+.Success .Success-Tips {
+  font-size: 22rpx;
+  height:78px;
+}
+.Success .words { 
+  display: block;
+  padding: 0 40rpx ;
+}
+.Success .phone {
+  padding-top: 50rpx;
+  display: block;
+  text-align: center;
+}
+.Success .confirm {
+  width: 100%;
+  height: 28px;
+  text-align: center;
+  background-color:#ffc833; 
+  font-size: 26rpx;
+  line-height: 60rpx;
+}

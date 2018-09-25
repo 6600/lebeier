@@ -1,0 +1,29 @@
+<!-- 音乐播放模板 -->
+<import src ="../template/template.wxml"/>
+ <template is="switch"/>
+<view class='system'>
+    <view class='about'bindtap="aboutshow" >
+    关于我们
+  </view>
+  <view class='about'>
+    开发版本
+  </view>
+  <view class='about'>
+    商业版权信息
+  </view>
+  <view class='about hied'>
+    退出登录
+  </view>
+  <!-- 关于我们 -->
+  <view class='Success' wx:if="{{information}}">
+    <view class='Success-tilte'>
+      <text>关于我们</text>
+    </view>
+      <view class='Success-Tips'>
+      </view>
+      <view class='confirm'bindtap="confirm">确认</view>  
+  </view>
+    <!-- 播放器 -->  
+   <template is="Playback"/>
+
+</view>

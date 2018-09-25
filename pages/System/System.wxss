@@ -1,0 +1,58 @@
+.system {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  padding-top: 280rpx;
+  padding-bottom:  224rpx;
+}
+
+.system .about{
+  font-size: 28rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 1px solid #ccc;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+}
+.hied {
+  border: none !important;
+}
+/* 弹框 */
+.Success {
+  
+  height: 641rpx;
+  position: absolute;
+  width:500rpx;
+  background-color: #fff;
+  top: 100rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border: 1rpx solid #ccc;
+
+ 
+
+}
+.Success .Success-tilte {
+
+   height: 80rpx;
+   background-color: #ecefee;
+   font-size: 26rpx;
+   text-align: center;
+   line-height: 80rpx;
+}
+.Success .Success-Tips {
+  height: 501rpx;
+}
+
+.Success .confirm {
+ 
+   width: 100%;
+  height: 60rpx;
+  text-align: center;
+  background-color:#ffc833; 
+  font-size: 26rpx;
+  line-height: 60rpx;
+}
+@import "../template/template.wxss";
+

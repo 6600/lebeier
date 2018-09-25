@@ -1,0 +1,100 @@
+.Playback-box {
+  width: 100%;
+  height: 224rpx;
+  background-color:  #fdc73e;
+  position: fixed;
+  bottom: 0;
+  overflow: hidden;
+  border-top-left-radius:15rpx;
+  border-top-right-radius:15rpx;
+}
+.Black-gum {
+  position: absolute;
+  top: 40rpx;
+  left: 20rpx;
+}
+.Black-gum>image {
+  width: 166rpx;
+  height:166rpx;
+}
+.suspend {
+  position: absolute;
+  top:108rpx;
+  left: 62%;
+  margin-left: -15px;
+}
+.suspend>image {
+  width: 40px;
+  height: 40px;
+}
+.First {
+  position: absolute;
+   left: 289rpx;
+   top: 123rpx;
+}
+.First>image {
+  width: 31px;
+  height: 31px;
+}
+.lower {
+  position: absolute;
+  top:121rpx;
+  right: 95rpx;
+  
+}
+.lower>image {
+   width: 31px;
+  height: 31px;
+}
+.Progress {
+  position: absolute;
+  width: 450rpx;
+  height: 4rpx;
+  background-color: #fff;
+  right: 80rpx;
+  top: 50rpx;
+}
+.Progress .Playback-bar {
+    width: 10%;
+    height: 4rpx;
+    background-color: #000;
+}
+.Progress .circular {
+  position: absolute;
+  width: 20rpx;
+  height: 20rpx;
+   border-radius:15rpx;
+  background-color: #000;
+  top:-8rpx;
+  left: 27rpx;
+}
+.Total-time {
+ font-size: 20rpx;
+ position: absolute;
+ left: 170rpx;
+top: 39rpx;
+
+}
+.Time {
+  position: absolute;
+  font-size: 20rpx;
+  top: 39rpx;
+  right: 30rpx;
+}
+/* 切换 */
+.tu >image{
+    width: 60rpx;
+    height: 60rpx;
+    position: fixed;
+    top: 20rpx;
+}
+.option {
+  padding-top: 70rpx;
+  text-align: center;
+  width: 100%;
+  
+}
+.option>view {
+  font-size: 40rpx;
+
+}

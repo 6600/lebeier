@@ -1,0 +1,27 @@
+<!-- 音乐播放模板 -->
+<import src ="../template/template.wxml"/>
+ <template is="switch"/>
+ <!-- 面包屑 -->
+<view class='Crumbs'>
+  {{Crumbs}}
+</view>
+<view class='option'>
+   <view class='Four-seasons'>
+     <view class='option-Choice' bindtap='tomenu'>
+      <image src='/image/index/chun.png'></image>
+     </view>
+     <view class='option-Choice'>
+       <image src='/image/index/xiax.png'></image>
+     </view>
+     <view class='option-Choice'>
+        <image src='/image/index/qiu.png'></image>
+     </view>
+     <view class='option-Choice'>
+       <image src='/image/index/dong.png'></image>
+     </view>
+  </view>
+    <!-- 播放器 -->
+   <view class='music-player'>
+   <template is="Playback"/>
+   </view>
+</view>

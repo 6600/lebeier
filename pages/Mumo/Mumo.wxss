@@ -1,0 +1,27 @@
+.stage {
+
+  padding-bottom:  224rpx; 
+}
+.stage-class {
+
+  padding-top: 150rpx;
+  padding-left:40rpx;
+  padding-right: 40rpx;
+}
+.stage-class .stage-content {
+  margin-bottom: 30rpx; 
+  text-align: center;
+  line-height: 30rpx;
+}
+.stage-content>image{
+  width: 580rpx;
+  height:240rpx; 
+}
+/* 面包屑 */
+.Crumbs {
+  float:right;
+  font-size: 28rpx;
+  margin-top: 30rpx;
+  margin-right: 50rpx;
+}
+@import "../template/template.wxss";
