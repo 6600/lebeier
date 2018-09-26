@@ -4,7 +4,8 @@
       <image src='/image/index/heijiao.png'></image>
     </view>
     <view class='suspend'>
-      <image src='/image/index/ting.png'></image>
+      <image wx:if="{{isPlaying}}" src='/image/index/ting.png' catchtap="pauseMusic"></image>
+      <image wx:else src='/image/index/kaishi.png' catchtap="startMusic"></image>
     </view>
     <view class='First'>
       <image src='/image/index/xia.png'></image>
@@ -12,28 +13,37 @@
     <view class='lower'>
       <image src='/image/index/shang.png'></image>
     </view>
-    <text class='Time'>时间</text>
-    <view class='Progress'>
+    <text class='Time'>{{totalProcess}}</text>
+    <slider
+      bindchange="hanleSliderChange"
+      bindtouchstart="handleSliderMoveStart"
+      bindtouchend="handleSliderMoveEnd"
+      min="0"
+      max="{{totalProcess}}"
+      activeColor="#8f7df0"
+      value="{{sliderValue}}"/>
+    <!-- <view class='Progress'>
       <view class='Playback-bar'>
       <view class='circular'></view>
       </view>  
-    </view>
+    </view> -->
     <text class='Total-time'>时间</text>
   </view> 
 </template>
+
 <!-- 切换 -->
 <template name='switch'>
-<view>
-  <view class='tu' wx:if="{{!flag}}">
-    <image src='/image/index/hengdian.png' bindtap='bindflag'></image>
-    <view class='options'></view>
+  <view>
+    <view class='tu' wx:if="{{!flag}}">
+      <image src='/image/index/hengdian.png' bindtap='bindflag'></image>
+      <view class='options'></view>
+    </view>
+    <view class='tu' wx:if="{{flag}}">
+        <image src='/image/index/shudian.png' bindtap='bindflag2'></image>
+        <view class='option'>
+          <view>设置</view>
+          <view>个人信息</view>
+        </view>
+    </view>
   </view>
-  <view class='tu' wx:if="{{flag}}">
-      <image src='/image/index/shudian.png' bindtap='bindflag2'></image>
-      <view class='option'>
-        <view>设置</view>
-        <view>个人信息</view>
-      </view>
-  </view>
-</view>
 </template>

@@ -49,7 +49,7 @@
     </view>
     <view class='suspend'  catchtap="PlayButton" >
       <image wx:if="{{Playback}}" src='/image/index/ting.png'></image>
-      <image wx:if="{{!Playback}}" src='/image/index/kaishi.png'></image>
+      <image wx:else src='/image/index/kaishi.png'></image>
     </view>
     <view class='First' bindtap='TheLastSong'>
       <image src='/image/index/xia.png'></image>

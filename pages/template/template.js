@@ -1,7 +1,9 @@
 // pages/template/template.js
 Page({
   data: {
-    flag: true
+    flag: true,
+    isPlaying: true,
+    dsdsds: 'sd'
   },
  
   bindflag: function () {
@@ -12,9 +14,10 @@ Page({
     })
   },
   bindflag2: function () {
+    console.log('sd')
     var that = this;
     that.setData({
       flag: true
     })
-  },
+  }
 })

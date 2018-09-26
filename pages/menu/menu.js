@@ -3,29 +3,25 @@ var util = require('../../utils/util.js');
 const app = getApp()
 Page({
   data: {
-//歌曲列表显示
+    //歌曲列表显示
     MenuConcealment:false,
- // 播放图标
+    // 播放图标
     Select:false,
-//下拉图标
+    //下拉图标
     Open:false,
-//播放按钮
+    //播放按钮
     ButtonBisplay:false,
-  //设置按钮
+    //设置按钮
      flag: true,
-//播放器按钮
-    Playback:false ,
+    //播放器按钮
+    Playback: false ,
     Crumbs: '',
-   
   },
   JumpProduct: function() {
     console.log(111)
-    
-
   },
   onLoad: function (option) {
     console.log(option.title)
-    this.data.Crumbs = option.title;
     var that = this;
     that.setData({
       Crumbs: option.title

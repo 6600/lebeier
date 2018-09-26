@@ -18,5 +18,5 @@
     </view>
   </view>
    <!-- 播放器 -->
-   <template is="Playback"/>
+   <template is="Playback" data="{{isPlaying, totalProcess, sliderValue}}"/>
 </view>
