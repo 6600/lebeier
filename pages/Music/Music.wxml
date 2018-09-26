@@ -9,41 +9,13 @@
 
 <!-- //歌曲列表 -->
   <view class='Music-box'>
-      <view class='Song'>
+    <view class='Song' wx:for="{{[1, 2, 3, 4, 5]}}" style="transform: rotateX({{rotation + index * 80}}deg) translateZ(120px);" wx:key="{{index}}" >
       <view class='Music-logo'>
       </view>
-      <view class='Song-name'bindtap="SongJump" >
-        MU&MO
+      <view class='Song-name' bindtap="SongJump" >
+        {{index * 60}}
       </view>
-   </view>
-    <view class='Song'>
-      <view class='Music-logo'>
-      </view>
-      <view class='Song-name'>
-        MU&MO
-      </view>
-   </view>
-    <view class='Song'>
-      <view class='Music-logo'>
-      </view>
-      <view class='Song-name'>
-        MU&MO
-      </view>
-   </view>
-    <view class='Song'>
-      <view class='Music-logo'>
-      </view>
-      <view class='Song-name'>
-        MU&MO
-      </view>
-   </view>
-    <view class='Song'>
-      <view class='Music-logo'>
-      </view>
-      <view class='Song-name'>
-        MU&MO
-      </view>
-   </view>
+    </view>
   </view>
    <!-- 播放器 -->
    <template is="Playback"/>
