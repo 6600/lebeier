@@ -15,12 +15,14 @@
     </view>
     <text class='Time'>{{totalProcess}}</text>
     <slider
+      class="Progress"
+      block-size="12"
+      activeColor="#797979"
       bindchange="hanleSliderChange"
       bindtouchstart="handleSliderMoveStart"
       bindtouchend="handleSliderMoveEnd"
       min="0"
       max="{{totalProcess}}"
-      activeColor="#8f7df0"
       value="{{sliderValue}}"/>
     <!-- <view class='Progress'>
       <view class='Playback-bar'>
@@ -34,16 +36,12 @@
 <!-- 切换 -->
 <template name='switch'>
   <view>
-    <view class='tu' wx:if="{{!flag}}">
+    <view class="tu {{flag? '':'show'}}">
       <image src='/image/index/hengdian.png' bindtap='bindflag'></image>
-      <view class='options'></view>
-    </view>
-    <view class='tu' wx:if="{{flag}}">
-        <image src='/image/index/shudian.png' bindtap='bindflag2'></image>
-        <view class='option'>
-          <view>设置</view>
-          <view>个人信息</view>
-        </view>
+      <view class='option'>
+        <view>设置</view>
+        <view>个人信息</view>
+      </view>
     </view>
   </view>
 </template>

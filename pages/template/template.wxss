@@ -47,12 +47,11 @@
   height: 31px;
 }
 .Progress {
-  position: absolute;
-  width: 450rpx;
-  height: 4rpx;
-  background-color: #fff;
-  right: 80rpx;
-  top: 50rpx;
+  position:absolute;
+  width:440rpx;
+  height:4rpx;
+  right:45rpx;
+  top:35rpx;
 }
 .Progress .Playback-bar {
     width: 10%;
@@ -81,6 +80,12 @@ top: 39rpx;
   top: 39rpx;
   right: 30rpx;
 }
+.tu {
+  height:40px;
+}
+.show .option{
+  display: block;
+}
 /* 切换 */
 .tu >image{
     width: 60rpx;
@@ -89,6 +94,7 @@ top: 39rpx;
     top: 20rpx;
 }
 .option {
+  display: none;
   padding-top: 70rpx;
   text-align: center;
   width: 100%;

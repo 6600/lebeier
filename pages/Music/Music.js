@@ -8,7 +8,31 @@ Page({
     totalProcess: 0,
     isPlaying: false,
     isPaused: false,
-    enlargeItem: 10
+    enlargeItem: 10,
+    musicList: [
+      {
+        "music_id": 1,
+        "music_name": "薛之谦",
+        "music_time": "1212121",
+        "music_rights": 1,
+        "music_list": "2mw1pmw1pmk2lm12wm1p2m1msp12msks1ls",
+        "size": "1222",
+        "url": "http://www.170mv.com/kw/other.web.np01.sycdn.kuwo.cn/resource/n2/1/32/765664006.mp3",
+        "create_time": "0000-00-00 00:00:00",
+        "play_num": 1
+      },
+      {
+        "music_id": 2,
+        "music_name": "薛之谦2",
+        "music_time": "1212121",
+        "music_rights": 1,
+        "music_list": "2mw1pmw1pmk2lm12wm1p2m1msp12msks1ls",
+        "size": "1222",
+        "url": "http://www.170mv.com/kw/other.web.np01.sycdn.kuwo.cn/resource/n2/1/32/765664006.mp3",
+        "create_time": "0000-00-00 00:00:00",
+        "play_num": 1
+      }
+    ]
   },
   SongJump: function () {
     wx.navigateTo({
@@ -16,34 +40,28 @@ Page({
     })
   },
   bindflag: function () {
-    var that = this;
-    that.setData({
-      flag: false
-    })
-  },
-  bindflag2: function () {
-    var that = this;
-    that.setData({
-      flag: true
+    console.log(this.data.flag)
+    this.setData({
+      flag: !this.data.flag
     })
   },
   startMusic: function () {
     this.setData({
       isPlaying: true
     })
+    const backgroundAudioManager = wx.getBackgroundAudioManager()
+    backgroundAudioManager.onTimeUpdate((e) => {
+      console.log(wx.getBackgroundAudioManager().duration)
+      this.setData({
+        sliderValue: wx.getBackgroundAudioManager().currentTime,
+        totalProcess: wx.getBackgroundAudioManager().duration
+      })
+    })
     wx.playBackgroundAudio({
-      dataUrl: 'http://www.170mv.com/kw/other.web.np01.sycdn.kuwo.cn/resource/n2/1/32/765664006.mp3',
-      title: '薛之谦',
+      dataUrl: this.data.musicList[0].url,
+      title: this.data.musicList[0].music_name,
       //图片地址地址
-      coverImgUrl: 'http://i.gtimg.cn/music/photo/mid_album_90/a/F/000QgFcm0v8WaF.jpg',
-      success: () => {
-        setTimeout(() => {
-          console.log(wx.getBackgroundAudioManager().duration)
-          this.setData({
-            totalProcess: wx.getBackgroundAudioManager().duration
-          })
-        }, 100)
-      }
+      coverImgUrl: 'http://i.gtimg.cn/music/photo/mid_album_90/a/F/000QgFcm0v8WaF.jpg'
     })
   },
   pauseMusic: function () {
@@ -92,6 +110,5 @@ Page({
     //   Crumbs:option.title
     // })
     this.animate()
-    console.log(this.data)
   }
 })
