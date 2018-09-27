@@ -6,6 +6,7 @@ Page({
    */
   data: {
     Crumbs: '',
+    flag: false
   },
   //获取跳转参数
   onLoad: function (option) {
@@ -20,6 +21,11 @@ Page({
     wx.navigateTo({
       url: '../option/option?title=音乐>MUMO>小班',
     })
+  },
+  bindflag: function () {
+    console.log(this.data.flag)
+    this.setData({
+      flag: !this.data.flag
+    })
   }
-
 })

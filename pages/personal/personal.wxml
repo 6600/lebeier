@@ -1,64 +1,83 @@
-<!-- 音乐播放模板 -->
-<import src ="../template/template.wxml"/>
-<template is="switch"/>
-<view class='presonal-box'>
-  <view class='Head-portrait'>
-   <image src='/image/index/u608.png'></image>
+<view class='personal-box'>
+  <!-- 音乐播放模板 -->
+  <import src ="../template/template.wxml"/>
+  <view class='content'>
+    <template is="switch" data="{{flag}}"/>
+    <!-- //歌曲列表 -->
+    <view class="content-box {{flag ? '' : 'open'}}">
+      <view class="Head-portrait"> 
+        <img src="/image/index/u608.png" /> 
+      </view> 
+      <view class="personal-from">
+        <view class="user-avatar-box">
+          <open-data class="user-avatar" type="userAvatarUrl"></open-data>
+        </view> 
+        <view class="personal-list">
+          机构名称 
+        <view class="shu"></view>幼儿园 
+        </view> 
+        <view class="personal-list">
+          机构名称 
+        <view class="shu"></view>幼儿园 
+        </view> 
+        <view class="personal-list">
+          机构名称 
+        <view class="shu"></view>幼儿园 
+        </view> 
+        <view class="personal-list hied">
+          机构名称 
+        <view class="shu"></view>幼儿园 
+        </view> 
+      </view> 
+      <view class="modify" bindtap="passBtn">
+        点击修改密码 
+      </view> 
+      <!-- 修改密码 --> 
+      <view class="first" wx:if="{{passShow}}"> 
+        <view class="first-tilte"> 
+        <text>
+          首次修改密码
+        </text> 
+        </view> 
+        <view class="firstn-form frame "> 
+        <view class="Title"> 
+          <text>
+          原密码
+          </text> 
+        </view> 
+        <view class="Verticalline"></view> 
+        <view class="first-box"> 
+          <input placeholder="请输入合作园密码" /> 
+        </view> 
+        </view> 
+        <view class="firstn-form frame "> 
+        <view class="Title"> 
+          <text>
+          密码
+          </text> 
+        </view> 
+        <view class="Verticalline"></view> 
+        <view class="first-box"> 
+          <input placeholder="请输入新密码" /> 
+        </view> 
+        </view> 
+        <view class="firstn-form frame "> 
+        <view class="Title"> 
+          <text>
+          重复
+          </text> 
+        </view> 
+        <view class="Verticalline"></view> 
+        <view class="first-box"> 
+          <input placeholder="请输入机构名称" /> 
+        </view> 
+        </view> 
+        <view class="confirm" bindtap="modifyPass">
+        确认
+        </view> 
+      </view>
+    </view>
   </view>
-  <view class='personal-from'>
-    <view class='personal-list'>
-      机构名称 <view class='shu'></view>幼儿园
-    </view>
-    <view class='personal-list'>
-      机构名称 <view class='shu'></view>幼儿园
-    </view>
-    <view class='personal-list'>
-      机构名称 <view class='shu'></view>幼儿园
-    </view>
-    <view class='personal-list hied'>
-      机构名称 <view class='shu'></view>幼儿园
-    </view>
-  </view>
-  <view class='modify'bindtap="passBtn">
-    点击修改密码
-  </view>
-  <!-- 修改密码 -->
-   <view class='first' wx:if="{{passShow}}" >
-    <view class='first-tilte'>
-      <text>首次修改密码</text>
-    </view>
-      <view class='firstn-form frame '>
-      <view class='Title'>
-        <text>原密码</text>
-      </view>
-      <view class='Verticalline'></view>
-      <view class='first-box'>
-        <input placeholder='请输入合作园密码'></input>
-      </view>
-    </view>
-    <view class='firstn-form frame '>
-      <view class='Title'>
-        <text>密码</text>
-      </view>
-      <view class='Verticalline'></view>
-      <view class='first-box'>
-        <input placeholder='请输入新密码'></input>
-      </view>
-    </view>
-        <view class='firstn-form frame '>
-      <view class='Title'>
-        <text>重复</text>
-      </view>
-      <view class='Verticalline'></view>
-      <view class='first-box'>
-        <input placeholder='请输入机构名称'></input>
-      </view>
-    </view>
-      <view class='confirm'bindtap="modifyPass">确认</view>
-  </view>
-  <template is="Playback"/>
-    <!-- 播放器 -->
+  <!-- 播放器 -->
+  <template is="Playback" data="{{isPlaying, totalProcess, sliderValue}}"/>
 </view>
-   <!-- <view class='music-player'>
-   <template is="Playback"/>
-   </view> -->

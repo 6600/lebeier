@@ -1,6 +1,17 @@
 .stage {
-
-  padding-bottom:  224rpx; 
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  transition: left 1s, top 1s;
+  height: 100%;
+  background-color:white;
+}
+.open {
+  left:280rpx;
+  top:220rpx;
+  border:1px solid #999999;
+  border-radius:10px;
 }
 .stage-class {
 

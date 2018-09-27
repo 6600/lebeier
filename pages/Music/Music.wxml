@@ -1,22 +1,21 @@
 <view class='Music-List'>
-<!-- 音乐播放模板 -->
-<import src ="../template/template.wxml"/>
-<template is="switch" data="{{flag}}"/>
-<!-- 面包屑 -->
-<view class='Crumbs'>
-  {{Crumbs}}
-</view>
-
-<!-- //歌曲列表 -->
-  <view class='Music-box'>
-    <view class='Song' wx:for="{{[1, 2, 3, 4, 5]}}" style="transform: rotateX({{rotation + index * 80}}deg) translateZ(120px);" wx:key="{{index}}" >
-      <view class='Music-logo'>
-      </view>
-      <view class='Song-name' bindtap="SongJump" >
-        {{index * 60}}
+  <!-- 音乐播放模板 -->
+  <import src ="../template/template.wxml"/>
+  <view class='content'>
+    <template is="switch" data="{{flag}}"/>
+    <!-- //歌曲列表 -->
+    <view class="content-box {{flag ? '' : 'open'}}">
+      <view class='Music-box'>
+        <view class='Song' wx:for="{{[1, 2, 3, 4, 5, 6, 7]}}" style="transform: rotateX({{rotation + index * 80}}deg) translateZ(140px);" wx:key="{{index}}" >
+          <view class='Music-logo'>
+          </view>
+          <view class='Song-name' bindtap="SongJump" >
+            {{index * 60}}
+          </view>
+        </view>
       </view>
     </view>
   </view>
-   <!-- 播放器 -->
-   <template is="Playback" data="{{isPlaying, totalProcess, sliderValue}}"/>
+  <!-- 播放器 -->
+  <template is="Playback" data="{{isPlaying, totalProcess, sliderValue}}"/>
 </view>

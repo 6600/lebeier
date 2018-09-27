@@ -1,9 +1,9 @@
 .Playback-box {
   width: 100%;
   height: 224rpx;
-  background-color:  #fdc73e;
   position: fixed;
   bottom: 0;
+  background-color:  #fdc73e;
   overflow: hidden;
   border-top-left-radius:15rpx;
   border-top-right-radius:15rpx;
@@ -81,26 +81,40 @@ top: 39rpx;
   right: 30rpx;
 }
 .tu {
-  height:40px;
-}
-.show .option{
-  display: block;
-}
-/* 切换 */
-.tu >image{
-    width: 60rpx;
-    height: 60rpx;
-    position: fixed;
-    top: 20rpx;
+  position: fixed;
+  width: 100%;
+  height:calc(100% - 224rpx);
+  border-radius: 0 0 10px 10px;
+  z-index: 0;
 }
 .option {
-  display: none;
-  padding-top: 70rpx;
-  text-align: center;
-  width: 100%;
-  
+  width:100%;
+  height:100%;
+  position: relative;
+  border-radius:0 0 10px 10px;
+  background-color:#d7d7d7;
 }
-.option>view {
-  font-size: 40rpx;
-
+.info {
+  width:100%;
+  height:100%;
+  background-color:white;
+  position: absolute;
+  top:100rpx;
+  left:120rpx;
+  border:1px solid #999999;
+  z-index: 1;
+  border-radius:10px;
+}
+.option-text, .info-text {
+  line-height:40px;
+  margin:0 120rpx;
+  color:#7c7c7c;
+}
+/* 切换 */
+ .menu-img {
+  width: 60rpx;
+  height: 60rpx;
+  position: fixed;
+  top: 20rpx;
+  z-index: 999;
 }

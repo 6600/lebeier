@@ -1,10 +1,10 @@
 <!-- 音乐播放模板 -->
 <import src ="../template/template.wxml"/>
- <template is="switch"/>
+ <template is="switch"  data="{{flag}}"/>
  <view class='Crumbs'>
   {{Crumbs}}
 </view>
-<view class='stage'>
+<view class="stage {{flag ? '' : 'open'}}">
   <view class='stage-class'>
     <view class='stage-content ' bindtap='JumpProduct'>
       <image src='/image/index/xiaoban.png'></image>
@@ -17,6 +17,7 @@
     </view>
 
   </view>
-      <!-- 播放器 -->
-   <template is="Playback"/>
+      
 </view>
+<!-- 播放器 -->
+<template is="Playback" data="{{isPlaying, totalProcess, sliderValue}}"/>

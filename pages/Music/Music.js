@@ -40,6 +40,7 @@ Page({
       url: '../Mumo/Mumo?title=音乐>MUMO'
     })
   },
+  // 切换显示菜单
   bindflag: function () {
     console.log(this.data.flag)
     this.setData({
@@ -110,8 +111,15 @@ Page({
       isDraging: true
     })
   },
-  handleSliderMoveEnd: function () {
-    
+  configJump: function () {
+    wx.navigateTo({
+      url: '../System/System'
+    })
+  },
+  personalJump: function () {
+    wx.navigateTo({
+      url: '../personal/personal'
+    })
   },
   animate: function () {
     if (!this.data.isPaused) {

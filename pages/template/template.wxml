@@ -35,12 +35,12 @@
 
 <!-- 切换 -->
 <template name='switch'>
-  <view>
-    <view class="tu {{flag? '':'show'}}">
-      <image src='/image/index/hengdian.png' bindtap='bindflag'></image>
-      <view class='option'>
-        <view>设置</view>
-        <view>个人信息</view>
+  <image class="menu-img" src='/image/index/hengdian.png' bindtap='bindflag'></image>
+  <view class="tu {{flag? '':'show'}}">
+    <view class='option' bindtap='configJump'>
+      <view class='option-text' >设置</view>
+      <view class='info' bindtap='personalJump'>
+        <view class="info-text">个人信息</view>
       </view>
     </view>
   </view>
