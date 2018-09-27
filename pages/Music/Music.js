@@ -9,6 +9,7 @@ Page({
     isPlaying: false,
     isPaused: false,
     enlargeItem: 10,
+    isDraging: false,
     musicList: [
       {
         "music_id": 1,
@@ -49,19 +50,26 @@ Page({
     this.setData({
       isPlaying: true
     })
-    const backgroundAudioManager = wx.getBackgroundAudioManager()
-    backgroundAudioManager.onTimeUpdate((e) => {
-      console.log(wx.getBackgroundAudioManager().duration)
-      this.setData({
-        sliderValue: wx.getBackgroundAudioManager().currentTime,
-        totalProcess: wx.getBackgroundAudioManager().duration
-      })
-    })
     wx.playBackgroundAudio({
       dataUrl: this.data.musicList[0].url,
       title: this.data.musicList[0].music_name,
       //图片地址地址
-      coverImgUrl: 'http://i.gtimg.cn/music/photo/mid_album_90/a/F/000QgFcm0v8WaF.jpg'
+      coverImgUrl: 'http://i.gtimg.cn/music/photo/mid_album_90/a/F/000QgFcm0v8WaF.jpg',
+      success: () => {
+        const backgroundAudioManager = wx.getBackgroundAudioManager()
+        // 播放时间改变事件
+        backgroundAudioManager.onTimeUpdate((e) => {
+          if (!this.data.isDraging) {
+            console.log(wx.getBackgroundAudioManager().currentTime)
+            this.setData({
+              sliderValue: wx.getBackgroundAudioManager().currentTime,
+              totalProcess: wx.getBackgroundAudioManager().duration
+            })
+          } else {
+            console.log('处于拖动状态！')
+          }
+        })
+      }
     })
   },
   pauseMusic: function () {
@@ -80,13 +88,30 @@ Page({
   },
   hanleSliderChange: function (e) {
     const position = e.detail.value;
-    wx.seekBackgroundAudio({ position})
+    console.log('播放位置改变:', position)
+    this.setData({
+      sliderValue: position
+    })
+    wx.seekBackgroundAudio({
+      position,
+      complete: () => {
+        setTimeout(() => {
+          this.setData({
+            isDraging: false
+          })
+        }, 2500)
+
+      }
+    })
   },
   handleSliderMoveStart: function () {
-    console.log('111')
+    console.log('拖动开始!')
+    this.setData({
+      isDraging: true
+    })
   },
   handleSliderMoveEnd: function () {
-    console.log('111')
+    
   },
   animate: function () {
     if (!this.data.isPaused) {
@@ -109,6 +134,13 @@ Page({
     // that.setData({
     //   Crumbs:option.title
     // })
+    // 播放停止事件
+    wx.onBackgroundAudioStop((e) => {
+      console.log('播放已停止')
+      this.setData({
+        isPlaying: false
+      })
+    })
     this.animate()
   }
 })
