@@ -5,8 +5,11 @@
     <template is="switch" data="{{flag}}"/>
     <!-- //歌曲列表 -->
     <view class="content-box {{flag ? '' : 'open'}}">
-      <view class='Music-box'>
-        <view class='Song' wx:for="{{[1, 2, 3, 4, 5, 6, 7]}}" style="transform: rotateX({{rotation + index * 80}}deg) translateZ(140px);" wx:key="{{index}}" >
+      <view class='Music-box' bindtouchmove="listTouchmove" bindtouchend="listTouchend">
+        <view
+          class='Song'
+          wx:for="{{[1, 2, 3, 4, 5, 6, 7]}}"
+          style="transform: rotateX({{rotation + index * 80}}deg) translateZ(140px);" wx:key="{{index}}" >
           <view class='Music-logo'>
           </view>
           <view class='Song-name' bindtap="SongJump" >

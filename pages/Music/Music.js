@@ -1,4 +1,5 @@
 const App = getApp()
+let startX = null
 Page({
   data: {
     flag: true,
@@ -121,6 +122,23 @@ Page({
       url: '../personal/personal'
     })
   },
+  listTouchend: function () {
+    console.log('触摸结束!')
+    startX = null
+  },
+  listTouchmove: function (event) {
+    // console.log(event)
+    // startX = null
+    const touchX = event.touches[0].pageX
+    if (startX !== null) {
+      const change = startX - touchX
+      console.log(change)
+      this.setData({
+        rotation: this.data.rotation - change * 5
+      })
+    }
+    startX = touchX
+  },
   animate: function () {
     if (!this.data.isPaused) {
       if (this.data.rotation > 360) this.data.rotation = 0
@@ -149,6 +167,6 @@ Page({
         isPlaying: false
       })
     })
-    this.animate()
+    // this.animate()
   }
 })

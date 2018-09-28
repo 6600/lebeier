@@ -18,6 +18,7 @@ page, .Music-List {
   position: relative;
   animation: rotar 15s infinite linear;
   transform-style: preserve-3d;
+  perspective: 1810rpx;
 }
 .content-box {
   position:absolute;
@@ -47,6 +48,8 @@ page, .Music-List {
   left:0;
   width: 600rpx;
   display: flex;
+  /* 单面可见 */
+  backface-visibility:hidden;
 } 
 .Music-List .Song .Music-logo {
   width: 150rpx;
