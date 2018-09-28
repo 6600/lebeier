@@ -7,10 +7,10 @@
       <image wx:if="{{isPlaying}}" src='/image/index/ting.png' catchtap="pauseMusic"></image>
       <image wx:else src='/image/index/kaishi.png' catchtap="startMusic"></image>
     </view>
-    <view class='First'>
+    <view class='First' catchtap="lestMusic">
       <image src='/image/index/xia.png'></image>
     </view>
-    <view class='lower'>
+    <view class='lower' catchtap="nextMusic">
       <image src='/image/index/shang.png'></image>
     </view>
     <text class='Time'>{{totalProcess}}</text>

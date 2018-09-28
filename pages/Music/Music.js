@@ -3,39 +3,13 @@ let startY = null
 Page({
   data: {
     flag: true,
-    Crumbs: '',
     rotation: 360,
     sliderValue: 0,
     totalProcess: 0,
     isPlaying: false,
     isPaused: false,
-    enlargeItem: 10,
     isDraging: false,
-    menuImg: App.globaData.style.menuImg,
-    musicList: [
-      {
-        "music_id": 1,
-        "music_name": "薛之谦",
-        "music_time": "1212121",
-        "music_rights": 1,
-        "music_list": "2mw1pmw1pmk2lm12wm1p2m1msp12msks1ls",
-        "size": "1222",
-        "url": "http://www.170mv.com/kw/other.web.np01.sycdn.kuwo.cn/resource/n2/1/32/765664006.mp3",
-        "create_time": "0000-00-00 00:00:00",
-        "play_num": 1
-      },
-      {
-        "music_id": 2,
-        "music_name": "薛之谦2",
-        "music_time": "1212121",
-        "music_rights": 1,
-        "music_list": "2mw1pmw1pmk2lm12wm1p2m1msp12msks1ls",
-        "size": "1222",
-        "url": "http://www.170mv.com/kw/other.web.np01.sycdn.kuwo.cn/resource/n2/1/32/765664006.mp3",
-        "create_time": "0000-00-00 00:00:00",
-        "play_num": 1
-      }
-    ]
+    menuImg: App.globaData.style.menuImg
   },
   SongJump: function () {
     wx.navigateTo({
@@ -49,32 +23,19 @@ Page({
       flag: !this.data.flag
     })
   },
+  // 开始播放音乐
   startMusic: function () {
     this.setData({
       isPlaying: true
     })
     wx.playBackgroundAudio({
-      dataUrl: this.data.musicList[0].url,
-      title: this.data.musicList[0].music_name,
+      dataUrl: App.player.musicList[App.player.index].url,
+      title: App.player.musicList[App.player.index].music_name,
       //图片地址地址
-      coverImgUrl: 'http://i.gtimg.cn/music/photo/mid_album_90/a/F/000QgFcm0v8WaF.jpg',
-      success: () => {
-        const backgroundAudioManager = wx.getBackgroundAudioManager()
-        // 播放时间改变事件
-        backgroundAudioManager.onTimeUpdate((e) => {
-          if (!this.data.isDraging) {
-            console.log(wx.getBackgroundAudioManager().currentTime)
-            this.setData({
-              sliderValue: wx.getBackgroundAudioManager().currentTime,
-              totalProcess: wx.getBackgroundAudioManager().duration
-            })
-          } else {
-            console.log('处于拖动状态！')
-          }
-        })
-      }
+      coverImgUrl: 'http://i.gtimg.cn/music/photo/mid_album_90/a/F/000QgFcm0v8WaF.jpg'
     })
   },
+  // 暂停播放音乐
   pauseMusic: function () {
     this.setData({
       isPlaying: false
@@ -82,12 +43,30 @@ Page({
     wx.pauseBackgroundAudio({})
     console.log('暂停播放')
   },
+  // 停止播放音乐
   stopMusic: function () {
     this.setData({
       isPlaying: false
     })
     wx.stopBackgroundAudio({})
     console.log('停止播放')
+  },
+  // 切换上一首/下一首
+  lestMusic: function () {
+    let newIndex = App.player.index - 1
+    // 循环播放
+    if (newIndex < 0) newIndex = App.player.musicList.length - 1
+    App.player.index = newIndex
+    console.log(App.player.index)
+    this.startMusic()
+  },
+  nextMusic: function () {
+    let newIndex = App.player.index + 1
+    // 循环播放
+    if (newIndex > App.player.musicList.length - 1) newIndex = 0
+    App.player.index = newIndex
+    console.log(App.player.index)
+    this.startMusic()
   },
   hanleSliderChange: function (e) {
     const position = e.detail.value;
@@ -148,7 +127,6 @@ Page({
   },
   //获取跳转参数
   onLoad: function(option) {
-    console.log(App.globaData)
     // 播放停止事件
     wx.onBackgroundAudioStop((e) => {
       console.log('播放已停止')
@@ -157,5 +135,18 @@ Page({
       })
     })
     // this.animate()
+    const backgroundAudioManager = wx.getBackgroundAudioManager()
+    // 播放时间改变事件
+    backgroundAudioManager.onTimeUpdate((e) => {
+      // console.log(wx.getBackgroundAudioManager().currentTime)
+      if (!this.data.isDraging) {
+        this.setData({
+          sliderValue: wx.getBackgroundAudioManager().currentTime,
+          totalProcess: wx.getBackgroundAudioManager().duration
+        })
+      } else {
+        console.log('处于拖动状态！')
+      }
+    })
   }
 })
