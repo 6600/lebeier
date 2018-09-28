@@ -2,14 +2,14 @@
   <!-- 音乐播放模板 -->
   <import src ="../template/template.wxml"/>
   <view class='content'>
-    <template is="switch" data="{{flag}}"/>
+    <template is="switch" data="{{flag, menuImg}}"/>
     <!-- //歌曲列表 -->
-    <view class="content-box {{flag ? '' : 'open'}}">
-      <view class='Music-box' bindtouchmove="listTouchmove" bindtouchend="listTouchend">
+    <view class="content-box">
+      <view class='Music-box' catchtouchmove="listTouchmove" catchtouchend="listTouchend">
         <view
           class='Song'
-          wx:for="{{[1, 2, 3, 4, 5, 6, 7]}}"
-          style="transform: rotateX({{rotation + index * 80}}deg) translateZ(140px);" wx:key="{{index}}" >
+          wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}}"
+          style="transform: rotateX({{rotation + index * 30}}deg) translateZ(160px);" wx:key="{{index}}" >
           <view class='Music-logo'>
           </view>
           <view class='Song-name' bindtap="SongJump" >

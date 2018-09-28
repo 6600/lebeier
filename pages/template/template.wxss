@@ -54,15 +54,15 @@
   top:35rpx;
 }
 .Progress .Playback-bar {
-    width: 10%;
-    height: 4rpx;
-    background-color: #000;
+  width: 10%;
+  height: 4rpx;
+  background-color: #000;
 }
 .Progress .circular {
   position: absolute;
   width: 20rpx;
   height: 20rpx;
-   border-radius:15rpx;
+  border-radius:15rpx;
   background-color: #000;
   top:-8rpx;
   left: 27rpx;
@@ -80,36 +80,28 @@ top: 39rpx;
   top: 39rpx;
   right: 30rpx;
 }
-.tu {
+.menu {
+  position:fixed;
+  width:300rpx;
+  height:100%;
+  z-index:999;
+  background-color:white;
+  left:-300rpx;
+  transition: left 1s;
+}
+.shelter {
+  left: 0;
+  top: 0;
   position: fixed;
   width: 100%;
-  height:calc(100% - 224rpx);
-  border-radius: 0 0 10px 10px;
-  z-index: 0;
+  height: 100%;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.50);
 }
-.option {
-  width:100%;
-  height:100%;
-  position: relative;
-  border-radius:0 0 10px 10px;
-  background-color:#d7d7d7;
+.show {
+  left: 0;
 }
-.info {
-  width:100%;
-  height:100%;
-  background-color:white;
-  position: absolute;
-  top:100rpx;
-  left:120rpx;
-  border:1px solid #999999;
-  z-index: 1;
-  border-radius:10px;
-}
-.option-text, .info-text {
-  line-height:40px;
-  margin:0 120rpx;
-  color:#7c7c7c;
-}
+
 /* 切换 */
  .menu-img {
   width: 60rpx;

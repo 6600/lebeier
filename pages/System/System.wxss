@@ -22,12 +22,6 @@ page, .system-list {
   background-color:white;
   overflow:hidden;
 }
-.open {
-  left:280rpx;
-  top:220rpx;
-  border-radius: 10px;
-  border:1px solid #999999;
-}
 .system {
   position: absolute;
   width: 100%;

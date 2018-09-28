@@ -1,6 +1,6 @@
 <!-- 音乐播放模板 -->
 <import src ="../template/template.wxml"/>
- <template is="switch"/>
+ <template is="switch" data="{{flag, menuImg}}"/>
  <!-- 面包屑 -->
 <view class='Crumbs'>
   {{Crumbs}}

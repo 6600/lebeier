@@ -1,4 +1,5 @@
 // pages/Mumo/Mumo.js
+const App = getApp()
 Page({
 
   /**
@@ -6,7 +7,8 @@ Page({
    */
   data: {
     Crumbs: '',
-    flag: false
+    menuImg: App.globaData.style.menuImg,
+    flag: true
   },
   //获取跳转参数
   onLoad: function (option) {

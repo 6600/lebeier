@@ -2,9 +2,9 @@
   <!-- 音乐播放模板 -->
   <import src ="../template/template.wxml"/>
   <view class='content'>
-    <template is="switch" data="{{flag}}"/>
+    <template is="switch" data="{{flag, menuImg}}"/>
     <!-- //歌曲列表 -->
-    <view class="content-box {{flag ? '' : 'open'}}">
+    <view class="content-box">
       <view class="Head-portrait"> 
         <img src="/image/index/u608.png" /> 
       </view> 

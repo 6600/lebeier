@@ -5,20 +5,8 @@
   {{Crumbs}}
 </view>
 
-  <view class='tu' wx:if="{{flag}}">
-    <image src='/image/index/hengdian.png' bindtap='bindflag'></image>
-    <view class='options'></view>
-  </view>
-  <view class='tu' wx:if="{{!flag}}">
-      <image src='/image/index/shudian.png' bindtap='bindflag2'></image>
-      <view class='option'>
-        <view bindtap="SetButton">设置</view>
-        <view bindtap="toSettings">个人信息</view>
-      </view>
-  </view>
-  <view  wx:if="{{!flag}}" style='height:100rpx;width:100%;'>
-  
-  </view>
+<import src ="../template/template.wxml"/>
+<template is="switch" data="{{flag, menuImg}}"/>
 
 <view class='player-box'>
   <view class='player-list '>
@@ -42,6 +30,7 @@
       </view>
   </view>
 </view>
+
 <!-- 播放器 -->
  <view class='Playback-box'>
     <view class='Black-gum'>
@@ -65,87 +54,3 @@
     </view>
     <text class='Total-time'>时间</text>
   </view> 
-<!-- 切换盒子 -->
-<!-- <view class='menu-box' wx:if="{{!flag}}">
-  <view class='Set-up' catchtap='haha'>
-    <image catchtap='bindflag2' src='/image/index/shudian.png'></image>
-    设置
-    <view class='personal-data'catchtap='hahaha'>
-    个人资料
-      <view class='menu-list'catchtap='ha' >
-        <view class='menu-one'>
-          第一章
-        </view>
-        <view class='menu-content'>
-          xxxxxxxxxxxxx
-        </view>
-        <view class='menu-btn'>
-          <view class='menu-click'>
-            播放
-          </view>
-          <view class='menu-data'>
-            时间
-          </view>
-        </view>
-        <view class='menu-content'>
-          xxxxxxxxxxxxx
-        </view>
-        <view class='menu-btn'>
-          <view class='palyer-click'>
-            播放
-          </view>
-          <view class='menu-data'>
-            时间
-          </view>
-        </view>
-        <view class='menu-content'>
-          xxxxxxxxxxxxx
-        </view>
-        <view class='menu-btn'>
-          <view class='menu-click'>
-            播放
-          </view>
-          <view class='menu-data'>
-            时间
-          </view>
-        </view>
- <view class='menu-one'>
-          第一章
-        </view>
-        <view class='menu-content'>
-          xxxxxxxxxxxxx
-        </view>
-        <view class='menu-btn'>
-          <view class='menu-click'>
-            播放
-          </view>
-          <view class='menu-data'>
-            时间
-          </view>
-        </view>
-        <view class='menu-content'>
-          xxxxxxxxxxxxx
-        </view>
-        <view class='menu-btn'>
-          <view class='palyer-click'>
-            播放
-          </view>
-          <view class='menu-data'>
-            时间
-          </view>
-        </view>
-        <view class='menu-content'>
-          xxxxxxxxxxxxx
-        </view>
-        <view class='menu-btn'>
-          <view class='menu-click'>
-            播放
-          </view>
-          <view class='menu-data'>
-            时间
-          </view>
-        </view>
-      </view>
-    </view>
-  </view>
-</view> -->

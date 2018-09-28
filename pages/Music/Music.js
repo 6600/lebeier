@@ -1,5 +1,5 @@
 const App = getApp()
-let startX = null
+let startY = null
 Page({
   data: {
     flag: true,
@@ -11,6 +11,7 @@ Page({
     isPaused: false,
     enlargeItem: 10,
     isDraging: false,
+    menuImg: App.globaData.style.menuImg,
     musicList: [
       {
         "music_id": 1,
@@ -112,32 +113,25 @@ Page({
       isDraging: true
     })
   },
-  configJump: function () {
-    wx.navigateTo({
-      url: '../System/System'
-    })
-  },
-  personalJump: function () {
-    wx.navigateTo({
-      url: '../personal/personal'
-    })
-  },
   listTouchend: function () {
     console.log('触摸结束!')
-    startX = null
+    startY = null
   },
   listTouchmove: function (event) {
     // console.log(event)
-    // startX = null
-    const touchX = event.touches[0].pageX
-    if (startX !== null) {
-      const change = startX - touchX
-      console.log(change)
+    // startY = null
+    const touchY = event.touches[0].pageY
+    if (startY !== null) {
+      const change = startY - touchY
+      // console.log(change)
+      let newRotation = this.data.rotation + change
+      if (newRotation > 360) newRotation = 0
+      if (newRotation < 0) newRotation = 360
       this.setData({
-        rotation: this.data.rotation - change * 5
+        rotation: newRotation
       })
     }
-    startX = touchX
+    startY = touchY
   },
   animate: function () {
     if (!this.data.isPaused) {
@@ -154,12 +148,7 @@ Page({
   },
   //获取跳转参数
   onLoad: function(option) {
-    // console.log(option.title)
-    // this.data.Crumbs = option.title;
-    // var that = this;
-    // that.setData({
-    //   Crumbs:option.title
-    // })
+    console.log(App.globaData)
     // 播放停止事件
     wx.onBackgroundAudioStop((e) => {
       console.log('播放已停止')

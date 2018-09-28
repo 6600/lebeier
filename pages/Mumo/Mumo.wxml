@@ -1,10 +1,10 @@
 <!-- 音乐播放模板 -->
 <import src ="../template/template.wxml"/>
- <template is="switch"  data="{{flag}}"/>
+ <template is="switch"  data="{{flag, menuImg}}"/>
  <view class='Crumbs'>
   {{Crumbs}}
 </view>
-<view class="stage {{flag ? '' : 'open'}}">
+<view class="stage">
   <view class='stage-class'>
     <view class='stage-content ' bindtap='JumpProduct'>
       <image src='/image/index/xiaoban.png'></image>

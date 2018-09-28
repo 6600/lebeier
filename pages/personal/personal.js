@@ -1,4 +1,5 @@
 // pages/personal/personal.js
+const App = getApp()
 Page({
 
   /**
@@ -6,6 +7,7 @@ Page({
    */
   data: {
     flag: true,
+    menuImg: App.globaData.style.menuImg,
     passShow:false
   },
   passBtn () {

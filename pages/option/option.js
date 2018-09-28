@@ -1,4 +1,5 @@
 // pages/option/option.js
+const App = getApp()
 Page({
 
   /**
@@ -6,6 +7,8 @@ Page({
    */
   data: {
     Crumbs: '',
+    menuImg: App.globaData.style.menuImg,
+    flag: true
   },
   onLoad: function (option) {
     console.log(option.title)
@@ -13,6 +16,12 @@ Page({
     var that = this;
     that.setData({
       Crumbs: option.title
+    })
+  },
+  bindflag: function () {
+    console.log(this.data.flag)
+    this.setData({
+      flag: !this.data.flag
     })
   },
   tomenu() {

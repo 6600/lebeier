@@ -4,9 +4,7 @@
     "pages/menu/menu",
     "pages/Mumo/Mumo",
     "pages/option/option",
-    "pages/player/player",
     "pages/System/System",
-    "pages/switch/switch",
     "pages/personal/personal",
     "pages/Music/Music",
     "pages/template/template"

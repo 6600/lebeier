@@ -1,6 +1,6 @@
 // pages/menu/menu.js
 var util = require('../../utils/util.js');
-const app = getApp()
+const App = getApp()
 Page({
   data: {
     //歌曲列表显示
@@ -11,11 +11,11 @@ Page({
     Open:false,
     //播放按钮
     ButtonBisplay:false,
-    //设置按钮
-     flag: true,
     //播放器按钮
     Playback: false ,
     Crumbs: '',
+    menuImg: App.globaData.style.menuImg,
+    flag: true
   },
   JumpProduct: function() {
     console.log(111)
@@ -39,6 +39,12 @@ Page({
         Open: false
       })
     }
+  },
+  // 切换显示菜单
+  bindflag: function () {
+    this.setData({
+      flag: !this.data.flag
+    })
   },
   // 点击播放
   playbtn:function() {
@@ -112,22 +118,6 @@ Page({
       });
     }
   },
-  // 设置按钮
-
-
-  bindflag: function () {
-    // console.log(1)
-    var that = this;
-    that.setData({
-      flag: false
-    })
-  },
-  bindflag2: function () {
-    var that = this;
-    that.setData({
-      flag: true
-    })
-  },
   SetButton() {
     // var that = this;
     // that.setData({
@@ -143,43 +133,4 @@ Page({
       url: '../personal/personal'
     })
   }
-  
-
-    // data: {
-  //   flag:true
-  // },
-  // onShow:function(){
-  //   var tempalte=this;
-  //   tempalte.setData({
-  //     flag: true
-  //   })
-  // },
-  // // haha: function() {
-  // //   wx.navigateTo({
-  // //     url: '../index/index'
-  // //   })
-  // // },
-  // hahaha: function () {
-  //   console.log(2);
-  // },
-  // ha: function () {
-  //   console.log(3);
-  // },
-  // hahahaha: function () {
-  //   console.log(4);
-  // },
-  // bindflag:function(){
-  //   console.log(1)
-  //   var that=this;
-  //   that.setData({
-  //     flag:false
-  //   })
-  // },
-  // bindflag2: function () {
-  //   var that = this;
-  //   that.setData({
-  //     flag: true
-  //   })
-  // },
-  
 })

@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 var util = require('../../utils/util.js');
-const app = getApp()
+const App = getApp()
 Page({
   data: {
     showBox: 'button',
@@ -11,6 +11,7 @@ Page({
     interval: 5000,
     duration: 1300,
     bg: '#C79C77',
+    swiperImg: App.globaData.style.swiperImg,
     Hei: "" //这是swiper要动态设置的高度属性
   },
   imgH: function (e) {
@@ -46,21 +47,61 @@ Page({
   },
   // 用户首次进入提醒修改密码
   changePassword: function () {
-    wx.redirectTo({ url: '/pages/Music/Music'})
+    const value = {
+      "state": 1,
+      "data": {
+        "token": "sdsdsdsdsd"
+      }
+    }
+    if (value.state === 1) {
+      console.log('修改密码成功!')
+      App.globaData.user = value.data.token
+      wx.redirectTo({ url: '/pages/Music/Music' })
+    }
   },
   // 申请合作按钮点击
   apply: function () {
-    console.log('点击申请合作')
-    this.setData({
-      showBox: 'applyTips'
-    })
+    const value = {
+      "state": 1
+    }
+    if (value.state === 1) {
+      console.log('申请成功!')
+      this.setData({
+        showBox: 'applyTips'
+      })
+    }
   },
   //确定登录
   SigninBtn:function () {
     console.log('确定登陆')
-    this.setData({
-      showBox: 'changePassword'
-    })
+    // 模拟数据
+    const value = {
+      "state": 1,
+      "data": {
+        "id": "id",
+        "username": "XXXXXXXXXX",
+        "password": "XXXXXXXXXX",
+        "login_num": 0,
+        "address": "DHAIUDHJXA129EU190UE12NJKDNK12NKJXNA",
+        "token": "DHAIUDHJXA129EU190UE12NJKDNK12NKJXNA",
+        "rights": "sdsd",
+        "user_end_time": "xxxxx"
+      }
+    }
+    if (value.state === 1) {
+      console.log('登陆成功')
+      // 判断是否需要修改密码
+      if (value.data.login_num < 1) {
+        this.setData({
+          showBox: 'changePassword'
+        })
+      } else {
+        // 进入主页
+        wx.redirectTo({ url: '/pages/Music/Music' })
+      }
+    } else {
+      console.log('登陆失败!')
+    }
   },
   formSubmit: function (e) {
     //获取账号密

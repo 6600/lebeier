@@ -35,13 +35,12 @@
 
 <!-- 切换 -->
 <template name='switch'>
-  <image class="menu-img" src='/image/index/hengdian.png' bindtap='bindflag'></image>
-  <view class="tu {{flag? '':'show'}}">
-    <view class='option' bindtap='configJump'>
-      <view class='option-text' >设置</view>
-      <view class='info' bindtap='personalJump'>
-        <view class="info-text">个人信息</view>
-      </view>
-    </view>
+  <image class="menu-img" src='{{menuImg}}' bindtap='bindflag'></image>
+  <view class="menu {{flag? '':'show'}}">
+    <view class='return' bindtap='bindflag'>返回</view>
+    <navigator url="../Music/Music" class='home menu-option'>首页</navigator>
+    <navigator url="../System/System" class='menu-option-text menu-option'>设置</navigator>
+    <navigator url="../personal/personal" class="info-text menu-option">个人信息</navigator>
   </view>
+  <view wx:if="{{!flag}}" class='shelter' bindtap='bindflag'></view>
 </template>
