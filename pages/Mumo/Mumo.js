@@ -5,6 +5,8 @@ Page({
     style: App.globaData.style,
     flag: true,
     // 音乐播放
+    isListLoop: true,
+    musicName: '',
     sliderValue: 0,
     totalProcess: 0,
     currentTime: '',
@@ -20,6 +22,9 @@ Page({
       title: App.player.musicList[App.player.index].music_name,
       //图片地址地址
       coverImgUrl: 'http://i.gtimg.cn/music/photo/mid_album_90/a/F/000QgFcm0v8WaF.jpg'
+    })
+    this.setData({
+      musicName: App.player.musicList[App.player.index].music_name,
     })
   },
   // 暂停播放音乐
@@ -38,31 +43,74 @@ Page({
     wx.stopBackgroundAudio({})
     console.log('停止播放')
   },
+  // 切换列表循环 or 单曲循环
+  switchLoop: function () {
+    App.player.isListLoop = !App.player.isListLoop
+    console.log('切换歌曲循环模式', App.player.isListLoop)
+    this.setData({
+      isListLoop: App.player.isListLoop
+    })
+  },
   // 切换上一首/下一首
   lestMusic: function () {
-    let newIndex = App.player.index - 1
-    // 循环播放
-    if (newIndex < 0) newIndex = App.player.musicList.length - 1
-    App.player.index = newIndex
-    // console.log(App.player.index)
-    this.startMusic()
+    // 判断是否为列表循环
+    if (App.player.isListLoop) {
+      let newIndex = App.player.index - 1
+      // 循环播放
+      if (newIndex < 0) newIndex = App.player.musicList.length - 1
+      App.player.index = newIndex
+      // console.log(App.player.index)
+      this.startMusic()
+      this.setData({
+        musicName: App.player.musicList[App.player.index].music_name
+      })
+    } else {
+      // 单曲循环设置播放进度为0即可
+      this.setData({
+        sliderValue: 0,
+        currentTime: 0
+      })
+      wx.seekBackgroundAudio({
+        position: 0
+      })
+    }
   },
   nextMusic: function () {
-    let newIndex = App.player.index + 1
-    // 循环播放
-    if (newIndex > App.player.musicList.length - 1) newIndex = 0
-    App.player.index = newIndex
-    console.log(App.player.index)
-    this.startMusic()
+    // 判断是否为列表循环
+    if (App.player.isListLoop) {
+      let newIndex = App.player.index + 1
+      // 循环播放
+      if (newIndex > App.player.musicList.length - 1) newIndex = 0
+      App.player.index = newIndex
+      console.log(App.player.index)
+      this.startMusic()
+    } else {
+      // 单曲循环设置播放进度为0即可
+      this.setData({
+        sliderValue: 0,
+        currentTime: 0
+      })
+      wx.seekBackgroundAudio({
+        position: 0
+      })
+    }
   },
   hanleSliderChange: function (e) {
-    const position = e.detail.value;
-    console.log('播放位置改变:', position)
+    const sliderValue = e.detail.value
+    function formatInt(num) {
+      if (num > 9) return num
+      else return '0' + num
+    }
+    function getCurrentTime() {
+      return formatInt(parseInt(sliderValue / 60)) + ':' + formatInt(parseInt(sliderValue % 60))
+    }
+    console.log('播放位置改变:', sliderValue)
     this.setData({
-      sliderValue: position
+      sliderValue: sliderValue,
+      currentTime: getCurrentTime()
     })
     wx.seekBackgroundAudio({
-      position,
+      position: sliderValue,
       complete: () => {
         this.setData({
           isDraging: false
@@ -84,6 +132,7 @@ Page({
     const backgroundAudioManager = wx.getBackgroundAudioManager()
     // 播放时间改变事件
     backgroundAudioManager.onTimeUpdate((e) => {
+      let isPlaying = true
       function formatInt(num) {
         if (num > 9) return num
         else return '0' + num
@@ -94,7 +143,10 @@ Page({
         const totalProcess = wx.getBackgroundAudioManager().duration
         // console.log(totalProcess)
         function getCurrentTime() {
-          if (totalProcess === 0) return ''
+          if (totalProcess === 0) {
+            isPlaying = false
+            return ''
+          }
           return formatInt(parseInt(sliderValue / 60)) + ':' + formatInt(parseInt(sliderValue % 60))
         }
         function getTotalTime() {
@@ -102,7 +154,7 @@ Page({
           return formatInt(parseInt(totalProcess / 60)) + ':' + formatInt(parseInt(totalProcess % 60))
         }
         this.setData({
-          isPlaying: true,
+          isPlaying: isPlaying,
           sliderValue: sliderValue,
           totalProcess: totalProcess,
           currentTime: getCurrentTime(),
@@ -114,6 +166,7 @@ Page({
       }
     })
     // ----------------------------------------------------------------------------
+    // this.animate()
   },
   JumpProduct: function () {
     wx.navigateTo({
