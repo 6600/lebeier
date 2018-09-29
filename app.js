@@ -4,6 +4,8 @@ App({
     user: {
       token: ''
     },
+    // 自动播放下一首
+    autoPlayNext: true,
     style: {
       swiperImg: [
         'http://puge.oss-cn-beijing.aliyuncs.com/lebeier/_20180911132507.jpg',
@@ -33,12 +35,12 @@ App({
       },
       {
         "music_id": 2,
-        "music_name": "薛之谦2",
+        "music_name": "一百万个可能",
         "music_time": "1212121",
         "music_rights": 1,
         "music_list": "2mw1pmw1pmk2lm12wm1p2m1msp12msks1ls",
         "size": "1222",
-        "url": "http://www.170mv.com/kw/other.web.np01.sycdn.kuwo.cn/resource/n2/1/32/7656640206.mp3",
+        "url": "http://puge.oss-cn-beijing.aliyuncs.com/mp3/10620.mp3",
         "create_time": "0000-00-00 00:00:00",
         "play_num": 1
       }

@@ -48,10 +48,10 @@
 }
 .Progress {
   position:absolute;
-  width:440rpx;
+  width:410rpx;
   height:4rpx;
   right:45rpx;
-  top:35rpx;
+  top:37rpx;
 }
 .Progress .Playback-bar {
   width: 10%;
@@ -68,17 +68,16 @@
   left: 27rpx;
 }
 .Total-time {
- font-size: 20rpx;
- position: absolute;
- left: 170rpx;
-top: 39rpx;
-
+  font-size: 20rpx;
+  position: absolute;
+  left:190rpx;
+  top:69rpx;
 }
 .Time {
   position: absolute;
   font-size: 20rpx;
-  top: 39rpx;
-  right: 30rpx;
+  top:69rpx;
+  right:25rpx;
 }
 .menu {
   position:fixed;

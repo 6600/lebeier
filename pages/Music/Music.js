@@ -3,12 +3,17 @@ let startY = null
 Page({
   data: {
     flag: true,
+    // 3D旋转
     rotation: 360,
+    isPaused: false,
+    // 音乐播放
     sliderValue: 0,
     totalProcess: 0,
+    currentTime: '',
+    totalTime: '',
     isPlaying: false,
-    isPaused: false,
     isDraging: false,
+    // 样式相关
     menuImg: App.globaData.style.menuImg
   },
   SongJump: function () {
@@ -23,11 +28,9 @@ Page({
       flag: !this.data.flag
     })
   },
+  // ------------------------ 音乐播放方法 ----------------------------
   // 开始播放音乐
   startMusic: function () {
-    this.setData({
-      isPlaying: true
-    })
     wx.playBackgroundAudio({
       dataUrl: App.player.musicList[App.player.index].url,
       title: App.player.musicList[App.player.index].music_name,
@@ -57,7 +60,7 @@ Page({
     // 循环播放
     if (newIndex < 0) newIndex = App.player.musicList.length - 1
     App.player.index = newIndex
-    console.log(App.player.index)
+    // console.log(App.player.index)
     this.startMusic()
   },
   nextMusic: function () {
@@ -69,20 +72,26 @@ Page({
     this.startMusic()
   },
   hanleSliderChange: function (e) {
-    const position = e.detail.value;
-    console.log('播放位置改变:', position)
+    const sliderValue = e.detail.value
+    function formatInt(num) {
+      if (num > 9) return num
+      else return '0' + num
+    }
+    function getCurrentTime() {
+      return formatInt(parseInt(sliderValue / 60)) + ':' + formatInt(parseInt(sliderValue % 60))
+    }
+    console.log('播放位置改变:', sliderValue)
     this.setData({
-      sliderValue: position
+      sliderValue: sliderValue,
+      currentTime: getCurrentTime()
     })
     wx.seekBackgroundAudio({
-      position,
+      position: sliderValue,
       complete: () => {
-        setTimeout(() => {
-          this.setData({
-            isDraging: false
-          })
-        }, 2500)
-
+        this.setData({
+          isDraging: false,
+          currentTime: getCurrentTime()
+        })
       }
     })
   },
@@ -92,6 +101,8 @@ Page({
       isDraging: true
     })
   },
+  // -------------------------------------------------------------------
+  // 3D旋转动画函数
   listTouchend: function () {
     console.log('触摸结束!')
     startY = null
@@ -125,28 +136,69 @@ Page({
     setTimeout(this.animate, 50)
     // requestAnimationFrame(this.animate)
   },
-  //获取跳转参数
-  onLoad: function(option) {
+  onLoad: function () {
+    const backgroundAudioManager = wx.getBackgroundAudioManager()
+    // 播放完毕后自动播放下一首
+    console.log('sddsd')
+    if (App.globaData.autoPlayNext) {
+      backgroundAudioManager.onEnded((e) => {
+        console.log('播放已完毕')
+        this.lestMusic()
+      })
+    }
     // 播放停止事件
-    wx.onBackgroundAudioStop((e) => {
+    backgroundAudioManager.onStop((e) => {
       console.log('播放已停止')
       this.setData({
+        sliderValue: 0,
+        totalProcess: 1,
+        currentTime: '',
+        totalTime: '',
         isPlaying: false
       })
     })
-    // this.animate()
+  },
+  //获取跳转参数
+  onShow: function(option) {
+    // --------------------------------- 音乐相关 ---------------------------------
+    
     const backgroundAudioManager = wx.getBackgroundAudioManager()
     // 播放时间改变事件
     backgroundAudioManager.onTimeUpdate((e) => {
+      let isPlaying = true
+      function formatInt (num) {
+        if (num > 9) return num
+        else return '0' + num
+      }
       // console.log(wx.getBackgroundAudioManager().currentTime)
       if (!this.data.isDraging) {
+        const sliderValue = wx.getBackgroundAudioManager().currentTime
+        const totalProcess = wx.getBackgroundAudioManager().duration
+        // console.log(totalProcess)
+        function getCurrentTime() {
+          if(totalProcess === 0) {
+            isPlaying = false
+            return ''
+          }
+          return formatInt(parseInt(sliderValue / 60)) + ':' + formatInt(parseInt(sliderValue % 60))
+        }
+        function getTotalTime() {
+          if (totalProcess === 0) return ''
+          return formatInt(parseInt(totalProcess / 60)) + ':' + formatInt(parseInt(totalProcess % 60))
+        }
         this.setData({
-          sliderValue: wx.getBackgroundAudioManager().currentTime,
-          totalProcess: wx.getBackgroundAudioManager().duration
+          isPlaying: isPlaying,
+          sliderValue: sliderValue,
+          totalProcess: totalProcess,
+          currentTime: getCurrentTime(),
+          totalTime: getTotalTime()
         })
+
       } else {
         console.log('处于拖动状态！')
       }
     })
+    // ----------------------------------------------------------------------------
+    // this.animate()
   }
 })

@@ -13,14 +13,13 @@
     <view class='lower' catchtap="nextMusic">
       <image src='/image/index/shang.png'></image>
     </view>
-    <text class='Time'>{{totalProcess}}</text>
+    <text class='Time'>{{totalTime}}</text>
     <slider
       class="Progress"
       block-size="12"
       activeColor="#797979"
       bindchange="hanleSliderChange"
       bindtouchstart="handleSliderMoveStart"
-      bindtouchend="handleSliderMoveEnd"
       min="0"
       max="{{totalProcess}}"
       value="{{sliderValue}}"/>
@@ -29,7 +28,7 @@
       <view class='circular'></view>
       </view>  
     </view> -->
-    <text class='Total-time'>时间</text>
+    <text class='Total-time'>{{currentTime}}</text>
   </view> 
 </template>
 

@@ -20,4 +20,4 @@
       
 </view>
 <!-- 播放器 -->
-<template is="Playback" data="{{isPlaying, totalProcess, sliderValue}}"/>
+<template is="Playback" data="{{isPlaying, totalProcess, sliderValue, player, currentTime, totalTime}}"/>
