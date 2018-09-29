@@ -2,7 +2,7 @@
   <!-- 音乐播放模板 -->
   <import src ="../template/template.wxml"/>
   <view class='content'>
-    <template is="switch" data="{{flag, menuImg}}"/>
+    <template is="switch" data="{{flag, style}}"/>
     <!-- //歌曲列表 -->
     <view class="content-box">
       <view class='Music-box' catchtouchmove="listTouchmove" catchtouchend="listTouchend">
@@ -20,5 +20,5 @@
     </view>
   </view>
   <!-- 播放器 -->
-  <template is="Playback" data="{{isPlaying, totalProcess, sliderValue, player, currentTime, totalTime}}"/>
+  <template is="Playback" data="{{isPlaying, totalProcess, sliderValue, player, currentTime, totalTime, musicName, style, isListLoop}}"/>
 </view>

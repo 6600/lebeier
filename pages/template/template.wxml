@@ -13,6 +13,11 @@
     <view class='lower' catchtap="nextMusic">
       <image src='/image/index/shang.png'></image>
     </view>
+    <text class="music-name">{{musicName}}</text>
+    <view class='loop' catchtap="switchLoop">
+      <image wx:if="{{isListLoop}}" src='{{style.listLoopImg}}'></image>
+      <image wx:else src='{{style.singleLoopImg}}'></image>
+    </view>
     <text class='Time'>{{totalTime}}</text>
     <slider
       class="Progress"
@@ -23,18 +28,13 @@
       min="0"
       max="{{totalProcess}}"
       value="{{sliderValue}}"/>
-    <!-- <view class='Progress'>
-      <view class='Playback-bar'>
-      <view class='circular'></view>
-      </view>  
-    </view> -->
     <text class='Total-time'>{{currentTime}}</text>
   </view> 
 </template>
 
 <!-- 切换 -->
 <template name='switch'>
-  <image class="menu-img" src='{{menuImg}}' bindtap='bindflag'></image>
+  <image class="menu-img" src='{{style.menuImg}}' bindtap='bindflag'></image>
   <view class="menu {{flag? '':'show'}}">
     <view class='return' bindtap='bindflag'>返回</view>
     <navigator url="../Music/Music" class='home menu-option'>首页</navigator>

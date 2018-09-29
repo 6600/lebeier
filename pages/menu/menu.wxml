@@ -6,7 +6,7 @@
 </view>
 
 <import src ="../template/template.wxml"/>
-<template is="switch" data="{{flag, menuImg}}"/>
+<template is="switch" data="{{flag, style}}"/>
 
 <view class='player-box'>
   <view class='player-list '>

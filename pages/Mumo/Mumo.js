@@ -2,7 +2,7 @@
 const App = getApp()
 Page({
   data: {
-    menuImg: App.globaData.style.menuImg,
+    style: App.globaData.style,
     flag: true,
     // 音乐播放
     sliderValue: 0,

@@ -14,7 +14,7 @@ Page({
     //播放器按钮
     Playback: false ,
     Crumbs: '',
-    menuImg: App.globaData.style.menuImg,
+    style: App.globaData.style,
     flag: true
   },
   JumpProduct: function() {

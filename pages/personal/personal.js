@@ -7,7 +7,7 @@ Page({
    */
   data: {
     flag: true,
-    menuImg: App.globaData.style.menuImg,
+    style: App.globaData.style,
     passShow:false
   },
   passBtn () {

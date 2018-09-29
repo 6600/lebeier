@@ -7,6 +7,8 @@ Page({
     rotation: 360,
     isPaused: false,
     // 音乐播放
+    isListLoop: true,
+    musicName: '',
     sliderValue: 0,
     totalProcess: 0,
     currentTime: '',
@@ -14,7 +16,7 @@ Page({
     isPlaying: false,
     isDraging: false,
     // 样式相关
-    menuImg: App.globaData.style.menuImg
+    style: App.globaData.style
   },
   SongJump: function () {
     wx.navigateTo({
@@ -37,6 +39,9 @@ Page({
       //图片地址地址
       coverImgUrl: 'http://i.gtimg.cn/music/photo/mid_album_90/a/F/000QgFcm0v8WaF.jpg'
     })
+    this.setData({
+      musicName: App.player.musicList[App.player.index].music_name,
+    })
   },
   // 暂停播放音乐
   pauseMusic: function () {
@@ -54,22 +59,57 @@ Page({
     wx.stopBackgroundAudio({})
     console.log('停止播放')
   },
+  // 切换列表循环 or 单曲循环
+  switchLoop: function () {
+    App.player.isListLoop = !App.player.isListLoop
+    console.log('切换歌曲循环模式', App.player.isListLoop)
+    this.setData({
+      isListLoop: App.player.isListLoop
+    })
+  },
   // 切换上一首/下一首
   lestMusic: function () {
-    let newIndex = App.player.index - 1
-    // 循环播放
-    if (newIndex < 0) newIndex = App.player.musicList.length - 1
-    App.player.index = newIndex
-    // console.log(App.player.index)
-    this.startMusic()
+    // 判断是否为列表循环
+    if (App.player.isListLoop) {
+      let newIndex = App.player.index - 1
+      // 循环播放
+      if (newIndex < 0) newIndex = App.player.musicList.length - 1
+      App.player.index = newIndex
+      // console.log(App.player.index)
+      this.startMusic()
+      this.setData({
+        musicName: App.player.musicList[App.player.index].music_name
+      })
+    } else {
+      // 单曲循环设置播放进度为0即可
+      this.setData({
+        sliderValue: 0,
+        currentTime: 0
+      })
+      wx.seekBackgroundAudio({
+        position: 0
+      })
+    }
   },
   nextMusic: function () {
-    let newIndex = App.player.index + 1
-    // 循环播放
-    if (newIndex > App.player.musicList.length - 1) newIndex = 0
-    App.player.index = newIndex
-    console.log(App.player.index)
-    this.startMusic()
+    // 判断是否为列表循环
+    if (App.player.isListLoop) {
+      let newIndex = App.player.index + 1
+      // 循环播放
+      if (newIndex > App.player.musicList.length - 1) newIndex = 0
+      App.player.index = newIndex
+      console.log(App.player.index)
+      this.startMusic()
+    } else {
+      // 单曲循环设置播放进度为0即可
+      this.setData({
+        sliderValue: 0,
+        currentTime: 0
+      })
+      wx.seekBackgroundAudio({
+        position: 0
+      })
+    }
   },
   hanleSliderChange: function (e) {
     const sliderValue = e.detail.value
@@ -89,8 +129,7 @@ Page({
       position: sliderValue,
       complete: () => {
         this.setData({
-          isDraging: false,
-          currentTime: getCurrentTime()
+          isDraging: false
         })
       }
     })
@@ -143,7 +182,11 @@ Page({
     if (App.globaData.autoPlayNext) {
       backgroundAudioManager.onEnded((e) => {
         console.log('播放已完毕')
-        this.lestMusic()
+        if (App.player.isListLoop) {
+          this.lestMusic()
+        } else {
+          this.startMusic()
+        }
       })
     }
     // 播放停止事件

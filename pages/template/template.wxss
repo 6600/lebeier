@@ -20,7 +20,7 @@
 .suspend {
   position: absolute;
   top:108rpx;
-  left: 62%;
+  left:405rpx;
   margin-left: -15px;
 }
 .suspend>image {
@@ -29,8 +29,8 @@
 }
 .First {
   position: absolute;
-   left: 289rpx;
-   top: 123rpx;
+  left: 240rpx;
+  top: 123rpx;
 }
 .First>image {
   width: 31px;
@@ -38,19 +38,27 @@
 }
 .lower {
   position: absolute;
-  top:121rpx;
-  right: 95rpx;
-  
+  top:123rpx;
+  left:510rpx;
 }
 .lower>image {
-   width: 31px;
+  width: 31px;
+  height: 31px;
+}
+.loop {
+  position: absolute;
+  top:123rpx;
+  right:40rpx;
+}
+.loop>image {
+  width: 31px;
   height: 31px;
 }
 .Progress {
   position:absolute;
-  width:410rpx;
+  width:360rpx;
   height:4rpx;
-  right:45rpx;
+  left:93px;
   top:37rpx;
 }
 .Progress .Playback-bar {
@@ -76,8 +84,8 @@
 .Time {
   position: absolute;
   font-size: 20rpx;
-  top:69rpx;
-  right:25rpx;
+  top:70rpx;
+  left:275px;
 }
 .menu {
   position:fixed;
@@ -99,6 +107,13 @@
 }
 .show {
   left: 0;
+}
+.music-name {
+  position:absolute;
+  top:17rpx;
+  left:204rpx;
+  color:#a99050;
+  font-size:12px;
 }
 
 /* 切换 */

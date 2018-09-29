@@ -11,11 +11,17 @@ App({
         'http://puge.oss-cn-beijing.aliyuncs.com/lebeier/_20180911132507.jpg',
         'http://puge.oss-cn-beijing.aliyuncs.com/lebeier/_20180911132513.png'
       ],
-      menuImg: 'http://puge.oss-cn-beijing.aliyuncs.com/lebeier/hengdian.png'
+      menuImg: 'http://puge.oss-cn-beijing.aliyuncs.com/lebeier/hengdian.png',
+      // 单曲循环按钮图片
+      singleLoopImg: 'http://puge.oss-cn-beijing.aliyuncs.com/lebeier/%E5%8D%95%E6%9B%B2%E5%BE%AA%E7%8E%AF.png',
+      // 列表循环按钮图片
+      listLoopImg: 'http://puge.oss-cn-beijing.aliyuncs.com/lebeier/%E5%BE%AA%E7%8E%AF%E6%92%AD%E6%94%BE.png'
     }
   },
   player: {
     index: 0,
+    // 列表循环
+    isListLoop: true,
     isPlaying: false,
     isDraging: false,
     sliderValue: 0,
