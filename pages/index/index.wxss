@@ -21,6 +21,7 @@
   left: 0;
   right: 0;
   margin: auto;
+  z-index: -1;
 }
 
 .login-btn .home-login {
@@ -30,6 +31,7 @@
   background-color: #ffc833;
   text-align: center;
   line-height: 80rpx;
+  z-index: -1;
   box-shadow:1px 1px 10px #898989;
 }
 
@@ -50,8 +52,8 @@
   left: 0;
   right: 0;
   margin: auto;
-
-  
+  opacity: 0;
+  z-index: -1;
 }
 .login-tilte{
   height: 80rpx;
@@ -122,15 +124,15 @@
 
 .login-button {
   /* overflow: hidden; */
-  height: 80rpx;
+  height: 70rpx;
 
 }
 
 .cancel {
   text-align: center;
   width: 50%;
-  height:80rpx;
-  line-height: 80rpx;
+  height:70rpx;
+  line-height: 70rpx;
   display: inline-block;
   background-color: #eee;
   font-size: 26rpx;
@@ -140,8 +142,8 @@
 
 .Signin {
   text-align: center;
-  height: 80rpx;
-  line-height: 80rpx;
+  height: 70rpx;
+  line-height: 70rpx;
   display: inline-block;
   width: 50%;
   background-color: #f7c720;
@@ -164,7 +166,8 @@
   width: 538rpx;
   height: 540rpx;
   background-color: #ccc;
-
+  opacity: 0;
+  z-index: -1;
 }
 
 .Broadcast .cooperation .cooperation-tilte {
@@ -215,6 +218,8 @@
   bottom: 0;
   margin: auto;
   height:131px;
+  opacity: 0;
+  z-index: -1;
 }
 .first .first-tilte{
   height: 80rpx;
@@ -264,6 +269,8 @@
   right: 0;
   bottom: 0;
   margin: auto;
+  opacity: 0;
+  z-index: -1;
 }
 .Success .Success-tilte {
    height: 80rpx;
@@ -274,16 +281,21 @@
 }
 .Success .Success-Tips {
   font-size: 22rpx;
-  height:78px;
+  height:98px;
 }
 .Success .words { 
   display: block;
-  padding: 0 40rpx ;
+  padding: 30rpx 40rpx ;
+  font-size:14px;
+  text-align: center;
+  color:#747474;
 }
 .Success .phone {
-  padding-top: 50rpx;
   display: block;
   text-align: center;
+  line-height:36px;
+  color:#747474;
+  font-size:12px;
 }
 .Success .confirm {
   width: 100%;
@@ -292,4 +304,12 @@
   background-color:#ffc833; 
   font-size: 26rpx;
   line-height: 60rpx;
+}
+.Broadcast .show {
+  opacity: 1;
+  z-index: 1;
+}
+
+.alert-box {
+  transition: opacity 0.5s;
 }

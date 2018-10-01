@@ -6,7 +6,7 @@
     </swiper-item>
   </swiper>
   <!-- 首页按钮 -->
-  <view wx:if="{{showBox === 'button'}}" class="login-btn">
+  <view class="login-btn alert-box {{showBox === 'button' ? 'show': ''}}">
     <view class="home-login distance" 
     bindtap="showButton">
       登录
@@ -16,7 +16,7 @@
     </view>
   </view>
   <!-- 登录界面 -->
-  <view wx:elif="{{showBox === 'login'}}" class="login" >
+  <view class="login alert-box {{showBox === 'login' ? 'show': ''}}" >
     <view class='login-tilte'>
       <text>登录乐蓓儿音乐器</text>
     </view>
@@ -42,7 +42,7 @@
     </form>
   </view>
   <!-- //合作 -->
-  <view wx:elif="{{showBox === 'apply'}}" class="cooperation">
+  <view class="cooperation alert-box {{showBox === 'apply' ? 'show': ''}}">
     <view class='cooperation-tilte'>
       <text>申请合作</text>
     </view>
@@ -92,7 +92,7 @@
     </view>
   </view>
   <!-- //申请成功弹框 -->
-  <view wx:elif="{{showBox === 'applyTips'}}" class='Success'>
+  <view class="Success alert-box {{showBox === 'applyTips' ? 'show': ''}}">
     <view class='Success-tilte'>
       <text>申请成功</text>
     </view>
@@ -103,7 +103,7 @@
     <view class='confirm' bindtap='cancel'>确认</view>
   </view>
   <!-- //首次修改密码 -->
-  <view wx:elif="{{showBox === 'changePassword'}}" class='first'>
+  <view class="first alert-box {{showBox === 'changePassword' ? 'show': ''}}">
     <view class='first-tilte'>首次修改密码</view>
     <view class='firstn-form frame '>
       <view class='Title'>密码</view>
