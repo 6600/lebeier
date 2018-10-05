@@ -7,6 +7,8 @@ App({
     // 自动播放下一首
     autoPlayNext: true,
     style: {
+      // 自动旋转
+      autoAnimate: false,
       swiperImg: [
         'http://puge.oss-cn-beijing.aliyuncs.com/lebeier/_20180911132507.jpg',
         'http://puge.oss-cn-beijing.aliyuncs.com/lebeier/_20180911132513.png'

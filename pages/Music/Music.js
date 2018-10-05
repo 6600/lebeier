@@ -33,6 +33,7 @@ Page({
   // ------------------------ 音乐播放方法 ----------------------------
   // 开始播放音乐
   startMusic: function () {
+    App.player.isPlaying = true
     wx.playBackgroundAudio({
       dataUrl: App.player.musicList[App.player.index].url,
       title: App.player.musicList[App.player.index].music_name,
@@ -45,6 +46,7 @@ Page({
   },
   // 暂停播放音乐
   pauseMusic: function () {
+    App.player.isPlaying = false
     this.setData({
       isPlaying: false
     })
@@ -53,6 +55,7 @@ Page({
   },
   // 停止播放音乐
   stopMusic: function () {
+    App.player.isPlaying = false
     this.setData({
       isPlaying: false
     })
@@ -168,7 +171,7 @@ Page({
       if (this.data.rotation < 0) this.data.rotation = 360
       // this.data.rotation -= 50
       this.setData({
-        rotation: this.data.rotation - 1
+        rotation: this.data.rotation + 1
       })
       // console.log(this.data.rotation)
     }
@@ -191,6 +194,7 @@ Page({
     }
     // 播放停止事件
     backgroundAudioManager.onStop((e) => {
+      App.player.isPlaying = false
       console.log('播放已停止')
       this.setData({
         sliderValue: 0,
@@ -204,11 +208,14 @@ Page({
   //获取跳转参数
   onShow: function(option) {
     // --------------------------------- 音乐相关 ---------------------------------
-    
+    // 载入播放模式
+    this.setData({
+      isListLoop: App.player.isListLoop
+    })
     const backgroundAudioManager = wx.getBackgroundAudioManager()
     // 播放时间改变事件
     backgroundAudioManager.onTimeUpdate((e) => {
-      let isPlaying = true
+      let isPlaying = App.player.isPlaying
       function formatInt (num) {
         if (num > 9) return num
         else return '0' + num
@@ -242,6 +249,9 @@ Page({
       }
     })
     // ----------------------------------------------------------------------------
-    // this.animate()
+    // 自动旋转
+    if (App.globaData.style.autoAnimate) {
+      this.animate()
+    }
   }
 })

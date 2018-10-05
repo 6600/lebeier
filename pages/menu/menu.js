@@ -36,7 +36,7 @@ Page({
       Crumbs: option.title
     })
   },
-    // 点击弹出播放
+  // 点击弹出播放
   Playdisplay: function () {
     var that = this;
     if (!that.data.Open) {

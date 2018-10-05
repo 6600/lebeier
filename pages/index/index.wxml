@@ -20,29 +20,30 @@
     <view class='login-tilte'>
       <text>登录乐蓓儿音乐器</text>
     </view>
-    <form bindsubmit="formSubmit" bindreset="formReset">
-      <view class='login-form frame '>
-      <view class='Title'>账号</view>
-      <view class='input-box'>
-        <input type='text' name="name" value="{{account}}" placeholder='请输入账号'></input>
+    <form bindsubmit="SigninBtn" bindreset="cancel">
+      <view class='login-form frame'>
+        <view class='Title'>账号</view>
+        <view class='input-box'>
+          <input type='text' name="user" value="{{account}}" placeholder='请输入账号'></input>
+        </view>
+      
       </view>
-    </view>
-    <view class='login-form'>
-      <view class='Title'>密码</view>
-      <view class='input-box'>
-        <input type='password' name="password" value='{{password}}' placeholder='请输入密码'></input>
+      <view class='login-form'>
+        <view class='Title'>密码</view>
+        <view class='input-box'>
+          <input type='password' name="password" value='{{password}}' placeholder='请输入密码'></input>
+        </view>
       </view>
-    </view>
-    <view class='login-button '>
-      <view class='cancel' bindtap='cancel'>取消</view>
-      <view class='Signin' bindtap='SigninBtn' >登录</view>
-      <!-- <button class='cancel' formType="reset">取消</button>
-      <button class='Signin' formType="submit">登录</button> -->
-    </view>
+      <view class='login-button '>
+        <!-- <view class='cancel' bindtap='cancel'>取消</view> -->
+        <!-- <view class='Signin' bindtap='SigninBtn' >登录</view> -->
+        <button class='cancel' formType="reset">取消</button>
+        <button class='Signin' formType="submit">登录</button>
+      </view>
     </form>
   </view>
   <!-- //合作 -->
-  <view class="cooperation alert-box {{showBox === 'apply' ? 'show': ''}}">
+  <form form bindsubmit="apply" bindreset="cancel" class="cooperation alert-box {{showBox === 'apply' ? 'show': ''}}">
     <view class='cooperation-tilte'>
       <text>申请合作</text>
     </view>
@@ -51,7 +52,7 @@
         <text>机构名称*</text>
       </view>
       <view class='input-box'>
-        <input  type='text'placeholder='请输入机构名称'></input>
+        <input name="cooperation"  type='text'placeholder='请输入机构名称'></input>
       </view>
     </view>
     <view class='cooperation-form'>
@@ -59,7 +60,7 @@
         <text>联系人*</text>
       </view>
       <view class='input-box'>
-        <input type='text' placeholder='请输入联系人姓名'></input>
+        <input name="contacts" type='text' placeholder='请输入联系人姓名'></input>
       </view>
     </view>
     <view class='cooperation-form'>
@@ -67,7 +68,7 @@
         <text>手机号*</text>
       </view>
       <view class='input-box'>
-        <input type='text' placeholder='请输入手机号'></input>
+        <input name="phone" type='text' placeholder='请输入手机号'></input>
       </view>
     </view>
     <view class='cooperation-form'>
@@ -75,7 +76,7 @@
         <text>职务</text>
       </view>
       <view class='input-box'>
-        <input type='text' placeholder='请输入联系人职务'></input>
+        <input name="work" type='text' placeholder='请输入联系人职务'></input>
       </view>
     </view>
     <view class='cooperation-form '>
@@ -83,14 +84,14 @@
         <text>描述</text>
       </view>
       <view class='input-box'>
-        <input type='text' placeholder='请输简单描述您的需求'></input>
+        <input name="messages" type='text' placeholder='请输简单描述您的需求'></input>
       </view>
     </view>
     <view class='cooperation-button '>
-      <view class='cancel' bindtap='cancel' >取消</view>
-      <view class='Signin' bindtap='apply'>申请</view>
+      <button class='cancel' formType="reset">取消</button>
+      <button class='Signin' formType="submit">登录</button>
     </view>
-  </view>
+  </form>
   <!-- //申请成功弹框 -->
   <view class="Success alert-box {{showBox === 'applyTips' ? 'show': ''}}">
     <view class='Success-tilte'>

@@ -60,7 +60,17 @@ Page({
     }
   },
   // 申请合作按钮点击
-  apply: function () {
+  apply: function (e) {
+    let sendData = e.detail.value
+    console.log(sendData)
+    wx.request({
+      method: 'POST',
+      url: 'https://515.run/api/index/cooperation',
+      data: sendData,
+      complete: (e) => {
+        console.log(e)
+      }
+    })
     const value = {
       "state": 1
     }
@@ -72,36 +82,53 @@ Page({
     }
   },
   //确定登录
-  SigninBtn:function () {
-    console.log('确定登陆')
-    // 模拟数据
-    const value = {
-      "state": 1,
-      "data": {
-        "id": "id",
-        "username": "XXXXXXXXXX",
-        "password": "XXXXXXXXXX",
-        "login_num": 0,
-        "address": "DHAIUDHJXA129EU190UE12NJKDNK12NKJXNA",
-        "token": "DHAIUDHJXA129EU190UE12NJKDNK12NKJXNA",
-        "rights": "sdsd",
-        "user_end_time": "xxxxx"
-      }
-    }
-    if (value.state === 1) {
-      console.log('登陆成功')
-      // 判断是否需要修改密码
-      if (value.data.login_num < 1) {
-        this.setData({
-          showBox: 'changePassword'
+  SigninBtn:function (e) {
+    // 获取用户位置
+    wx.getLocation({
+      complete: (location) => {
+        console.log(location)
+        let sendData = e.detail.value
+        sendData.logintime = Date.parse(new Date()) / 1000
+        sendData.address = 'sdsdsdsdsd'
+        console.log('确定登陆')
+        wx.request({
+          method: 'POST',
+          url: 'https://515.run/api/index/login',
+          data: sendData,
+          complete: (e) => {
+            console.log(e)
+          }
         })
-      } else {
-        // 进入主页
-        wx.redirectTo({ url: '/pages/Music/Music' })
+        // 模拟数据
+        const value = {
+          "state": 1,
+          "data": {
+            "id": "id",
+            "username": "XXXXXXXXXX",
+            "password": "XXXXXXXXXX",
+            "login_num": 0,
+            "address": "DHAIUDHJXA129EU190UE12NJKDNK12NKJXNA",
+            "token": "DHAIUDHJXA129EU190UE12NJKDNK12NKJXNA",
+            "rights": "sdsd",
+            "user_end_time": "xxxxx"
+          }
+        }
+        if (value.state === 1) {
+          console.log('登陆成功')
+          // 判断是否需要修改密码
+          if (value.data.login_num < 1) {
+            this.setData({
+              showBox: 'changePassword'
+            })
+          } else {
+            // 进入主页
+            wx.redirectTo({ url: '/pages/Music/Music' })
+          }
+        } else {
+          console.log('登陆失败!')
+        }
       }
-    } else {
-      console.log('登陆失败!')
-    }
+    })
   },
   formSubmit: function (e) {
     //获取账号密
