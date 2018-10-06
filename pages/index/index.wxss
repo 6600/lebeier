@@ -10,9 +10,6 @@
   border-radius: 6rpx;
 }
 
-.home-swiper {
-  /* height: 100%; */
-}
 /* 首页按钮 */
 .login-btn {
   width: 526rpx;

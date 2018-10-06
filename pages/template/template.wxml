@@ -1,17 +1,17 @@
 <template name='Playback'>
-  <view class='Playback-box'>
+  <view class='Playback-box' style="background: {{style.musicBarBackground}}">
     <view class='Black-gum'>
       <image src='/image/index/heijiao.png'></image>
     </view>
     <view class='suspend'>
-      <image wx:if="{{isPlaying}}" src='/image/index/ting.png' catchtap="pauseMusic"></image>
-      <image wx:else src='/image/index/kaishi.png' catchtap="startMusic"></image>
+      <image wx:if="{{isPlaying}}" src='{{style.pause}}' catchtap="pauseMusic"></image>
+      <image wx:else src='{{style.startPlay}}' catchtap="startMusic"></image>
     </view>
     <view class='First' catchtap="lestMusic">
-      <image src='/image/index/xia.png'></image>
+      <image src='{{style.next}}'></image>
     </view>
     <view class='lower' catchtap="nextMusic">
-      <image src='/image/index/shang.png'></image>
+      <image src='{{style.last}}'></image>
     </view>
     <text class="music-name">{{musicName}}</text>
     <view class='loop' catchtap="switchLoop">

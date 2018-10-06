@@ -4,7 +4,7 @@
   <view class='content'>
     <template is="switch" data="{{flag, style}}"/>
     <!-- //歌曲列表 -->
-    <view class="content-box">
+    <view class="content-box" style="background: {{style.mainBackground}}">
       <view class='Music-box' catchtouchmove="listTouchmove" catchtouchend="listTouchend">
         <view
           class='Song'

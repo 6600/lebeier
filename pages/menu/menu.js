@@ -24,7 +24,7 @@ Page({
     currentTime: '',
     totalTime: '',
     isPlaying: false,
-    isDraging: false
+    isDraging: false,
   },
   JumpProduct: function() {
     console.log(111)
@@ -88,14 +88,6 @@ Page({
       console.log('播放')
     }
   },
-
-  TheNext() {
-    console.log('下首')
-  },
-
-  TheLastSong () {
-    console.log('上首')
-  },
   // 歌曲列表显示
   ClickUnfold: function () {
     var that = this;
@@ -145,6 +137,7 @@ Page({
   // ------------------------ 音乐播放方法 ----------------------------
   // 开始播放音乐
   startMusic: function () {
+    App.player.isPlaying = true
     wx.playBackgroundAudio({
       dataUrl: App.player.musicList[App.player.index].url,
       title: App.player.musicList[App.player.index].music_name,
@@ -157,6 +150,7 @@ Page({
   },
   // 暂停播放音乐
   pauseMusic: function () {
+    App.player.isPlaying = false
     this.setData({
       isPlaying: false
     })
@@ -165,6 +159,7 @@ Page({
   },
   // 停止播放音乐
   stopMusic: function () {
+    App.player.isPlaying = false
     this.setData({
       isPlaying: false
     })
@@ -259,7 +254,7 @@ Page({
     const backgroundAudioManager = wx.getBackgroundAudioManager()
     // 播放时间改变事件
     backgroundAudioManager.onTimeUpdate((e) => {
-      let isPlaying = true
+      let isPlaying = App.player.isPlaying
       function formatInt(num) {
         if (num > 9) return num
         else return '0' + num

@@ -4,10 +4,14 @@
   background-color:white;
 }
 .stage-class {
-
-  padding-top: 150rpx;
-  padding-left:40rpx;
-  padding-right: 40rpx;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 580rpx;
+  height: 810rpx;
 }
 .stage-class .stage-content {
   margin-bottom: 30rpx; 

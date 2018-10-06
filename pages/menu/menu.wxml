@@ -10,7 +10,7 @@
 
 <view class='player-box'>
   <view class='player-list '>
-    <view class='list-one'catchtap="ClickUnfold" >
+    <view class='list-one' catchtap="ClickUnfold" >
      <image src='/image/index/xiala.png' wx:if="{{Open}}"></image>
      <image src='/image/index/zuo.png' wx:if="{{!Open}}"></image>
       第一章
@@ -32,25 +32,4 @@
 </view>
 
 <!-- 播放器 -->
- <view class='Playback-box'>
-    <view class='Black-gum'>
-      <image src='/image/index/heijiao.png'></image>
-    </view>
-    <view class='suspend'  catchtap="PlayButton" >
-      <image wx:if="{{Playback}}" src='/image/index/ting.png'></image>
-      <image wx:else src='/image/index/kaishi.png'></image>
-    </view>
-    <view class='First' bindtap='TheLastSong'>
-      <image src='/image/index/xia.png'></image>
-    </view>
-    <view class='lower'bindtap='TheNext'>
-      <image src='/image/index/shang.png'></image>
-    </view>
-    <text class='Time'>时间</text>
-    <view class='Progress'>
-      <view class='Playback-bar'>
-      <view class='circular'></view>
-      </view>  
-    </view>
-    <text class='Total-time'>时间</text>
-  </view> 
+  <template is="Playback" data="{{isPlaying, totalProcess, sliderValue, player, currentTime, totalTime, musicName, style, isListLoop}}"/>

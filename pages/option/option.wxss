@@ -1,19 +1,19 @@
 .option {
   width: 100%;
   overflow: hidden;
-  padding-bottom:  224rpx; 
 }
 .Four-seasons {
-  padding-top: 80rpx;
-  overflow: hidden;
-  padding-left: 65rpx;
-  width: 100%;
-
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 700rpx;
+  height: 860rpx;
 }
 .option .option-Choice {
-
-  margin-right: 25rpx;
-  margin-bottom: 50rpx;
+  margin: 25rpx;
   width: 300rpx;
   height:380rpx;
   float: left;

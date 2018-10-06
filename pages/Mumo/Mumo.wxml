@@ -1,9 +1,6 @@
 <!-- 音乐播放模板 -->
 <import src ="../template/template.wxml"/>
- <template is="switch"  data="{{flag, style}}"/>
- <view class='Crumbs'>
-  {{Crumbs}}
-</view>
+<template is="switch"  data="{{flag, style}}"/>
 <view class="stage">
   <view class='stage-class'>
     <view class='stage-content ' bindtap='JumpProduct'>

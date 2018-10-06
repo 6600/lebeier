@@ -34,6 +34,9 @@
   /* padding-left: 30rpx; */
   text-indent: 30rpx;
 }
+.list-one:active {
+  background-color: skyblue;
+}
 .list-one>image{
   position: relative;
   width: 25px;
