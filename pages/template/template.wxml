@@ -43,3 +43,23 @@
   </view>
   <view wx:if="{{!flag}}" class='shelter' bindtap='bindflag'></view>
 </template>
+
+<!-- 修改密码 -->
+<template name='changePassword'>
+  <form bindsubmit="changePassword" class="first alert-box {{showBox === 'changePassword' ? 'show': ''}}">
+    <view class='first-tilte'>首次修改密码</view>
+    <view class='firstn-form frame '>
+      <view class='Title'>原密码</view>
+      <view class='first-box'>
+        <input name="password" type='text' placeholder='请输入新密码'></input>
+      </view>
+    </view>
+        <view class='firstn-form frame '>
+      <view class='Title'>新密码</view>
+      <view class='first-box'>
+        <input name="repassword" type='text' placeholder='请输入机构名称'></input>
+      </view>
+    </view>
+    <button class='confirm' formType="submit">确认</button>
+  </form>
+</template>

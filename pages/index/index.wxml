@@ -1,5 +1,6 @@
 
 <view class="Broadcast">
+  <import src ="../template/template.wxml"/>
   <swiper class='home-swiper' indicator-dots="{true}" autoplay="true" circular  style='height:{{Hei}}'>
     <swiper-item wx:for="{{swiperImg}}" wx:key="{{index}}">
       <image src='{{item}}' bindload="imgH" mode='aspectFill'></image>
@@ -43,7 +44,7 @@
     </form>
   </view>
   <!-- //合作 -->
-  <form form bindsubmit="apply" bindreset="cancel" class="cooperation alert-box {{showBox === 'apply' ? 'show': ''}}">
+  <form bindsubmit="apply" bindreset="cancel" class="cooperation alert-box {{showBox === 'apply' ? 'show': ''}}">
     <view class='cooperation-tilte'>
       <text>申请合作</text>
     </view>
@@ -93,7 +94,7 @@
     </view>
   </form>
   <!-- //申请成功弹框 -->
-  <view class="Success alert-box {{showBox === 'applyTips' ? 'show': ''}}">
+  <view class="Success alert-box">
     <view class='Success-tilte'>
       <text>申请成功</text>
     </view>
@@ -104,20 +105,20 @@
     <view class='confirm' bindtap='cancel'>确认</view>
   </view>
   <!-- //首次修改密码 -->
-  <view class="first alert-box {{showBox === 'changePassword' ? 'show': ''}}">
+  <form bindsubmit="changePassword" class="first alert-box">
     <view class='first-tilte'>首次修改密码</view>
     <view class='firstn-form frame '>
-      <view class='Title'>密码</view>
+      <view class='Title'>原密码</view>
       <view class='first-box'>
-        <input type='text' placeholder='请输入新密码'></input>
+        <input name="password" type='text' placeholder='请输入新密码'></input>
       </view>
     </view>
         <view class='firstn-form frame '>
-      <view class='Title'>重复</view>
+      <view class='Title'>新密码</view>
       <view class='first-box'>
-        <input type='text' placeholder='请输入机构名称'></input>
+        <input name="repassword" type='text' placeholder='请输入机构名称'></input>
       </view>
     </view>
-      <view class='confirm' bindtap='changePassword'>确认</view>
-  </view>
+    <button class='confirm' formType="submit">确认</button>
+  </form>
 </view>

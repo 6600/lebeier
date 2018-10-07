@@ -1,7 +1,11 @@
 App({
   globaData: {
-    serve: 'https://puge.oss-cn-beijing.aliyuncs.com/lebeier',
+    serve: 'https://515.run',
     user: {
+      id: '',
+      username: '',
+      nickname: '',
+      mobile: '',
       token: ''
     },
     // 自动播放下一首

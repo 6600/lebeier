@@ -1,4 +1,4 @@
-//index.js
+//user.js
 //获取应用实例
 var util = require('../../utils/util.js');
 const App = getApp()
@@ -46,26 +46,53 @@ Page({
     })
   },
   // 用户首次进入提醒修改密码
-  changePassword: function () {
-    const value = {
-      "state": 1,
-      "data": {
-        "token": "sdsdsdsdsd"
+  changePassword: function (e) {
+    let sendData = e.detail.value
+    sendData.id = App.globaData.user.id
+    sendData.account = App.globaData.user.username
+    wx.request({
+      method: 'POST',
+      url: App.globaData.serve + '/api/user/resetpwd',
+      data: sendData,
+      complete: (e) => {
+        console.log(e)
+        const value = e.data
+        if (value.code === 1) {
+          console.log('修改密码成功!')
+          // 增加账户登录次数
+          wx.request({
+            method: 'POST',
+            url: App.globaData.serve + '/api/user/loginnum',
+            data: {
+              id: App.globaData.user.id
+            },
+          })
+          wx.redirectTo({ url: '/pages/Music/Music' })
+        } else {
+          wx.showModal({
+            title: '错误',
+            content: '修改密码失败!',
+            showCancel: false
+          })
+        }
       }
-    }
-    if (value.state === 1) {
-      console.log('修改密码成功!')
-      App.globaData.user = value.data.token
-      wx.redirectTo({ url: '/pages/Music/Music' })
-    }
+    })
   },
   // 申请合作按钮点击
   apply: function (e) {
     let sendData = e.detail.value
+    if (sendData.cooperation === '' || sendData.contacts === '' || sendData.phone === '') {
+      wx.showModal({
+        title: '信息不完整',
+        content: '带星号项目为必填项目！',
+        showCancel: false
+      })
+      return
+    }
     console.log(sendData)
     wx.request({
       method: 'POST',
-      url: 'https://515.run/api/index/cooperation',
+      url: App.globaData.serve + '/api/user/cooperation',
       data: sendData,
       complete: (e) => {
         console.log(e)
@@ -88,45 +115,52 @@ Page({
       complete: (location) => {
         console.log(location)
         let sendData = e.detail.value
-        sendData['__token__'] = 'f6f0d768bdedcce834014cf784f30e7f'
+        if (sendData.account === '' || sendData.password === '') {
+          wx.showModal({
+            title: '输入错误',
+            content: '帐号或者密码没有正确填写！',
+            showCancel: false
+          })
+          return
+        }
         sendData.keeplogin = '1'
         console.log('确定登陆')
         wx.request({
           method: 'POST',
-          url: 'https://515.run/api/user/login',
+          url: App.globaData.serve + '/api/user/login',
           data: sendData,
           complete: (e) => {
-            console.log(e)
+            const value = e.data
+            console.log('登录结果:', value)
+            if (value.code === 1) {
+              const userinfo = value.data.userinfo
+              // 保存用户信息
+              App.globaData.user.id = userinfo.user_id
+              App.globaData.user.username = userinfo.username
+              App.globaData.user.nickname = userinfo.nickname
+              App.globaData.user.mobile = userinfo.mobile
+              App.globaData.user.token = userinfo.token
+              console.log('登陆成功')
+              // 判断是否需要修改密码
+              console.log(userinfo.login_num)
+              if (userinfo.login_num !== undefined && userinfo.login_num === 0) {
+                this.setData({
+                  showBox: 'changePassword'
+                })
+                return
+              } else {
+                // 进入主页
+                wx.redirectTo({ url: '/pages/Music/Music' })
+              }
+            } else {
+              wx.showModal({
+                title: '登陆失败',
+                content: value.msg,
+                showCancel: false
+              })
+            }
           }
         })
-        // 模拟数据
-        const value = {
-          "state": 1,
-          "data": {
-            "id": "id",
-            "username": "XXXXXXXXXX",
-            "password": "XXXXXXXXXX",
-            "login_num": 0,
-            "address": "DHAIUDHJXA129EU190UE12NJKDNK12NKJXNA",
-            "token": "DHAIUDHJXA129EU190UE12NJKDNK12NKJXNA",
-            "rights": "sdsd",
-            "user_end_time": "xxxxx"
-          }
-        }
-        if (value.state === 1) {
-          console.log('登陆成功')
-          // 判断是否需要修改密码
-          if (value.data.login_num < 1) {
-            this.setData({
-              showBox: 'changePassword'
-            })
-          } else {
-            // 进入主页
-            wx.redirectTo({ url: '/pages/Music/Music' })
-          }
-        } else {
-          console.log('登陆失败!')
-        }
       }
     })
   },

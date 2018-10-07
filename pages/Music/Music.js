@@ -6,6 +6,7 @@ Page({
     // 3D旋转
     rotation: 360,
     isPaused: false,
+    imgList: [],
     // 音乐播放
     isListLoop: true,
     musicName: '',
@@ -16,6 +17,7 @@ Page({
     isPlaying: false,
     isDraging: false,
     // 样式相关
+    serve: App.globaData.serve,
     style: App.globaData.style
   },
   SongJump: function () {
@@ -179,6 +181,26 @@ Page({
     // requestAnimationFrame(this.animate)
   },
   onLoad: function () {
+    // 请求音乐列表
+    wx.request({
+      method: 'GET',
+      url: App.globaData.serve + '/api/index/getCategory',
+      complete: (e) => {
+        const value = e.data
+        if (value.code === 1) {
+          value.data = value.data.concat(value.data)
+          this.setData({
+            imgList: value.data
+          })
+        } else {
+          wx.showModal({
+            title: '错误',
+            content: value.msg,
+            showCancel: false
+          })
+        }
+      }
+    })
     const backgroundAudioManager = wx.getBackgroundAudioManager()
     // 播放完毕后自动播放下一首
     console.log('sddsd')

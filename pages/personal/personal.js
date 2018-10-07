@@ -42,6 +42,39 @@ Page({
       flag: !this.data.flag
     })
   },
+  // 更改密码
+  changePassword: function (e) {
+    let sendData = e.detail.value
+    sendData.id = App.globaData.user.id
+    sendData.account = App.globaData.user.username
+    wx.request({
+      method: 'POST',
+      url: App.globaData.serve + '/api/user/resetpwd',
+      data: sendData,
+      complete: (e) => {
+        console.log(e)
+        const value = e.data
+        if (value.code === 1) {
+          console.log('修改密码成功!')
+          // 增加账户登录次数
+          wx.request({
+            method: 'POST',
+            url: App.globaData.serve + '/api/user/loginnum',
+            data: {
+              id: App.globaData.user.id
+            },
+          })
+          wx.redirectTo({ url: '/pages/Music/Music' })
+        } else {
+          wx.showModal({
+            title: '错误',
+            content: '修改密码失败!',
+            showCancel: false
+          })
+        }
+      }
+    })
+  },
   // ------------------------ 音乐播放方法 ----------------------------
   // 开始播放音乐
   startMusic: function () {
