@@ -19,6 +19,7 @@
 }
 
 .list-one {
+  position: relative;
   font-weight: 100%;
   letter-spacing: 10rpx;
   font-size: 30rpx;
@@ -26,7 +27,6 @@
   background-color:#fff;
   width: 650rpx;
   height: 80rpx;
-  margin-top: 20rpx;
   margin-bottom: rpx;
   margin-left: 40rpx;
   box-shadow:1px 1px 9px #ccc;
@@ -34,16 +34,21 @@
   /* padding-left: 30rpx; */
   text-indent: 30rpx;
 }
-.list-one:active {
-  background-color: skyblue;
+.list-one .open {
+  transform:rotate(-90deg);
 }
-.list-one>image{
-  position: relative;
+.list-one:active {
+  background-color: gainsboro;
+}
+.list-one > image{
   width: 25px;
   height: 25px;
-  padding-left: 30rpx;
-  top: 15rpx;
-  left: 520rpx; 
+  transition: all 0.5s;
+  position: absolute;
+  right: 10px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
 }
 
 .Song-list {

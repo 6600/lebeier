@@ -1,19 +1,12 @@
 <!-- 音乐播放模板 -->
-<!-- //选项 -->
-<!-- 面包屑 -->
-<view class='Crumbs'>
-  {{Crumbs}}
-</view>
-
 <import src ="../template/template.wxml"/>
 <template is="switch" data="{{flag, style}}"/>
 
 <view class='player-box'>
   <view class='player-list '>
     <view class='list-one' catchtap="ClickUnfold" >
-     <image src='/image/index/xiala.png' wx:if="{{Open}}"></image>
-     <image src='/image/index/zuo.png' wx:if="{{!Open}}"></image>
-      第一章
+      <span>第一章</span>
+      <image src='/image/index/zuo.png' class="{{Open ? 'open' : ''}}"></image>
     </view>
       <view class='Song list' wx:if="{{MenuConcealment}}">
         <view class='song-name'catchtap="playshow">
@@ -22,9 +15,7 @@
           <image src='/image/index/xanzhong.png' wx:if="{{Select}}"></image>
         </view>
          <view class='Play-btn'wx:if="{{ButtonBisplay}}">
-            <view class='Playback-btn' catchtap='playbtn'>
-              播放
-            </view>
+            <view class='Playback-btn' catchtap='playbtn'>播放</view>
             时间
           </view>
       </view>
@@ -32,4 +23,4 @@
 </view>
 
 <!-- 播放器 -->
-  <template is="Playback" data="{{isPlaying, totalProcess, sliderValue, player, currentTime, totalTime, musicName, style, isListLoop}}"/>
+<template is="Playback" data="{{isPlaying, totalProcess, sliderValue, player, currentTime, totalTime, musicName, style, isListLoop}}"/>
