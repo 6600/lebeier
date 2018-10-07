@@ -25,15 +25,30 @@ Page({
     totalTime: '',
     isPlaying: false,
     isDraging: false,
+    //
+    serve: App.globaData.serve,
+    itemID: null,
+    itemName: ''
   },
   JumpProduct: function() {
     console.log(111)
   },
   onLoad: function (option) {
-    console.log(option.title)
-    var that = this;
-    that.setData({
-      Crumbs: option.title
+    console.log(option)
+    this.setData({
+      itemID: option.id,
+      itemName: option.name,
+    })
+    // 获取信息
+    wx.request({
+      method: 'POST',
+      url: App.globaData.serve + '/api/index/getCategory',
+      data: {
+        id: option.id
+      },
+      complete: (e) => {
+        console.log(e)
+      }
     })
   },
   // 点击弹出播放
@@ -70,23 +85,6 @@ Page({
       })
     }
 
-  },
-  //点击播放器播放按钮
-  PlayButton: function() {
-     var that = this;
-    if (that.data.Select) {
-      that.setData({
-        Select: false,
-        Playback: false
-      })
-      console.log('暂停播放')
-    }else {
-      that.setData({
-        Select: true,
-        Playback: true,
-      })
-      console.log('播放')
-    }
   },
   // 歌曲列表显示
   ClickUnfold: function () {

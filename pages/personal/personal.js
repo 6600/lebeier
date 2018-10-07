@@ -45,6 +45,13 @@ Page({
   // 更改密码
   changePassword: function (e) {
     let sendData = e.detail.value
+    if (sendData.password === '' || sendData.repassword === '') {
+      console.log('取消修改密码!')
+      this.setData({
+        passShow: false
+      })
+      return
+    }
     sendData.id = App.globaData.user.id
     sendData.account = App.globaData.user.username
     wx.request({
@@ -56,15 +63,9 @@ Page({
         const value = e.data
         if (value.code === 1) {
           console.log('修改密码成功!')
-          // 增加账户登录次数
-          wx.request({
-            method: 'POST',
-            url: App.globaData.serve + '/api/user/loginnum',
-            data: {
-              id: App.globaData.user.id
-            },
+          this.setData({
+            passShow: false
           })
-          wx.redirectTo({ url: '/pages/Music/Music' })
         } else {
           wx.showModal({
             title: '错误',

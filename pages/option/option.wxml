@@ -2,22 +2,11 @@
 <import src ="../template/template.wxml"/>
  <template is="switch" data="{{flag, style}}"/>
  <!-- 面包屑 -->
-<view class='Crumbs'>
-  {{Crumbs}}
-</view>
+<view class='Crumbs'></view>
 <view class='option'>
    <view class='Four-seasons'>
-     <view class='option-Choice' bindtap='tomenu'>
-      <image src='/image/index/chun.png'></image>
-     </view>
-     <view class='option-Choice'>
-       <image src='/image/index/xiax.png'></image>
-     </view>
-     <view class='option-Choice'>
-        <image src='/image/index/qiu.png'></image>
-     </view>
-     <view class='option-Choice'>
-       <image src='/image/index/dong.png'></image>
+     <view class='option-Choice' wx:for="{{cardList}}"  bindtap='tomenu' wx:key="{{index}}">
+      <image data-id="{{item.id}}" data-name="{{item.name}}" src='{{serve + item.image}}'></image>
      </view>
   </view>
     <!-- 播放器 -->

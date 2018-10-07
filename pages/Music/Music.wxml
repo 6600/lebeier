@@ -13,7 +13,7 @@
           <view class='Music-logo'>
             <image src='{{serve + item.image}}'></image>
           </view>
-          <view class='Song-name' bindtap="SongJump" >
+          <view class='Song-name' data-id="{{item.id}}" data-name="{{item.name}}" bindtap="SongJump" >
             {{item.name}}
           </view>
         </view>

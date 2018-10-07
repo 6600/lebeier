@@ -17,8 +17,12 @@ Page({
     isPlaying: false,
     isDraging: false,
     // 样式
+    serve: App.globaData.serve,
     style: App.globaData.style,
-    flag: true
+    flag: true,
+    itemID: null,
+    itemName: '',
+    cardList: []
   },
   // ------------------------ 音乐播放方法 ----------------------------
   // 开始播放音乐
@@ -181,11 +185,24 @@ Page({
     // this.animate()
   },
   onLoad: function (option) {
-    console.log(option.title)
-    this.data.Crumbs = option.title;
-    var that = this;
-    that.setData({
-      Crumbs: option.title
+    console.log(option)
+    this.setData({
+      itemID: option.id,
+      itemName: option.name,
+    })
+    // 获取信息
+    wx.request({
+      method: 'POST',
+      url: App.globaData.serve + '/api/index/getCategory',
+      data: {
+        id: option.id
+      },
+      complete: (e) => {
+        console.log(e)
+        this.setData({
+          cardList: e.data.data
+        })
+      }
     })
   },
   bindflag: function () {
@@ -194,9 +211,10 @@ Page({
       flag: !this.data.flag
     })
   },
-  tomenu() {
+  tomenu(event) {
+    console.log(event.target.dataset)
     wx.navigateTo({
-      url: '../menu/menu?title=音乐>MUMO>小班>春',
+      url: `../menu/menu?name=${event.target.dataset.name}&&id=${event.target.dataset.id}`,
     })
   } 
 })

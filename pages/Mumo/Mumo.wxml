@@ -3,18 +3,10 @@
 <template is="switch"  data="{{flag, style}}"/>
 <view class="stage">
   <view class='stage-class'>
-    <view class='stage-content ' bindtap='JumpProduct'>
-      <image src='/image/index/xiaoban.png'></image>
+    <view class='stage-content ' wx:for="{{cardList}}"  bindtap='JumpProduct' wx:key="{{index}}">
+      <image data-id="{{item.id}}" data-name="{{item.name}}" src='{{serve + item.image}}'></image>
     </view>
-     <view class='stage-content'>
-       <image src='/image/index/zhongban.png'></image>
-    </view>
-     <view class='stage-content'>
-       <image src='/image/index/daban.png'></image>
-    </view>
-
   </view>
-      
 </view>
 <!-- 播放器 -->
   <template is="Playback" data="{{isPlaying, totalProcess, sliderValue, player, currentTime, totalTime, musicName, style, isListLoop}}"/>

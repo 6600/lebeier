@@ -20,9 +20,10 @@ Page({
     serve: App.globaData.serve,
     style: App.globaData.style
   },
-  SongJump: function () {
+  SongJump: function (event) {
+    console.log(event.target.dataset)
     wx.navigateTo({
-      url: '../Mumo/Mumo?title=音乐>MUMO'
+      url: `../Mumo/Mumo?name=${event.target.dataset.name}&&id=${event.target.dataset.id}`
     })
   },
   // 切换显示菜单
@@ -183,8 +184,11 @@ Page({
   onLoad: function () {
     // 请求音乐列表
     wx.request({
-      method: 'GET',
+      method: 'POST',
       url: App.globaData.serve + '/api/index/getCategory',
+      data: {
+        id: 0
+      },
       complete: (e) => {
         const value = e.data
         if (value.code === 1) {

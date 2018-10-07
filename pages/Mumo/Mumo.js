@@ -13,6 +13,11 @@ Page({
     totalTime: '',
     isPlaying: false,
     isDraging: false,
+    // ---
+    itemID: null,
+    itemName: '',
+    cardList: [],
+    serve: App.globaData.serve
   },
   // ------------------------ 音乐播放方法 ----------------------------
   // 开始播放音乐
@@ -174,9 +179,31 @@ Page({
     // ----------------------------------------------------------------------------
     // this.animate()
   },
-  JumpProduct: function () {
+  onLoad: function (option) {
+    console.log(option.title)
+    this.setData({
+      itemID: option.id,
+      itemName: option.name,
+    })
+    // 获取信息
+    wx.request({
+      method: 'POST',
+      url: App.globaData.serve + '/api/index/getCategory',
+      data: {
+        id: option.id
+      },
+      complete: (e) => {
+        console.log(e)
+        this.setData({
+          cardList: e.data.data
+        })
+      }
+    })
+  },
+  JumpProduct: function (event) {
+    console.log(event.target)
     wx.navigateTo({
-      url: '../option/option?title=音乐>MUMO>小班',
+      url: `../option/option?name=${event.target.dataset.name}&&id=${event.target.dataset.id}`,
     })
   },
   bindflag: function () {
