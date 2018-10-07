@@ -7,13 +7,13 @@
     <view class="content-box" style="background: {{style.mainBackground}}">
       <view class='Music-box' catchtouchmove="listTouchmove" catchtouchend="listTouchend">
         <view
-          class='Song'
+          class="Song {{((90 + rotation + index * 30) % 360) < 180 ? 'show': ''}}"
           wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}}"
           style="transform: rotateX({{rotation + index * 30}}deg) translateZ(160px) rotateX({{-rotation - index * 30}}deg); display: {{(rotation + index * 30) > 30 ? none: flex}}" wx:key="{{index}}" >
           <view class='Music-logo'>
           </view>
           <view class='Song-name' bindtap="SongJump" >
-            {{index * 60}}
+            {{(90 + rotation + index * 30) % 360}}
           </view>
         </view>
       </view>

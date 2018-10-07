@@ -88,12 +88,12 @@ Page({
       complete: (location) => {
         console.log(location)
         let sendData = e.detail.value
-        sendData.logintime = Date.parse(new Date()) / 1000
-        sendData.address = 'sdsdsdsdsd'
+        sendData['__token__'] = 'f6f0d768bdedcce834014cf784f30e7f'
+        sendData.keeplogin = '1'
         console.log('确定登陆')
         wx.request({
           method: 'POST',
-          url: 'https://515.run/api/index/login',
+          url: 'https://515.run/api/user/login',
           data: sendData,
           complete: (e) => {
             console.log(e)

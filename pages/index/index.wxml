@@ -24,7 +24,7 @@
       <view class='login-form frame'>
         <view class='Title'>账号</view>
         <view class='input-box'>
-          <input type='text' name="user" value="{{account}}" placeholder='请输入账号'></input>
+          <input type='text' name="account" value="{{account}}" placeholder='请输入账号'></input>
         </view>
       
       </view>

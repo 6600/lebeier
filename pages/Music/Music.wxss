@@ -40,9 +40,13 @@ page, .Music-List {
   left:0;
   width: 600rpx;
   display: flex;
+  display: none;
   /* 单面可见 */
   backface-visibility:hidden;
-} 
+}
+.Music-List .show {
+  display: flex;
+}
 .Music-List .Song .Music-logo {
   width: 150rpx;
   height: 110rpx;
