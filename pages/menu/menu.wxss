@@ -1,11 +1,23 @@
 .player-box {
-  width: 100%;
+  width: calc(100% - 300rpx);
+  height: 100%;
   background-color: #fff;
   padding-bottom:  224rpx;
   padding-right: 60rpx;
   padding-top: 80rpx;
 }
-
+.content {
+  overflow: hidden;
+  width: calc(100% + 300rpx);
+  display: flex;
+  height:calc(100% - 224rpx);
+  position: relative;
+  left:-300rpx;
+  transition: left 1s;
+}
+.show {
+  left: 0;
+}
 .song-name>image{
   position: relative;
   width: 25px;

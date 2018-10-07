@@ -6,17 +6,19 @@ page, .personal-box {
 }
 .content {
   overflow: hidden;
-  width:100%;
-  transition: left 1s, top 1s;
+  width: calc(100% + 300rpx);
+  display: flex;
   height:calc(100% - 224rpx);
-  border-radius: 0 0 10px 10px;
   position: relative;
+  left:-300rpx;
+  transition: left 1s;
+}
+.show {
+  left: 0;
 }
 .content-box {
-  position:absolute;
-  left:0;
-  top:0;
-  width:100%;
+  position:relative;
+  width: calc(100% - 300rpx);
   height: 100%;
   transition: left 1s, top 1s;
   background-color:white;

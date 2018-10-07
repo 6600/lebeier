@@ -1,16 +1,14 @@
 <!-- 音乐播放模板 -->
 <import src ="../template/template.wxml"/>
- <template is="switch" data="{{flag, style}}"/>
- <!-- 面包屑 -->
-<view class='Crumbs'></view>
-<view class='option'>
-   <view class='Four-seasons'>
-     <view class='option-Choice' wx:for="{{cardList}}"  bindtap='tomenu' wx:key="{{index}}">
-      <image data-id="{{item.id}}" data-name="{{item.name}}" src='{{serve + item.image}}'></image>
-     </view>
+<view class="content {{flag? '':'show'}}">
+  <template is="switch"  data="{{flag, style}}"/>
+  <view class='option'>
+    <view class='Four-seasons'>
+      <view class='option-Choice' wx:for="{{cardList}}"  bindtap='tomenu' wx:key="{{index}}">
+        <image data-id="{{item.id}}" data-name="{{item.name}}" src='{{serve + item.image}}'></image>
+      </view>
+    </view>
   </view>
-    <!-- 播放器 -->
-   <view class='music-player'>
-     <template is="Playback" data="{{isPlaying, totalProcess, sliderValue, player, currentTime, totalTime, musicName, style, isListLoop}}"/>
-   </view>
 </view>
+<!-- 播放器 -->
+<template is="Playback" data="{{isPlaying, totalProcess, sliderValue, player, currentTime, totalTime, musicName, style, isListLoop}}"/>

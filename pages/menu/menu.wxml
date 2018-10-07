@@ -1,24 +1,25 @@
 <!-- 音乐播放模板 -->
 <import src ="../template/template.wxml"/>
-<template is="switch" data="{{flag, style}}"/>
-
-<view class='player-box'>
-  <view class='player-list '>
-    <view class='list-one' catchtap="ClickUnfold" >
-      <span>第一章</span>
-      <image src='/image/index/zuo.png' class="{{Open ? 'open' : ''}}"></image>
-    </view>
+<view class="content {{flag? '':'show'}}">
+  <template is="switch"  data="{{flag, style}}"/>
+  <view class='player-box'>
+    <view class='player-list' wx:for="{{cardList}}" wx:key="{{index}}">
+      <view class='list-one' catchtap="ClickUnfold" >
+        <span>{{item.name}}</span>
+        <image src='/image/index/zuo.png' class="{{Open ? 'open' : ''}}"></image>
+      </view>
       <view class='Song list' wx:if="{{MenuConcealment}}">
         <view class='song-name'catchtap="playshow">
           <text>xxxxxxxxxxxxxxxxx</text>
           <image src='/image/index/weixuan.png' wx:if="{{!Select}}"></image>
           <image src='/image/index/xanzhong.png' wx:if="{{Select}}"></image>
         </view>
-         <view class='Play-btn'wx:if="{{ButtonBisplay}}">
+          <view class='Play-btn'wx:if="{{ButtonBisplay}}">
             <view class='Playback-btn' catchtap='playbtn'>播放</view>
             时间
           </view>
       </view>
+    </view>
   </view>
 </view>
 

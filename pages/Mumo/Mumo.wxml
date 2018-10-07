@@ -1,10 +1,12 @@
 <!-- 音乐播放模板 -->
 <import src ="../template/template.wxml"/>
-<template is="switch"  data="{{flag, style}}"/>
-<view class="stage">
-  <view class='stage-class'>
-    <view class='stage-content ' wx:for="{{cardList}}"  bindtap='JumpProduct' wx:key="{{index}}">
-      <image data-id="{{item.id}}" data-name="{{item.name}}" src='{{serve + item.image}}'></image>
+<view class="content {{flag? '':'show'}}">
+  <template is="switch"  data="{{flag, style}}"/>
+  <view class="stage">
+    <view class='stage-class'>
+      <view class='stage-content ' wx:for="{{cardList}}"  bindtap='JumpProduct' wx:key="{{index}}">
+        <image data-id="{{item.id}}" data-name="{{item.name}}" src='{{serve + item.image}}'></image>
+      </view>
     </view>
   </view>
 </view>

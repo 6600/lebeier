@@ -194,9 +194,24 @@ Page({
       },
       complete: (e) => {
         console.log(e)
-        this.setData({
-          cardList: e.data.data
-        })
+        const value = e.data
+        if (value.code === 1) {
+          this.setData({
+            cardList: e.data.data
+          })
+        } else {
+          wx.showModal({
+            title: '错误',
+            content: value.msg,
+            showCancel: false,
+            complete: (e) => {
+              // 返回上一页
+              wx.navigateBack({
+                delta: 1
+              })
+            }
+          })
+        }
       }
     })
   },
