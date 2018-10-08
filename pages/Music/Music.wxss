@@ -85,4 +85,5 @@ page, .Music-List {
   margin-top: 30rpx;
   margin-right: 50rpx;
 }
+
 @import "../template/template.wxss";
