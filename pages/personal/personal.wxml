@@ -17,16 +17,16 @@
         <view class="shu"></view>幼儿园 
         </view> 
         <view class="personal-list">
-          机构名称 
+          机构地址 
         <view class="shu"></view>幼儿园 
         </view> 
         <view class="personal-list">
-          机构名称 
-        <view class="shu"></view>幼儿园 
+          用户名称 
+        <view class="shu"></view>{{userData.username}} 
         </view> 
         <view class="personal-list hied">
-          机构名称 
-        <view class="shu"></view>幼儿园 
+          手机号
+        <view class="shu"></view>{{userData.mobile}} 
         </view> 
       </view> 
       <view class="modify" bindtap="passBtn">

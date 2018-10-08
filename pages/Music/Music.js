@@ -18,7 +18,8 @@ Page({
     isDraging: false,
     // 样式相关
     serve: App.globaData.serve,
-    style: App.globaData.style
+    style: App.globaData.style,
+    showLogin: true
   },
   SongJump: function (event) {
     console.log(event.target.dataset)
@@ -194,6 +195,7 @@ Page({
         if (value.code === 1) {
           value.data = value.data.concat(value.data)
           this.setData({
+            showLogin: false,
             imgList: value.data
           })
         } else {

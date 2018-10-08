@@ -3,6 +3,7 @@ var util = require('../../utils/util.js');
 const App = getApp()
 Page({
   data: {
+    showLogin: true,
     //歌曲列表显示
     MenuConcealment:false,
     // 播放图标
@@ -29,7 +30,8 @@ Page({
     serve: App.globaData.serve,
     itemID: null,
     itemName: '',
-    cardList: []
+    cardList: [],
+    musicList: {}
   },
   JumpProduct: function() {
     console.log(111)
@@ -52,11 +54,12 @@ Page({
         const value = e.data
         if (value.code === 1) {
           this.setData({
+            showLogin: false,
             cardList: e.data.data
           })
         } else {
           wx.showModal({
-            title: '错误',
+            title: '提示',
             content: value.msg,
             showCancel: false,
             complete: (e) => {
@@ -106,18 +109,32 @@ Page({
 
   },
   // 歌曲列表显示
-  ClickUnfold: function () {
-    var that = this;
-    if (!that.data.MenuConcealment) {
-      console.log(111),
-      that.setData({
-        MenuConcealment: true,
-        Open: true
-      });
-    }else {
-      that.setData({
+  ClickUnfold: function (event) {
+    if (this.data.MenuConcealment) {
+      this.setData({
         MenuConcealment: false,
-        Open:false
+        Open: false
+      })
+    } else {
+      wx.request({
+        method: 'POST',
+        url: App.globaData.serve + '/api/index/getClassMusic',
+        data: {
+          id: event.target.dataset.id
+        },
+        complete: (e) => {
+          const value = e.data
+          if (value.code === 1) {
+            const key = `musicList[${event.target.dataset.id}]`
+            let data = {
+              MenuConcealment: true,
+              Open: true
+            }
+            data[key] = value.data
+            this.setData(data)
+            console.log(this.data.musicList)
+          }
+        }
       })
     }
   },

@@ -2,6 +2,7 @@
 const App = getApp()
 Page({
   data: {
+    showLogin: true,
     style: App.globaData.style,
     flag: true,
     // 音乐播放
@@ -197,11 +198,12 @@ Page({
         const value = e.data
         if (value.code === 1) {
           this.setData({
+            showLogin: false,
             cardList: e.data.data
           })
         } else {
           wx.showModal({
-            title: '错误',
+            title: '提示',
             content: value.msg,
             showCancel: false,
             complete: (e) => {

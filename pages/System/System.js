@@ -17,7 +17,8 @@ Page({
     currentTime: '',
     totalTime: '',
     isPlaying: false,
-    isDraging: false
+    isDraging: false,
+    menuList: {}
   },
   aboutshow() {
     var that = this;
@@ -197,5 +198,15 @@ Page({
     })
     // ----------------------------------------------------------------------------
     // this.animate()
+    wx.request({
+      method: 'GET',
+      url: App.globaData.serve + '/api/index/getSystem',
+      complete: (e) => {
+        // console.log(e)
+        this.setData({
+          menuList: e.data.data
+        })
+      }
+    })
   }
 })

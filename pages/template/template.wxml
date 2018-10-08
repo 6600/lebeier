@@ -36,8 +36,8 @@
 <template name='switch'>
   <image class="menu-img" src='{{style.menuImg}}' bindtap='bindflag'></image>
   <view class="menu">
-    <view class='return menu-option' bindtap='bindflag'>返回</view>
-    <navigator url="../Music/Music" class='home menu-option'>首页</navigator>
+    <!-- <view class='return menu-option' bindtap='bindflag'>返回</view> -->
+    <navigator url="../Music/Music" class='home menu-option'>音乐列表</navigator>
     <navigator url="../System/System" class='menu-option-text menu-option'>设置</navigator>
     <navigator url="../personal/personal" class="info-text menu-option">个人信息</navigator>
   </view>
@@ -62,4 +62,10 @@
     </view>
     <button class='confirm' formType="submit">确认</button>
   </form>
+</template>
+
+<template name='login'>
+  <view class="login-box">
+    <image src='/image/index/login.gif'></image>
+  </view>
 </template>

@@ -1,5 +1,5 @@
 
-<view class="Broadcast">
+<view class="Broadcast" wx:if="!loading">
   <import src ="../template/template.wxml"/>
   <swiper class='home-swiper' indicator-dots="{true}" autoplay="true" circular  style='height:{{Hei}}'>
     <swiper-item wx:for="{{swiperImg}}" wx:key="{{index}}">

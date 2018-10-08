@@ -16,6 +16,7 @@ Page({
     totalTime: '',
     isPlaying: false,
     isDraging: false,
+    userData: App.globaData.user,
     // 样式
     style: App.globaData.style,
     passShow:false

@@ -4,6 +4,7 @@ var util = require('../../utils/util.js');
 const App = getApp()
 Page({
   data: {
+    loading: true,
     showBox: 'button',
     showView: true,
     indicatorDots: true,
@@ -110,57 +111,51 @@ Page({
   },
   //确定登录
   SigninBtn:function (e) {
-    // 获取用户位置
-    wx.getLocation({
-      complete: (location) => {
-        console.log(location)
-        let sendData = e.detail.value
-        if (sendData.account === '' || sendData.password === '') {
+    let sendData = e.detail.value
+    if (sendData.account === '' || sendData.password === '') {
+      wx.showModal({
+        title: '输入错误',
+        content: '帐号或者密码没有正确填写！',
+        showCancel: false
+      })
+      return
+    }
+    sendData.keeplogin = '1'
+    console.log('确定登陆')
+    wx.request({
+      method: 'POST',
+      url: App.globaData.serve + '/api/user/login',
+      data: sendData,
+      complete: (e) => {
+        const value = e.data
+        console.log('登录结果:', value)
+        if (value.code === 1) {
+          const userinfo = value.data.userinfo
+          // 保存用户信息
+          App.globaData.user.id = userinfo.user_id
+          App.globaData.user.username = userinfo.username
+          App.globaData.user.nickname = userinfo.nickname
+          App.globaData.user.mobile = userinfo.mobile
+          App.globaData.user.token = userinfo.token
+          console.log('登陆成功')
+          // 判断是否需要修改密码
+          console.log(userinfo.login_num)
+          if (userinfo.login_num !== undefined && userinfo.login_num === 0) {
+            this.setData({
+              showBox: 'changePassword'
+            })
+            return
+          } else {
+            // 进入主页
+            wx.redirectTo({ url: '/pages/Music/Music' })
+          }
+        } else {
           wx.showModal({
-            title: '输入错误',
-            content: '帐号或者密码没有正确填写！',
+            title: '登陆失败',
+            content: value.msg,
             showCancel: false
           })
-          return
         }
-        sendData.keeplogin = '1'
-        console.log('确定登陆')
-        wx.request({
-          method: 'POST',
-          url: App.globaData.serve + '/api/user/login',
-          data: sendData,
-          complete: (e) => {
-            const value = e.data
-            console.log('登录结果:', value)
-            if (value.code === 1) {
-              const userinfo = value.data.userinfo
-              // 保存用户信息
-              App.globaData.user.id = userinfo.user_id
-              App.globaData.user.username = userinfo.username
-              App.globaData.user.nickname = userinfo.nickname
-              App.globaData.user.mobile = userinfo.mobile
-              App.globaData.user.token = userinfo.token
-              console.log('登陆成功')
-              // 判断是否需要修改密码
-              console.log(userinfo.login_num)
-              if (userinfo.login_num !== undefined && userinfo.login_num === 0) {
-                this.setData({
-                  showBox: 'changePassword'
-                })
-                return
-              } else {
-                // 进入主页
-                wx.redirectTo({ url: '/pages/Music/Music' })
-              }
-            } else {
-              wx.showModal({
-                title: '登陆失败',
-                content: value.msg,
-                showCancel: false
-              })
-            }
-          }
-        })
       }
     })
   },
@@ -177,6 +172,19 @@ Page({
     var that = this;
     that.setData({
       showView: (!that.data.showView)
+    })
+  },
+  onLoad: function (option) {
+    // 获取配置信息
+    wx.request({
+      method: 'GET',
+      url: App.globaData.serve + '/api/index/getconfig',
+      complete: (e) => {
+        App.globaData.style = e.data.data
+        this.setData({
+          loading: false
+        })
+      }
     })
   }
 })

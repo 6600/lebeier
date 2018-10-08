@@ -6,10 +6,7 @@
     <!-- //歌曲列表 -->
     <view class="content-box">
       <view class='system'>
-        <view class='about'bindtap="aboutshow" >关于我们</view>
-        <view class='about'>开发版本</view>
-        <view class='about'>商业版权信息</view>
-        <view class='about hied'>退出登录</view>
+        <view class='about' wx:for="{{menuList}}" >{{item}}</view>
         <!-- 关于我们 -->
         <view class='Success' wx:if="{{information}}">
           <view class='Success-tilte'><text>关于我们</text></view>
