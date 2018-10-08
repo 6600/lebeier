@@ -153,6 +153,15 @@ Page({
       if (!this.data.isDraging) {
         const sliderValue = wx.getBackgroundAudioManager().currentTime
         const totalProcess = wx.getBackgroundAudioManager().duration
+        // 播放时长为0 总时长也为0则跳到下一首
+        if (sliderValue === 0 && totalProcess === 0) {
+          console.log('播放时间为0')
+          if (App.player.isListLoop) {
+            this.lestMusic()
+          } else {
+            this.startMusic()
+          }
+        }
         // console.log(totalProcess)
         function getCurrentTime() {
           if (totalProcess === 0) {
