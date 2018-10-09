@@ -288,7 +288,7 @@ Page({
     })
     // ----------------------------------------------------------------------------
     // 自动旋转
-    if (App.globaData.style.autoAnimate) {
+    if (App.globaData.style && !App.globaData.style.autoAnimate) {
       this.animate()
     }
   }

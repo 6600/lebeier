@@ -6,7 +6,9 @@ App({
       username: '',
       nickname: '',
       mobile: '',
-      token: ''
+      token: '',
+      // 过期时间
+      expiretime: ''
     },
     // 自动播放下一首
     autoPlayNext: true,

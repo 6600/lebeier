@@ -23,10 +23,14 @@
         <view class="personal-list">
           用户名称 
         <view class="shu"></view>{{userData.username}} 
-        </view> 
+        </view>
         <view class="personal-list hied">
-          手机号
+          手机号码
         <view class="shu"></view>{{userData.mobile}} 
+        </view>
+        <view class="personal-list">
+          过期时间
+          <view class="shu"></view>{{userData.expiretime}} 
         </view> 
       </view> 
       <view class="modify" bindtap="passBtn">

@@ -137,6 +137,7 @@ Page({
           App.globaData.user.nickname = userinfo.nickname
           App.globaData.user.mobile = userinfo.mobile
           App.globaData.user.token = userinfo.token
+          App.globaData.user.expiretime = new Date(userinfo.expiretime * 1000).toLocaleString()
           console.log('登陆成功')
           // 判断是否需要修改密码
           console.log(userinfo.login_num)
