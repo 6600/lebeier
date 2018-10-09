@@ -1,12 +1,12 @@
 <view class='system-list'>
   <!-- 音乐播放模板 -->
   <import src ="../template/template.wxml"/>
-  <view class="content {{flag? '':'show'}}">
+  <view class="content">
     <template is="switch" data="{{flag, style}}"/>
     <!-- //歌曲列表 -->
     <view class="content-box">
       <view class='system'>
-        <view class='about' wx:for="{{menuList}}" >{{item}}</view>
+        <view class='about' wx:for="{{menuList}}" wx:key="{{index}}">{{item}}</view>
         <!-- 关于我们 -->
         <view class='Success' wx:if="{{information}}">
           <view class='Success-tilte'><text>关于我们</text></view>

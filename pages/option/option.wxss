@@ -4,18 +4,14 @@ page {
 }
 .content {
   overflow: hidden;
-  width: calc(100% + 300rpx);
+  width: 100%;
   display: flex;
   height:calc(100% - 224rpx);
   position: relative;
-  left:-300rpx;
   transition: left 1s;
 }
-.show {
-  left: 0;
-}
 .option {
-  width: calc(100% - 300rpx);
+  width: 100%;
   height: 100%;
   position: relative;
   overflow: hidden;
