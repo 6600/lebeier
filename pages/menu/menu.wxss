@@ -1,10 +1,8 @@
 .player-box {
   width: 100%;
   height: 100%;
+  position: relative;
   background-color: #fff;
-  padding-bottom:  224rpx;
-  padding-right: 60rpx;
-  padding-top: 80rpx;
 }
 .content {
   overflow: hidden;
@@ -13,14 +11,6 @@
   height:calc(100% - 224rpx);
   position: relative;
   transition: left 1s;
-}
-.song-name>image{
-  position: relative;
-  width: 25px;
-  height: 25px;
-  padding-left: 30rpx;
-  top: 10rpx;
-  right: -192rpx;
 }
 .song-name>text {
   padding-left: 20rpx;
@@ -35,12 +25,10 @@
   background-color:#fff;
   width: 650rpx;
   height: 80rpx;
-  margin-bottom: rpx;
-  margin-left: 40rpx;
   box-shadow:1px 1px 9px #ccc;
   border-radius:4px;
-  /* padding-left: 30rpx; */
   text-indent: 30rpx;
+  margin:10px auto;
 }
 .list-one .open {
   transform:rotate(-90deg);
@@ -90,19 +78,7 @@
   border-right: 2rpx solid #000;
   margin-right: 40rpx;
 }
-/* 切换 */
-.tu{
- position: fixed;
- width: 100%
-}
 
-.tu >image{
-    width: 40rpx;
-      height: 40rpx;
-        padding-left: 30rpx;
-       margin-bottom: 30rpx;
-      
-}
 .option {
   padding-top: 60rpx;
   text-align: center;

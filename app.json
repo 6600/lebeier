@@ -7,7 +7,8 @@
     "pages/System/System",
     "pages/personal/personal",
     "pages/Music/Music",
-    "pages/template/template"
+    "pages/template/template",
+    "pages/list/list"
   ],
   "window":{
     "backgroundTextStyle":"light",

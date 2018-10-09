@@ -37,7 +37,7 @@
   <image class="menu-img" src='{{style.menuImg}}' bindtap='bindflag'></image>
   <view class="menu {{flag ? '' : 'active'}}">
     <!-- <view class='return menu-option' bindtap='bindflag'>返回</view> -->
-    <navigator url="../Music/Music" class='home menu-option'>
+    <navigator open-type="reLaunch" url="../Music/Music" class='home menu-option'>
       <image src="/image/index/music.png"></image>
       <text>音乐列表</text>
     </navigator>
