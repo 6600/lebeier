@@ -19,7 +19,9 @@ Page({
     serve: App.globaData.serve,
     itemID: null,
     itemName: '',
-    cardList: []
+    cardList: [],
+    // 导航
+    navigation: null
   },
   onLoad: function (option) {
     console.log(option)
@@ -179,6 +181,9 @@ Page({
   },
   // -------------------------------------------------------------------
   onShow: function (option) {
+    this.setData({
+      navigation: App.globaData.navigation
+    })
     // --------------------------------- 音乐相关 ---------------------------------
 
     const backgroundAudioManager = wx.getBackgroundAudioManager()

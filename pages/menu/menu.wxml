@@ -3,10 +3,17 @@
 <template wx:if="{{showLogin}}" is="login" />
 <view wx:else class="content">
   <template is="switch"  data="{{flag, style}}"/>
+  <view class='title-bar'>
+    <navigator url="../Music/Music" open-type="reLaunch">音乐</navigator>
+    <view wx:for="{{navigation}}" wx:key="index">
+      <text>></text>
+      <text wx:key="index">{{item}}</text>
+    </view>
+  </view>
   <view class='player-box'>
-    <navigator url="../list/list?name={{item.name}}&&id={{item.id}}" class='list-one' wx:for="{{cardList}}" wx:key="{{index}}" data-id='{{item.id}}' catchtap="ClickUnfold" >
-      <span data-id='{{item.id}}'>{{item.name}}</span>
-    </navigator>
+    <view class='list-one' wx:for="{{cardList}}" wx:key="{{index}}" data-id="{{item.id}}" data-name="{{item.name}}" catchtap="getMusicPage" >
+      <span data-id="{{item.id}}" data-name="{{item.name}}">{{item.name}}</span>
+    </view>
   </view>
 </view>
 

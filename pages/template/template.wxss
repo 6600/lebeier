@@ -233,3 +233,17 @@ button {
 .play .Black-gum image {
   animation: 3s rotatefresh infinite;
 }
+
+.title-bar {
+  text-align: right;
+  height:80rpx;
+  line-height: 80rpx;
+  width:100%;
+  display:flex;
+  color: #3a3a3a;
+  justify-content: flex-end;
+  
+}
+.title-bar text {
+  margin-right: 10px;
+}

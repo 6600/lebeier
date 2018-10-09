@@ -1,6 +1,7 @@
 App({
   globaData: {
     serve: 'https://515.run',
+    navigation: [],
     user: {
       id: '',
       username: '',

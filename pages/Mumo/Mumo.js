@@ -18,6 +18,7 @@ Page({
     itemID: null,
     itemName: '',
     cardList: [],
+    navigation: null,
     serve: App.globaData.serve
   },
   // ------------------------ 音乐播放方法 ----------------------------
@@ -136,6 +137,9 @@ Page({
   // -------------------------------------------------------------------
   //获取跳转参数
   onShow: function (option) {
+    this.setData({
+      navigation: App.globaData.navigation
+    })
     // --------------------------------- 音乐相关 ---------------------------------
     // 载入播放模式
     this.setData({
@@ -190,7 +194,6 @@ Page({
     // this.animate()
   },
   onLoad: function (option) {
-    console.log(option.title)
     this.setData({
       itemID: option.id,
       itemName: option.name,
@@ -203,7 +206,6 @@ Page({
         id: option.id
       },
       complete: (e) => {
-        console.log(e)
         const value = e.data
         if (value.code === 1) {
           this.setData({
@@ -228,6 +230,7 @@ Page({
   },
   JumpProduct: function (event) {
     console.log(event.target)
+    App.globaData.navigation.push(event.target.dataset.name)
     wx.navigateTo({
       url: `../option/option?name=${event.target.dataset.name}&&id=${event.target.dataset.id}`,
     })

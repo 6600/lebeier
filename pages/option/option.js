@@ -23,7 +23,9 @@ Page({
     flag: true,
     itemID: null,
     itemName: '',
-    cardList: []
+    cardList: [],
+    // 导航
+    navigation: null
   },
   // ------------------------ 音乐播放方法 ----------------------------
   // 开始播放音乐
@@ -141,6 +143,9 @@ Page({
   },
   // -------------------------------------------------------------------
   onShow: function (option) {
+    this.setData({
+      navigation: App.globaData.navigation
+    })
     // --------------------------------- 音乐相关 ---------------------------------
     // 载入播放模式
     this.setData({
@@ -239,6 +244,7 @@ Page({
   },
   tomenu(event) {
     console.log(event.target.dataset)
+    App.globaData.navigation.push(event.target.dataset.name)
     wx.navigateTo({
       url: `../menu/menu?name=${event.target.dataset.name}&&id=${event.target.dataset.id}`,
     })

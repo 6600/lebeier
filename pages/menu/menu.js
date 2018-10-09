@@ -31,7 +31,9 @@ Page({
     itemID: null,
     itemName: '',
     cardList: [],
-    musicList: {}
+    musicList: {},
+    // 导航
+    navigation: null
   },
   JumpProduct: function() {
     console.log(111)
@@ -108,35 +110,11 @@ Page({
     }
 
   },
-  // 歌曲列表显示
-  ClickUnfold: function (event) {
-    if (this.data.MenuConcealment) {
-      this.setData({
-        MenuConcealment: false,
-        Open: false
-      })
-    } else {
-      wx.request({
-        method: 'POST',
-        url: App.globaData.serve + '/api/index/getClassMusic',
-        data: {
-          id: event.target.dataset.id
-        },
-        complete: (e) => {
-          const value = e.data
-          if (value.code === 1) {
-            const key = `musicList[${event.target.dataset.id}]`
-            let data = {
-              MenuConcealment: true,
-              Open: true
-            }
-            data[key] = value.data
-            this.setData(data)
-            console.log(this.data.musicList)
-          }
-        }
-      })
-    }
+  getMusicPage: function (event) {
+    App.globaData.navigation.push(event.target.dataset.name)
+    wx.navigateTo({
+      url: `../list/list?name=${event.target.dataset.name}&&id=${event.target.dataset.id}`,
+    })
   },
   // 播放按钮显示
   playshow: function () {
@@ -283,6 +261,9 @@ Page({
   },
   // -------------------------------------------------------------------
   onShow: function (option) {
+    this.setData({
+      navigation: App.globaData.navigation
+    })
     // --------------------------------- 音乐相关 ---------------------------------
 
     const backgroundAudioManager = wx.getBackgroundAudioManager()

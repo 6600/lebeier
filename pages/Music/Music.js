@@ -22,7 +22,9 @@ Page({
     showLogin: true
   },
   SongJump: function (event) {
-    console.log(event.target.dataset)
+    console.log(App.globaData.navigation)
+    App.globaData.navigation.push(event.target.dataset.name)
+    console.log(App.globaData.navigation)
     wx.navigateTo({
       url: `../Mumo/Mumo?name=${event.target.dataset.name}&&id=${event.target.dataset.id}`
     })
@@ -235,6 +237,9 @@ Page({
   },
   //获取跳转参数
   onShow: function(option) {
+    // 清除
+    console.log('清理')
+    App.globaData.navigation = []
     // --------------------------------- 音乐相关 ---------------------------------
     // 载入播放模式
     this.setData({

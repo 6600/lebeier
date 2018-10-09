@@ -3,10 +3,17 @@
 <template wx:if="{{showLogin}}" is="login" />
 <view wx:else class="content">
   <template is="switch"  data="{{flag, style}}"/>
+  <view class='title-bar'>
+    <navigator url="../Music/Music" open-type="reLaunch">音乐</navigator>
+    <view wx:for="{{navigation}}" wx:key="index">
+      <text>></text>
+      <text wx:key="index">{{item}}</text>
+    </view>
+  </view>
   <view class="stage">
     <view class='stage-class'>
       <view class='stage-content ' wx:for="{{cardList}}"  bindtap='JumpProduct' wx:key="{{index}}">
-        <view class='text'>{{item.name}}</view>
+        <view data-id="{{item.id}}" data-name="{{item.name}}" class='text'>{{item.name}}</view>
         <image data-id="{{item.id}}" data-name="{{item.name}}" src='{{serve + item.image}}'></image>
       </view>
     </view>
