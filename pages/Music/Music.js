@@ -237,9 +237,6 @@ Page({
   },
   //获取跳转参数
   onShow: function(option) {
-    // 清除
-    console.log('清理')
-    App.globaData.navigation = []
     // --------------------------------- 音乐相关 ---------------------------------
     // 载入播放模式
     this.setData({

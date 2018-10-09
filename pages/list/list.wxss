@@ -1,2 +1,33 @@
 /* pages/list/list.wxss */
 @import "../template/template.wxss";
+
+.content {
+  height:960rpx;
+  background-color: #eeeeee;
+}
+.option-Choice {
+  margin: 5px 10px;
+  background-color: white;
+  border-radius:3px;
+  overflow:hidden;
+  box-shadow:1px 1px 10px #898989;
+}
+.text {
+  line-height:30px;
+  padding:0 5px;
+}
+.menu-box {
+  display: flex;
+  line-height:30px;
+}
+.play-button {
+  width:60%;
+  text-align:center;
+  background-color:#009fe9;
+  color:white;
+}
+.time {
+  width:40%;
+  text-align:center;
+  background-color: #eeeeee;
+}

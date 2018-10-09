@@ -7,7 +7,7 @@
     <navigator url="../Music/Music" open-type="reLaunch">音乐</navigator>
     <view wx:for="{{navigation}}" wx:key="index">
       <text>></text>
-      <text wx:key="index">{{item}}</text>
+      <text wx:key="index">{{item.name}}</text>
     </view>
   </view>
   <view class="stage">

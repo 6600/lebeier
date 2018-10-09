@@ -68,16 +68,17 @@ Page({
   },
   // ------------------------ 音乐播放方法 ----------------------------
   // 开始播放音乐
-  startMusic: function () {
+  playMusic: function (event) {
+    const dataset = event.target.dataset
     App.player.isPlaying = true
     wx.playBackgroundAudio({
-      dataUrl: App.player.musicList[App.player.index].url,
-      title: App.player.musicList[App.player.index].music_name,
+      dataUrl: App.globaData.serve + dataset.url,
+      title: dataset.name,
       //图片地址地址
       coverImgUrl: 'http://i.gtimg.cn/music/photo/mid_album_90/a/F/000QgFcm0v8WaF.jpg'
     })
     this.setData({
-      musicName: App.player.musicList[App.player.index].music_name,
+      musicName: dataset.name,
     })
   },
   // 暂停播放音乐
@@ -179,10 +180,34 @@ Page({
       isDraging: true
     })
   },
+  startMusic: function () {
+    App.player.isPlaying = true
+    wx.playBackgroundAudio({
+      dataUrl: App.player.musicList[App.player.index].url,
+      title: App.player.musicList[App.player.index].music_name,
+      //图片地址地址
+      coverImgUrl: 'http://i.gtimg.cn/music/photo/mid_album_90/a/F/000QgFcm0v8WaF.jpg'
+    })
+    this.setData({
+      musicName: App.player.musicList[App.player.index].music_name,
+    })
+  },
   // -------------------------------------------------------------------
   onShow: function (option) {
+    // 获取路由
+    let pages = getCurrentPages()
+    let navigation = []
+    for (let ind = 0; ind < pages.length; ind++) {
+      const value = pages[ind]
+      if (value.options && value.options.name) {
+        navigation.push({
+          name: value.options.name,
+          route: value.route
+        })
+      }
+    }
     this.setData({
-      navigation: App.globaData.navigation
+      navigation: navigation
     })
     // --------------------------------- 音乐相关 ---------------------------------
 

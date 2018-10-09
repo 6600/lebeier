@@ -143,8 +143,20 @@ Page({
   },
   // -------------------------------------------------------------------
   onShow: function (option) {
+    // 获取路由
+    let pages = getCurrentPages()
+    let navigation = []
+    for (let ind = 0; ind < pages.length; ind++) {
+      const value = pages[ind]
+      if (value.options && value.options.name) {
+        navigation.push({
+          name: value.options.name,
+          route: value.route
+        })
+      }
+    }
     this.setData({
-      navigation: App.globaData.navigation
+      navigation: navigation
     })
     // --------------------------------- 音乐相关 ---------------------------------
     // 载入播放模式

@@ -241,6 +241,7 @@ button {
   width:100%;
   display:flex;
   color: #3a3a3a;
+  font-size:12px;
   justify-content: flex-end;
   
 }
