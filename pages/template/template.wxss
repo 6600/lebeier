@@ -218,6 +218,7 @@ button {
   position: absolute;
   bottom: 0;
   width: 100%;
+  background-color: #142321;
 }
 
 @keyframes rotatefresh {

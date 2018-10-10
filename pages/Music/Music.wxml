@@ -7,7 +7,7 @@
     <template is="switch" data="{{flag, style}}"/>
     <!-- //歌曲列表 -->
     <view class="content-box">
-      <scroll-view class='Music-box' scroll-y>
+      <scroll-view scroll-y class='Music-box'>
         <view
           class="Song"
           wx:for="{{imgList}}"

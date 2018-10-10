@@ -5,12 +5,24 @@
   <template is="switch"  data="{{flag, style}}"/>
   <template is="navigation"  data="{{navigation}}"/>
   <view class='option'>
-    <view class='Four-seasons'>
+    <!-- 音乐列表 -->
+    <scroll-view scroll-y wx:if="{{isMusic}}" class='Four-seasons'>
+      <view data-index="{{index}}" wx:for="{{cardList}}" class="option-Choice-music {{item.show ? 'show-music-menu' : ''}}"  bindtap='shouPlayMenu' wx:key="{{index}}">
+        <view data-index="{{index}}" class='text'>{{item.name}}</view>
+        <view class="menu-box">
+          <view class='play-button' data-id="{{item.id}}" data-name="{{item.name}}" catchtap='playMusic'>播放音乐</view>
+          <view class='time'>{{item.music_time}}</view>
+        </view>
+      </view>
+    </scroll-view>
+    <!-- 卡片列表 -->
+    <scroll-view scroll-y wx:else class='Four-seasons'>
       <view class='option-Choice' wx:for="{{cardList}}"  bindtap='tomenu' wx:key="{{index}}">
+        <view wx:if="{{item.status !== 'normal'}}" catchtap="stop" class="lock"></view>
         <view data-id="{{item.id}}" data-name="{{item.name}}" class='text'>{{item.name}}</view>
         <image wx:if="{{item.image}}" data-id="{{item.id}}" data-name="{{item.name}}" src='{{serve + item.image}}'></image>
       </view>
-    </view>
+    </scroll-view>
   </view>
 </view>
 <!-- 播放器 -->

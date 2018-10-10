@@ -44,6 +44,7 @@ Page({
     wx.pauseBackgroundAudio({})
     console.log('暂停播放')
   },
+  stop: function () {},
   // 停止播放音乐
   stopMusic: function () {
     App.player.isPlaying = false

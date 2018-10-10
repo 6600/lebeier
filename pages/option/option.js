@@ -25,7 +25,44 @@ Page({
     itemName: '',
     cardList: [],
     // 导航
-    navigation: null
+    navigation: null,
+    isMusic: false,
+    playMenuIsShow: true
+  },
+  stop: function () { },
+  shouPlayMenu: function (event) {
+    const dataset = event.target.dataset
+    const cardListCopy = this.data.cardList
+    console.log(cardListCopy, dataset.index)
+    cardListCopy[dataset.index].show = !cardListCopy[dataset.index].show
+    this.setData({
+      cardList: cardListCopy
+    })
+    console.log(this.data.cardList)
+  },
+  // 开始播放音乐
+  playMusic: function (event) {
+    const dataset = event.target.dataset
+    //请求音乐URL
+    wx.request({
+      method: 'POST',
+      url: App.globaData.serve + '/api/index/getmusic',
+      data: {
+        id: dataset.id
+      },
+      complete: (e) => {
+        App.player.isPlaying = true
+        wx.playBackgroundAudio({
+          dataUrl: App.globaData.serve + e.data.data,
+          title: dataset.name,
+          //图片地址地址
+          coverImgUrl: 'http://i.gtimg.cn/music/photo/mid_album_90/a/F/000QgFcm0v8WaF.jpg'
+        })
+        this.setData({
+          musicName: dataset.name,
+        })
+      }
+    })
   },
   // ------------------------ 音乐播放方法 ----------------------------
   // 开始播放音乐
@@ -237,19 +274,41 @@ Page({
         const value = e.data
         if (value.code === 1) {
           this.setData({
+            isMusic: false,
             showLogin: false,
             cardList: e.data.data
           })
         } else {
-          wx.showModal({
-            title: '提示',
-            content: value.msg,
-            showCancel: false,
+          console.log('尝试请求音乐列表')
+          // 如果请求不到卡片那么请求音乐列表
+          wx.request({
+            method: 'POST',
+            url: App.globaData.serve + '/api/index/getClassMusic',
+            data: {
+              id: option.id
+            },
             complete: (e) => {
-              // 返回上一页
-              wx.navigateBack({
-                delta: 1
-              })
+              console.log(e)
+              const value = e.data
+              if (value.code === 1) {
+                this.setData({
+                  isMusic:true,
+                  showLogin: false,
+                  cardList: e.data.data
+                })
+              } else {
+                wx.showModal({
+                  title: '提示',
+                  content: value.msg,
+                  showCancel: false,
+                  complete: (e) => {
+                    // 返回上一页
+                    wx.navigateBack({
+                      delta: 1
+                    })
+                  }
+                })
+              }
             }
           })
         }

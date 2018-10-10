@@ -10,6 +10,15 @@ page {
   position: relative;
   transition: left 1s;
 }
+.lock {
+  position:absolute;
+  left:0;
+  top:0;
+  background-color:rgba(0, 0, 0, 0.50);
+  width:100%;
+  height:100%;
+  z-index:10;
+}
 .option {
   width: 100%;
   height: calc(100% - 80rpx);
@@ -36,7 +45,7 @@ page {
   overflow: hidden;
   background-color: skyblue;
 }
-.option .text {
+.option-Choice .text {
   line-height: 380rpx;
   width: 300rpx;
   font-size: 35px;
@@ -50,11 +59,38 @@ page {
   width: 300rpx;
   height: 390rpx;
 }
-/* 面包屑 */
-.Crumbs {
-  float:right;
-  font-size: 28rpx;
-  margin-top: 30rpx;
-  margin-right: 50rpx;
+
+.option .show-music-menu {
+  height: 80px;
+}
+.option-Choice-music {
+  margin: 5px 10px;
+  background-color: white;
+  border-radius:3px;
+  overflow:hidden;
+  height: 40px;
+  transition: height 0.5s;
+  box-shadow:1px 1px 10px #898989;
+}
+.option-Choice-music .text {
+  line-height:40px;
+  padding:0 5px;
+  font-size:14px;
+  border-bottom: 1px solid #ccc;
+}
+.option-Choice-music .menu-box {
+  display: flex;
+  line-height:40px;
+}
+.option-Choice-music .play-button {
+  width:60%;
+  text-align:center;
+  background-color:#009fe9;
+  color:white;
+}
+.option-Choice-music .time {
+  width:40%;
+  text-align:center;
+  background-color: #eeeeee;
 }
 @import "../template/template.wxss";

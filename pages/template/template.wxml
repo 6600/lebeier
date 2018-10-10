@@ -38,19 +38,15 @@
   <view class="menu {{flag ? '' : 'active'}}">
     <!-- <view class='return menu-option' bindtap='bindflag'>返回</view> -->
     <navigator open-type="reLaunch" url="../Music/Music" class='home menu-option'>
-      <image src="/image/index/music.png"></image>
       <text>音乐列表</text>
     </navigator>
     <navigator url="../System/System" class='menu-option-text menu-option'>
-      <image src="/image/index/setting.png"></image>
       <text>系统信息</text>
     </navigator>
     <navigator url="../personal/personal" class="info-text menu-option">
-      <image src="/image/index/me.png"></image>
       <text>个人信息</text>
     </navigator>
     <view bindtap='bindflag' class="return menu-option">
-      <image src="/image/index/return.png"></image>
       <text>返回</text>
     </view>
   </view>

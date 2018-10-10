@@ -6,7 +6,8 @@
   <template is="navigation"  data="{{navigation}}"/>
   <view class="stage">
     <view class='stage-class'>
-      <view class='stage-content ' wx:for="{{cardList}}"  bindtap='JumpProduct' wx:key="{{index}}">
+      <view class='stage-content ' wx:for="{{cardList}}"  catchtap='JumpProduct' wx:key="{{index}}">
+        <view wx:if="{{item.status !== 'normal'}}" catchtap="stop" class="lock"></view>
         <view data-id="{{item.id}}" data-name="{{item.name}}" class='text'>{{item.name}}</view>
         <image data-id="{{item.id}}" data-name="{{item.name}}" src='{{serve + item.image}}'></image>
       </view>
