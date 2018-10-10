@@ -266,7 +266,7 @@ Page({
     console.log(event.target.dataset)
     App.globaData.navigation.push(event.target.dataset.name)
     wx.navigateTo({
-      url: `../menu/menu?name=${event.target.dataset.name}&&id=${event.target.dataset.id}`,
+      url: `../option/option?name=${event.target.dataset.name}&&id=${event.target.dataset.id}`,
     })
   } 
 })

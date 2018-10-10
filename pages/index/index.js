@@ -140,7 +140,7 @@ Page({
           App.globaData.user.expiretime = new Date(userinfo.expiretime * 1000).toLocaleString()
           console.log('登陆成功')
           // 判断是否需要修改密码
-          console.log(userinfo.login_num)
+          // console.log(userinfo.login_num)
           if (userinfo.login_num !== undefined && userinfo.login_num === 0) {
             this.setData({
               showBox: 'changePassword'

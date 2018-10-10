@@ -8,7 +8,7 @@
     <view class='Four-seasons'>
       <view class='option-Choice' wx:for="{{cardList}}"  bindtap='tomenu' wx:key="{{index}}">
         <view data-id="{{item.id}}" data-name="{{item.name}}" class='text'>{{item.name}}</view>
-        <image data-id="{{item.id}}" data-name="{{item.name}}" src='{{serve + item.image}}'></image>
+        <image wx:if="{{item.image}}" data-id="{{item.id}}" data-name="{{item.name}}" src='{{serve + item.image}}'></image>
       </view>
     </view>
   </view>

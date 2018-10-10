@@ -5,6 +5,7 @@ Page({
     flag: true,
     // 3D旋转
     rotation: 360,
+    angle: 60,
     isPaused: false,
     imgList: [],
     // 音乐播放
@@ -195,7 +196,6 @@ Page({
       complete: (e) => {
         const value = e.data
         if (value.code === 1) {
-          value.data = value.data.concat(value.data)
           this.setData({
             showLogin: false,
             imgList: value.data
