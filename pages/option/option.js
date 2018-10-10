@@ -91,6 +91,14 @@ Page({
       })
     }
   },
+  // 返回页面
+  back: function (event) {
+    const index = event.target.dataset.index
+    // console.log(index)
+    wx.navigateBack({
+      delta: index
+    })
+  },
   nextMusic: function () {
     // 判断是否为列表循环
     if (App.player.isListLoop) {

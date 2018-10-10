@@ -82,3 +82,13 @@
     <image src='/image/index/login.gif'></image>
   </view>
 </template>
+
+<template name='navigation'>
+  <view class='title-bar'>
+    <navigator url="../Music/Music" open-type="reLaunch">音乐</navigator>
+    <view wx:for="{{navigation}}" data-index="{{navigation.length - index - 1}}" wx:key="index">
+      <text data-index="{{navigation.length - index - 1}}">></text>
+      <text data-index="{{navigation.length - index - 1}}" bindtap='back'>{{item.name}}</text>
+    </view>
+  </view>
+</template>

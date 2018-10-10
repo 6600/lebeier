@@ -3,13 +3,7 @@
 <template wx:if="{{showLogin}}" is="login" />
 <view wx:else class="content">
   <template is="switch"  data="{{flag, style}}"/>
-  <view class='title-bar'>
-    <navigator url="../Music/Music" open-type="reLaunch">音乐</navigator>
-    <view wx:for="{{navigation}}" wx:key="index">
-      <text>></text>
-      <text wx:key="index">{{item.name}}</text>
-    </view>
-  </view>
+  <template is="navigation"  data="{{navigation}}"/>
   <view class='option'>
     <view class='Four-seasons'>
       <view class='option-Choice' wx:for="{{cardList}}"  bindtap='tomenu' wx:key="{{index}}">

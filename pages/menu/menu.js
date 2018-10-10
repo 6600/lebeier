@@ -140,6 +140,14 @@ Page({
       url: '../System/System'
     })
   },
+  // 返回页面
+  back: function (event) {
+    const index = event.target.dataset.index
+    // console.log(index)
+    wx.navigateBack({
+      delta: index
+    })
+  },
   toSettings () {
     console.log(111)
     wx.navigateTo({
