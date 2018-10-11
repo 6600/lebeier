@@ -43,7 +43,7 @@
 /* 登录 */
 .Broadcast .login {
   position: absolute;
-  width: 600rpx;
+  width: 80%;
   background-color: #eee;
   top: 440rpx;
   left: 0;

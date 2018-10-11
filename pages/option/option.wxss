@@ -1,7 +1,9 @@
 page {
   width: 100%;
   height: 100%;
-  background-color:#eeeeee;
+  background:url('http://puge.oss-cn-beijing.aliyuncs.com/lebeier/back.png') no-repeat center center;
+  background-size:218px 164px;
+  /* background-color:#eeeeee; */
 }
 .content {
   overflow: hidden;
@@ -33,7 +35,7 @@ page {
   bottom: 0;
   margin: auto;
   width: 700rpx;
-  height: 860rpx;
+  height: 100%;
 }
 .option .option-Choice {
   margin: 25rpx;
@@ -65,32 +67,45 @@ page {
 }
 .option-Choice-music {
   margin: 5px 10px;
-  background-color: white;
   border-radius:3px;
   overflow:hidden;
   height: 40px;
   transition: height 0.5s;
+  position: relative;
   box-shadow:1px 1px 10px #898989;
+}
+.option-Choice-music image {
+  width:16px;
+  height:16px;
+  position:absolute;
+  top:18px;
+  right:20px;
 }
 .option-Choice-music .text {
   line-height:40px;
   padding:0 5px;
   font-size:14px;
+  background-color: white;
   border-bottom: 1px solid #ccc;
 }
 .option-Choice-music .menu-box {
   display: flex;
   line-height:40px;
+  opacity:0.8;
 }
 .option-Choice-music .play-button {
   width:60%;
   text-align:center;
-  background-color:#009fe9;
+  background-color:#3d3a3a;
   color:white;
 }
 .option-Choice-music .time {
   width:40%;
   text-align:center;
   background-color: #eeeeee;
+}
+.menu .home {
+  background-color: #fdc640;
+  line-height: 260rpx;
 }
 @import "../template/template.wxss";

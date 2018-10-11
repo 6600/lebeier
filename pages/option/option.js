@@ -10,7 +10,7 @@ Page({
     Crumbs: '',
     // 音乐播放
     isListLoop: true,
-    musicName: '',
+    musicName: '请添加音乐',
     sliderValue: 0,
     totalProcess: 0,
     currentTime: '',
@@ -27,12 +27,15 @@ Page({
     // 导航
     navigation: null,
     isMusic: false,
-    playMenuIsShow: true
+    playMenuIsShow: true,
+    // 音乐播放列表
+    musicListHasData: false,
+    playIndex: -1
   },
   stop: function () { },
   shouPlayMenu: function (event) {
     const dataset = event.target.dataset
-    const cardListCopy = this.data.cardList
+    let cardListCopy = this.data.cardList
     console.log(cardListCopy, dataset.index)
     cardListCopy[dataset.index].show = !cardListCopy[dataset.index].show
     this.setData({
@@ -43,6 +46,13 @@ Page({
   // 开始播放音乐
   playMusic: function (event) {
     const dataset = event.target.dataset
+    // 将列表添加到全局播放列表
+    App.player.musicList = this.data.cardList
+    App.player.index = dataset.index
+    // 设置音乐持续显示
+    this.setData({
+      musicListHasData: true
+    })
     //请求音乐URL
     wx.request({
       method: 'POST',
@@ -56,9 +66,10 @@ Page({
           dataUrl: App.globaData.serve + e.data.data,
           title: dataset.name,
           //图片地址地址
-          coverImgUrl: 'http://i.gtimg.cn/music/photo/mid_album_90/a/F/000QgFcm0v8WaF.jpg'
+          coverImgUrl: 'http://puge.oss-cn-beijing.aliyuncs.com/lebeier/music-logo.jpg'
         })
         this.setData({
+          playIndex: dataset.index,
           musicName: dataset.name,
         })
       }
@@ -67,15 +78,31 @@ Page({
   // ------------------------ 音乐播放方法 ----------------------------
   // 开始播放音乐
   startMusic: function () {
-    App.player.isPlaying = true
-    wx.playBackgroundAudio({
-      dataUrl: App.player.musicList[App.player.index].url,
-      title: App.player.musicList[App.player.index].music_name,
-      //图片地址地址
-      coverImgUrl: 'http://i.gtimg.cn/music/photo/mid_album_90/a/F/000QgFcm0v8WaF.jpg'
-    })
-    this.setData({
-      musicName: App.player.musicList[App.player.index].music_name,
+    console.log('开始播放音乐!')
+    //请求音乐URL
+    wx.request({
+      method: 'POST',
+      url: App.globaData.serve + '/api/index/getmusic',
+      data: {
+        id: App.player.musicList[App.player.index].id
+      },
+      complete: (e) => {
+        App.player.isPlaying = true
+        // 设置音乐持续显示
+        this.setData({
+          musicListHasData: true
+        })
+        wx.playBackgroundAudio({
+          dataUrl: App.globaData.serve + e.data.data,
+          title: App.player.musicList[App.player.index].name,
+          //图片地址地址
+          coverImgUrl: 'http://puge.oss-cn-beijing.aliyuncs.com/lebeier/music-logo.jpg'
+        })
+        this.setData({
+          playIndex: App.player.index,
+          musicName: App.player.musicList[App.player.index].name,
+        })
+      }
     })
   },
   // 暂停播放音乐
@@ -115,7 +142,7 @@ Page({
       // console.log(App.player.index)
       this.startMusic()
       this.setData({
-        musicName: App.player.musicList[App.player.index].music_name
+        musicName: App.player.musicList[App.player.index].name
       })
     } else {
       // 单曲循环设置播放进度为0即可
@@ -188,6 +215,12 @@ Page({
   },
   // -------------------------------------------------------------------
   onShow: function (option) {
+    // 判断音乐列表是否为空
+    if (App.player.musicList && App.player.musicList.length > 0) {
+      this.setData({
+        musicListHasData: true
+      })
+    }
     // 获取路由
     let pages = getCurrentPages()
     let navigation = []
@@ -195,7 +228,7 @@ Page({
       const value = pages[ind]
       if (value.options && value.options.name) {
         navigation.push({
-          name: value.options.name,
+          name: decodeURIComponent(value.options.name),
           route: value.route
         })
       }
@@ -208,6 +241,12 @@ Page({
     this.setData({
       isListLoop: App.player.isListLoop
     })
+    // 加载音乐名
+    if (App.player.musicList[App.player.index]) {
+      this.setData({
+        musicName: App.player.musicList[App.player.index].name
+      })
+    }
     const backgroundAudioManager = wx.getBackgroundAudioManager()
     // 播放时间改变事件
     backgroundAudioManager.onTimeUpdate((e) => {
@@ -221,7 +260,7 @@ Page({
         const sliderValue = wx.getBackgroundAudioManager().currentTime
         const totalProcess = wx.getBackgroundAudioManager().duration
         // 播放时长为0 总时长也为0则跳到下一首
-        if (sliderValue === 0 && totalProcess === 0) {
+        if (totalProcess !== 0 && sliderValue === totalProcess) {
           console.log('播放时间为0')
           if (App.player.isListLoop) {
             this.lestMusic()
@@ -260,7 +299,7 @@ Page({
     console.log(option)
     this.setData({
       itemID: option.id,
-      itemName: option.name,
+      itemName: encodeURI(option.name),
     })
     // 获取信息
     wx.request({
@@ -322,10 +361,8 @@ Page({
     })
   },
   tomenu(event) {
-    console.log(event.target.dataset)
-    App.globaData.navigation.push(event.target.dataset.name)
     wx.navigateTo({
-      url: `../option/option?name=${event.target.dataset.name}&&id=${event.target.dataset.id}`,
+      url: `../option/option?name=${encodeURIComponent(event.target.dataset.name)}&&id=${event.target.dataset.id}`,
     })
   } 
 })

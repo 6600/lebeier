@@ -3,11 +3,15 @@
   width: 100%;
   height: 224rpx;
   position: fixed;
-  bottom: 0;
+  bottom:-224rpx;
   background-color:  #fdc73e;
   overflow: hidden;
   border-top-left-radius:15rpx;
   border-top-right-radius:15rpx;
+  transition: bottom 0.5s;
+}
+.play {
+  bottom: 0;
 }
 .Black-gum {
   position: absolute;
@@ -56,11 +60,7 @@
   height: 31px;
 }
 .Progress {
-  position:absolute;
-  width:390rpx;
-  height:4rpx;
-  left:105px;
-  top:37rpx;
+  width:calc(100% - 160rpx);
 }
 .Progress .Playback-bar {
   width: 10%;
@@ -76,26 +76,31 @@
   top:-8rpx;
   left: 27rpx;
 }
-.Total-time {
-  font-size: 20rpx;
-  position: absolute;
-  left:190rpx;
-  top:69rpx;
+.drag-bar {
+  width:calc(100% - 250rpx);
+  height:40rpx;
+  position:absolute;
+  left:100px;
+  top:40rpx;
+  display:flex;
 }
-.Time {
-  position: absolute;
+.drag-bar .time {
+  width: 80rpx;
   font-size: 20rpx;
-  top:70rpx;
-  left:315px;
+  line-height:38px;
+  text-align: center;
 }
 .menu {
   width:400rpx;
-  left: -400rpx;
-  height:calc(100% - 224rpx);
+  left: -410rpx;
+  height:100%;
   z-index:999;
   position: fixed;
   transition: left 1s;
-  background-color: darkslategrey;
+  background-color: white;
+  box-shadow:1px 1px 10px #898989;
+  border-radius:0 3px 3px 0;
+  overflow:hidden;
 }
 .active {
   left: 0;
@@ -103,8 +108,8 @@
 .music-name {
   position:absolute;
   top:17rpx;
-  left:204rpx;
-  color:#a99050;
+  left:239rpx;
+  color:#333333;
   font-size:12px;
 }
 
@@ -113,7 +118,7 @@
   width: 60rpx;
   height: 60rpx;
   position: fixed;
-  top: 20rpx;
+  top: 15rpx;
   left: 20rpx;
   z-index: 999;
 }
@@ -125,13 +130,14 @@ button {
 .first{
   position: absolute;
   width: 600rpx;
-  background-color: #eee;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   margin: auto;
-  height:131px;
+  height: 460rpx;
+  border-radius:2px;
+  overflow:hidden;
 }
 .first .first-tilte{
   height: 80rpx;
@@ -147,33 +153,41 @@ button {
   overflow: hidden;
   font-size: 26rpx;
   line-height: 80rpx;
+  display:flex;
 }
 .first .Title {
-  padding-left: 30rpx;
-  padding-right: 20rpx;
-  float: left;
-  width: 60rpx;
+  border-right:1px solid #ccc;
+  padding:0 5px;
+  margin:6px 0;
+  line-height:21px;
+  width: 130rpx;
 }
 .first .first-box {
   float: right;
-  width: 300rpx;
   height: 80rpx;
-  padding-right: 80rpx;
-  padding-top: 16rpx;
+  line-height:80rpx;
+  margin:0 10px;
+  width:calc(100% - 200rpx);
+}
+.first .first-box input {
+  width:100%;
+  height:100%;
+  line-height:80rpx;
 }
 .first .confirm {
   width: 100%;
-  height: 28px;
+  height: 29px;
   text-align: center;
   background-color:#ffc833; 
   font-size: 26rpx;
-  line-height: 28px;
+  line-height: 29px;
+  border-radius: 0;
 }
 
 .menu-option {
-  line-height:40px;
+  line-height:180rpx;
   display: flex;
-  border-bottom:1px solid #ccc;
+  border-bottom:1px solid #afafaf;
   text-align: center;
 }
 
@@ -212,13 +226,16 @@ button {
 }
 .menu-option text {
   margin: 0 10px;
-  color: white;
 }
 .return {
+  line-height: 180rpx;
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: #142321;
+  border-top:1px solid #afafaf;
+}
+.return text {
+  margin: 0 10px;
 }
 
 @keyframes rotatefresh {
@@ -242,10 +259,11 @@ button {
   width:100%;
   display:flex;
   color: #3a3a3a;
+  font-weight:bold;
   font-size:12px;
   justify-content: flex-end;
   
 }
-.title-bar text {
-  margin-right: 10px;
+.title-bar .division {
+  margin: 0 5px;
 }

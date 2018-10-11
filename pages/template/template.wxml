@@ -1,5 +1,5 @@
 <template name='Playback'>
-  <view class="Playback-box {{isPlaying? 'play' : ''}}" style="background: {{style.musicBarBackground}}">
+  <view class="Playback-box {{isPlaying || musicListHasData? 'play' : ''}}" style="background: {{style.musicBarBackground}}">
     <view class='Black-gum'>
       <image src='/image/index/heijiao.png'></image>
     </view>
@@ -18,17 +18,19 @@
       <image wx:if="{{isListLoop}}" src='{{style.listLoopImg}}'></image>
       <image wx:else src='{{style.singleLoopImg}}'></image>
     </view>
-    <text class='Time'>{{totalTime}}</text>
-    <slider
-      class="Progress"
-      block-size="12"
-      activeColor="#797979"
-      bindchange="hanleSliderChange"
-      bindtouchstart="handleSliderMoveStart"
-      min="0"
-      max="{{totalProcess}}"
-      value="{{sliderValue}}"/>
-    <text class='Total-time'>{{currentTime}}</text>
+    <view class='drag-bar'>
+      <view class='time total'>{{currentTime}}</view>
+      <slider
+        class="Progress"
+        block-size="12"
+        activeColor="#797979"
+        bindchange="hanleSliderChange"
+        bindtouchstart="handleSliderMoveStart"
+        min="0"
+        max="{{totalProcess}}"
+        value="{{sliderValue}}"/>
+      <view class='time now'>{{totalTime}}</view>
+    </view>
   </view> 
 </template>
 
@@ -40,13 +42,13 @@
     <navigator open-type="reLaunch" url="../Music/Music" class='home menu-option'>
       <text>音乐列表</text>
     </navigator>
-    <navigator url="../System/System" class='menu-option-text menu-option'>
-      <text>系统信息</text>
-    </navigator>
     <navigator url="../personal/personal" class="info-text menu-option">
       <text>个人信息</text>
     </navigator>
-    <view bindtap='bindflag' class="return menu-option">
+    <navigator url="../System/System" class='menu-option-text menu-option'>
+      <text>系统信息</text>
+    </navigator>
+    <view bindtap='bindflag' class="return">
       <text>返回</text>
     </view>
   </view>
@@ -56,17 +58,29 @@
 <!-- 修改密码 -->
 <template name='changePassword'>
   <form bindsubmit="changePassword" class="first alert-box {{showBox === 'changePassword' ? 'show': ''}}">
-    <view class='first-tilte'>首次修改密码</view>
+    <view class='first-tilte'>修改密码</view>
+    <view class='firstn-form frame '>
+      <view class='Title'>机构名称</view>
+      <view class='first-box'>
+        <input name="cooperation" type='text' placeholder='请输入机构名称'></input>
+      </view>
+    </view>
     <view class='firstn-form frame '>
       <view class='Title'>原密码</view>
       <view class='first-box'>
         <input name="password" type='text' placeholder='请输入新密码'></input>
       </view>
     </view>
-        <view class='firstn-form frame '>
+    <view class='firstn-form frame '>
       <view class='Title'>新密码</view>
       <view class='first-box'>
-        <input name="repassword" type='text' placeholder='请输入机构名称'></input>
+        <input name="repassword" type='text' placeholder='请输入新密码'></input>
+      </view>
+    </view>
+    <view class='firstn-form frame '>
+      <view class='Title'>重复新密码</view>
+      <view class='first-box'>
+        <input name="repasswordCheck" type='text' placeholder='请重复新密码'></input>
       </view>
     </view>
     <button class='confirm' formType="submit">确认</button>
@@ -83,7 +97,7 @@
   <view class='title-bar'>
     <navigator url="../Music/Music" open-type="reLaunch">音乐</navigator>
     <view wx:for="{{navigation}}" data-index="{{navigation.length - index - 1}}" wx:key="index">
-      <text data-index="{{navigation.length - index - 1}}">></text>
+      <text class="division" data-index="{{navigation.length - index - 1}}">></text>
       <text data-index="{{navigation.length - index - 1}}" bindtap='back'>{{item.name}}</text>
     </view>
   </view>

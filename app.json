@@ -1,19 +1,20 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/menu/menu",
     "pages/Mumo/Mumo",
     "pages/option/option",
     "pages/System/System",
     "pages/personal/personal",
     "pages/Music/Music",
     "pages/template/template",
-    "pages/list/list"
+    "pages/info/info"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "乐蓓儿音乐播放器",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh": false,
+    "disableScroll": true
   }
 }

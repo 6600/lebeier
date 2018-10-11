@@ -51,6 +51,21 @@ Page({
     let sendData = e.detail.value
     sendData.id = App.globaData.user.id
     sendData.account = App.globaData.user.username
+    if (sendData.password === '' || sendData.repassword === '') {
+      console.log('取消修改密码!')
+      this.setData({
+        passShow: false
+      })
+      return
+    }
+    if (sendData.repasswordCheck !== sendData.repassword) {
+      wx.showModal({
+        title: '错误',
+        content: '密码和确认密码输入不一致!',
+        showCancel: false
+      })
+      return
+    }
     wx.request({
       method: 'POST',
       url: App.globaData.serve + '/api/user/resetpwd',
@@ -93,21 +108,22 @@ Page({
     console.log(sendData)
     wx.request({
       method: 'POST',
-      url: App.globaData.serve + '/api/user/cooperation',
+      url: App.globaData.serve + '/api/index/cooperation',
       data: sendData,
       complete: (e) => {
-        console.log(e)
+        if (e.data.code === 1) {
+          console.log('申请成功!')
+          wx.showModal({
+            title: '申请成功',
+            content: e.data.msg,
+            showCancel: false
+          })
+          this.setData({
+            showBox: 'button'
+          })
+        }
       }
     })
-    const value = {
-      "state": 1
-    }
-    if (value.state === 1) {
-      console.log('申请成功!')
-      this.setData({
-        showBox: 'applyTips'
-      })
-    }
   },
   //确定登录
   SigninBtn:function (e) {

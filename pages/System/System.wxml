@@ -6,16 +6,19 @@
     <!-- //歌曲列表 -->
     <view class="content-box">
       <view class='system'>
-        <view class='about' wx:for="{{menuList}}" wx:key="{{index}}">{{item}}</view>
+        <navigator class='about' url="../info/info?name=about">开发版本</navigator>
+        <navigator class='about' url="../info/info?name=Edition">开发版本</navigator>
+        <navigator class='about' url="../info/info?name=copyright">商业版权信息</navigator>
+        <navigator class='about' open-type="reLaunch" url="../index/index">退出登录</navigator>
         <!-- 关于我们 -->
         <view class='Success' wx:if="{{information}}">
           <view class='Success-tilte'><text>关于我们</text></view>
           <view class='Success-Tips'></view>
-          <view class='confirm'bindtap="confirm">确认</view>  
+          <view class='confirm' bindtap="confirm">确认</view>  
         </view>
       </view>
     </view>
   </view>
-  <!-- 播放器 -->
-  <template is="Playback" data="{{isPlaying, totalProcess, sliderValue, player, currentTime, totalTime, musicName, style, isListLoop}}"/>
+<!-- 播放器 -->
+<template is="Playback" data="{{isPlaying, totalProcess, sliderValue, player, currentTime, totalTime, musicName, style, isListLoop, musicListHasData}}"/>
 </view>

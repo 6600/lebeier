@@ -7,7 +7,7 @@ Page({
     flag: true,
     // 音乐播放
     isListLoop: true,
-    musicName: '',
+    musicName: '请添加音乐',
     sliderValue: 0,
     totalProcess: 0,
     currentTime: '',
@@ -19,20 +19,33 @@ Page({
     itemName: '',
     cardList: [],
     navigation: null,
-    serve: App.globaData.serve
+    serve: App.globaData.serve,
+    // 音乐播放列表
+    musicListHasData: false,
   },
   // ------------------------ 音乐播放方法 ----------------------------
   // 开始播放音乐
   startMusic: function () {
-    App.player.isPlaying = true
-    wx.playBackgroundAudio({
-      dataUrl: App.player.musicList[App.player.index].url,
-      title: App.player.musicList[App.player.index].music_name,
-      //图片地址地址
-      coverImgUrl: 'http://i.gtimg.cn/music/photo/mid_album_90/a/F/000QgFcm0v8WaF.jpg'
-    })
-    this.setData({
-      musicName: App.player.musicList[App.player.index].music_name,
+    console.log('开始播放音乐!')
+    //请求音乐URL
+    wx.request({
+      method: 'POST',
+      url: App.globaData.serve + '/api/index/getmusic',
+      data: {
+        id: App.player.musicList[App.player.index].id
+      },
+      complete: (e) => {
+        App.player.isPlaying = true
+        wx.playBackgroundAudio({
+          dataUrl: App.globaData.serve + e.data.data,
+          title: App.player.musicList[App.player.index].name,
+          //图片地址地址
+          coverImgUrl: 'http://puge.oss-cn-beijing.aliyuncs.com/lebeier/music-logo.jpg'
+        })
+        this.setData({
+          musicName: App.player.musicList[App.player.index].name,
+        })
+      }
     })
   },
   // 暂停播放音乐
@@ -138,14 +151,22 @@ Page({
   // -------------------------------------------------------------------
   //获取跳转参数
   onShow: function (option) {
+    // 判断音乐列表是否为空
+    if (App.player.musicList && App.player.musicList.length > 0) {
+      this.setData({
+        musicListHasData: true
+      })
+    }
     // 获取路由
     let pages = getCurrentPages()
+    // console.log(pages)
     let navigation = []
     for (let ind = 0; ind < pages.length; ind++) {
       const value = pages[ind]
+      console.log(value.options.name)
       if (value.options && value.options.name) {
         navigation.push({
-          name: value.options.name,
+          name: decodeURIComponent(value.options.name),
           route: value.route
         })
       }
@@ -153,6 +174,12 @@ Page({
     this.setData({
       navigation: navigation
     })
+    // 加载音乐名
+    if (App.player.musicList[App.player.index]) {
+      this.setData({
+        musicName: App.player.musicList[App.player.index].name
+      })
+    }
     // --------------------------------- 音乐相关 ---------------------------------
     // 载入播放模式
     this.setData({
@@ -171,7 +198,7 @@ Page({
         const sliderValue = wx.getBackgroundAudioManager().currentTime
         const totalProcess = wx.getBackgroundAudioManager().duration
         // 播放时长为0 总时长也为0则跳到下一首
-        if (sliderValue === 0 && totalProcess === 0) {
+        if (totalProcess !== 0 && sliderValue === totalProcess) {
           console.log('播放时间为0')
           if (App.player.isListLoop) {
             this.lestMusic()
@@ -209,7 +236,7 @@ Page({
   onLoad: function (option) {
     this.setData({
       itemID: option.id,
-      itemName: option.name,
+      itemName: encodeURI(option.name),
     })
     // 获取信息
     wx.request({
@@ -242,10 +269,8 @@ Page({
     })
   },
   JumpProduct: function (event) {
-    console.log(event.target)
-    App.globaData.navigation.push(event.target.dataset.name)
     wx.navigateTo({
-      url: `../option/option?name=${event.target.dataset.name}&&id=${event.target.dataset.id}`,
+      url: `../option/option?name=${encodeURIComponent(event.target.dataset.name)}&&id=${event.target.dataset.id}`,
     })
   },
   bindflag: function () {

@@ -1,3 +1,8 @@
+page {
+  background:url('http://puge.oss-cn-beijing.aliyuncs.com/lebeier/back.png') no-repeat center center;
+  background-size:218px 164px;
+  /* background-color:#eeeeee; */
+}
 page, .system-list {
   position: relative;
   overflow: hidden;
@@ -78,6 +83,11 @@ page, .system-list {
   background-color:#ffc833; 
   font-size: 26rpx;
   line-height: 60rpx;
+}
+
+.menu .menu-option-text {
+  background-color: #fdc640;
+  line-height: 260rpx;
 }
 @import "../template/template.wxss";
 

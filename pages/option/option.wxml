@@ -6,11 +6,12 @@
   <template is="navigation"  data="{{navigation}}"/>
   <view class='option'>
     <!-- 音乐列表 -->
-    <scroll-view scroll-y wx:if="{{isMusic}}" class='Four-seasons'>
+    <scroll-view scroll-y wx:if="{{isMusic}}" class="Four-seasons {{musicListHasData ? '': 'max'}}">
       <view data-index="{{index}}" wx:for="{{cardList}}" class="option-Choice-music {{item.show ? 'show-music-menu' : ''}}"  bindtap='shouPlayMenu' wx:key="{{index}}">
         <view data-index="{{index}}" class='text'>{{item.name}}</view>
+        <image wx:if="{{isPlaying && playIndex === index}}" src='http://puge.oss-cn-beijing.aliyuncs.com/lebeier/i_disc.gif'></image>
         <view class="menu-box">
-          <view class='play-button' data-id="{{item.id}}" data-name="{{item.name}}" catchtap='playMusic'>播放音乐</view>
+          <view class='play-button' data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.name}}" catchtap='playMusic'>播放音乐</view>
           <view class='time'>{{item.music_time}}</view>
         </view>
       </view>
@@ -26,4 +27,4 @@
   </view>
 </view>
 <!-- 播放器 -->
-<template is="Playback" data="{{isPlaying, totalProcess, sliderValue, player, currentTime, totalTime, musicName, style, isListLoop}}"/>
+<template is="Playback" data="{{isPlaying, totalProcess, sliderValue, player, currentTime, totalTime, musicName, style, isListLoop, musicListHasData}}"/>

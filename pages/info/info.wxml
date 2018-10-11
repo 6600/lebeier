@@ -1,0 +1,2 @@
+<!--pages/info/info.wxml-->
+<scroll-view>{{textData}}</scroll-view>

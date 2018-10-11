@@ -11,14 +11,16 @@ Page({
     information: false,
     // 音乐播放
     isListLoop: true,
-    musicName: '',
+    musicName: '请添加音乐',
     sliderValue: 0,
     totalProcess: 0,
     currentTime: '',
     totalTime: '',
     isPlaying: false,
     isDraging: false,
-    menuList: {}
+    // 音乐播放列表
+    musicListHasData: false,
+    menuList: ['关于我们', '开发版本', '商业版权信息', '退出登录']
   },
   aboutshow() {
     var that = this;
@@ -27,8 +29,7 @@ Page({
     })
   },
   confirm () {
-    var that = this;
-    that.setData({
+    this.setData({
       information: false
     })
   },
@@ -42,15 +43,26 @@ Page({
   // ------------------------ 音乐播放方法 ----------------------------
   // 开始播放音乐
   startMusic: function () {
-    App.player.isPlaying = true
-    wx.playBackgroundAudio({
-      dataUrl: App.player.musicList[App.player.index].url,
-      title: App.player.musicList[App.player.index].music_name,
-      //图片地址地址
-      coverImgUrl: 'http://i.gtimg.cn/music/photo/mid_album_90/a/F/000QgFcm0v8WaF.jpg'
-    })
-    this.setData({
-      musicName: App.player.musicList[App.player.index].music_name,
+    console.log('开始播放音乐!')
+    //请求音乐URL
+    wx.request({
+      method: 'POST',
+      url: App.globaData.serve + '/api/index/getmusic',
+      data: {
+        id: App.player.musicList[App.player.index].id
+      },
+      complete: (e) => {
+        App.player.isPlaying = true
+        wx.playBackgroundAudio({
+          dataUrl: App.globaData.serve + e.data.data,
+          title: App.player.musicList[App.player.index].name,
+          //图片地址地址
+          coverImgUrl: 'http://puge.oss-cn-beijing.aliyuncs.com/lebeier/music-logo.jpg'
+        })
+        this.setData({
+          musicName: App.player.musicList[App.player.index].name,
+        })
+      }
     })
   },
   // 暂停播放音乐
@@ -155,11 +167,23 @@ Page({
   },
   // -------------------------------------------------------------------
   onShow: function (option) {
+    // 判断音乐列表是否为空
+    if (App.player.musicList && App.player.musicList.length > 0) {
+      this.setData({
+        musicListHasData: true
+      })
+    }
     // --------------------------------- 音乐相关 ---------------------------------
     // 载入播放模式
     this.setData({
       isListLoop: App.player.isListLoop
     })
+    // 加载音乐名
+    if (App.player.musicList[App.player.index]) {
+      this.setData({
+        musicName: App.player.musicList[App.player.index].name
+      })
+    }
     const backgroundAudioManager = wx.getBackgroundAudioManager()
     // 播放时间改变事件
     backgroundAudioManager.onTimeUpdate((e) => {
@@ -213,7 +237,7 @@ Page({
       complete: (e) => {
         // console.log(e)
         this.setData({
-          menuList: e.data.data
+          // menuList: e.data.data
         })
       }
     })

@@ -4,7 +4,7 @@
 <view wx:else class="content">
   <template is="switch"  data="{{flag, style}}"/>
   <template is="navigation"  data="{{navigation}}"/>
-  <view class="stage">
+  <scroll-view scroll-y class="stage">
     <view class='stage-class'>
       <view class='stage-content ' wx:for="{{cardList}}"  catchtap='JumpProduct' wx:key="{{index}}">
         <view wx:if="{{item.status !== 'normal'}}" catchtap="stop" class="lock"></view>
@@ -12,7 +12,7 @@
         <image data-id="{{item.id}}" data-name="{{item.name}}" src='{{serve + item.image}}'></image>
       </view>
     </view>
-  </view>
+  </scroll-view>
 </view>
 <!-- 播放器 -->
-  <template is="Playback" data="{{isPlaying, totalProcess, sliderValue, player, currentTime, totalTime, musicName, style, isListLoop}}"/>
+<template is="Playback" data="{{isPlaying, totalProcess, sliderValue, player, currentTime, totalTime, musicName, style, isListLoop, musicListHasData}}"/>

@@ -10,7 +10,7 @@ Page({
     imgList: [],
     // 音乐播放
     isListLoop: true,
-    musicName: '',
+    musicName: '请添加音乐',
     sliderValue: 0,
     totalProcess: 0,
     currentTime: '',
@@ -20,14 +20,13 @@ Page({
     // 样式相关
     serve: App.globaData.serve,
     style: App.globaData.style,
-    showLogin: true
+    showLogin: true,
+    // 音乐播放列表
+    musicListHasData: false,
   },
   SongJump: function (event) {
-    console.log(App.globaData.navigation)
-    App.globaData.navigation.push(event.target.dataset.name)
-    console.log(App.globaData.navigation)
     wx.navigateTo({
-      url: `../Mumo/Mumo?name=${event.target.dataset.name}&&id=${event.target.dataset.id}`
+      url: `../Mumo/Mumo?name=${encodeURIComponent(event.target.dataset.name)}&&id=${event.target.dataset.id}`
     })
   },
   // 切换显示菜单
@@ -40,15 +39,26 @@ Page({
   // ------------------------ 音乐播放方法 ----------------------------
   // 开始播放音乐
   startMusic: function () {
-    App.player.isPlaying = true
-    wx.playBackgroundAudio({
-      dataUrl: App.player.musicList[App.player.index].url,
-      title: App.player.musicList[App.player.index].music_name,
-      //图片地址地址
-      coverImgUrl: 'http://i.gtimg.cn/music/photo/mid_album_90/a/F/000QgFcm0v8WaF.jpg'
-    })
-    this.setData({
-      musicName: App.player.musicList[App.player.index].music_name,
+    console.log('开始播放音乐!')
+    //请求音乐URL
+    wx.request({
+      method: 'POST',
+      url: App.globaData.serve + '/api/index/getmusic',
+      data: {
+        id: App.player.musicList[App.player.index].id
+      },
+      complete: (e) => {
+        App.player.isPlaying = true
+        wx.playBackgroundAudio({
+          dataUrl: App.globaData.serve + e.data.data,
+          title: App.player.musicList[App.player.index].name,
+          //图片地址地址
+          coverImgUrl: 'http://puge.oss-cn-beijing.aliyuncs.com/lebeier/music-logo.jpg'
+        })
+        this.setData({
+          musicName: App.player.musicList[App.player.index].name,
+        })
+      }
     })
   },
   // 暂停播放音乐
@@ -88,7 +98,7 @@ Page({
       // console.log(App.player.index)
       this.startMusic()
       this.setData({
-        musicName: App.player.musicList[App.player.index].music_name
+        musicName: App.player.musicList[App.player.index].name
       })
     } else {
       // 单曲循环设置播放进度为0即可
@@ -237,11 +247,23 @@ Page({
   },
   //获取跳转参数
   onShow: function(option) {
+    // 判断音乐列表是否为空
+    if (App.player.musicList && App.player.musicList.length > 0) {
+      this.setData({
+        musicListHasData: true
+      })
+    }
     // --------------------------------- 音乐相关 ---------------------------------
     // 载入播放模式
     this.setData({
       isListLoop: App.player.isListLoop
     })
+    // 加载音乐名
+    if (App.player.musicList[App.player.index]) {
+      this.setData({
+        musicName: App.player.musicList[App.player.index].name
+      })
+    }
     const backgroundAudioManager = wx.getBackgroundAudioManager()
     // 播放时间改变事件
     backgroundAudioManager.onTimeUpdate((e) => {
@@ -254,9 +276,9 @@ Page({
       if (!this.data.isDraging) {
         const sliderValue = wx.getBackgroundAudioManager().currentTime
         const totalProcess = wx.getBackgroundAudioManager().duration
-        console.log(sliderValue, totalProcess)
+        // console.log(sliderValue, totalProcess)
         // 播放时长为0 总时长也为0则跳到下一首
-        if (sliderValue === 0 && totalProcess === 0) {
+        if (totalProcess !== 0 && sliderValue === totalProcess) {
           console.log('播放时间为0')
           if (App.player.isListLoop) {
             this.lestMusic()
