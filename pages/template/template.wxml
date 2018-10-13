@@ -57,18 +57,12 @@
 
 <!-- 修改密码 -->
 <template name='changePassword'>
-  <form bindsubmit="changePassword" class="first alert-box {{showBox === 'changePassword' ? 'show': ''}}">
+  <form bindsubmit="changePassword" bindreset="cancel" class="first alert-box {{showBox === 'changePassword' ? 'show': ''}}">
     <view class='first-tilte'>修改密码</view>
-    <view class='firstn-form frame '>
-      <view class='Title'>机构名称</view>
-      <view class='first-box'>
-        <input name="cooperation" type='text' placeholder='请输入机构名称'></input>
-      </view>
-    </view>
     <view class='firstn-form frame '>
       <view class='Title'>原密码</view>
       <view class='first-box'>
-        <input name="password" type='text' placeholder='请输入新密码'></input>
+        <input name="password" type='text' placeholder='请输入原密码'></input>
       </view>
     </view>
     <view class='firstn-form frame '>
@@ -83,7 +77,10 @@
         <input name="repasswordCheck" type='text' placeholder='请重复新密码'></input>
       </view>
     </view>
-    <button class='confirm' formType="submit">确认</button>
+    <view class="bottom-bar">
+      <button class='confirm' formType="submit">确认</button>
+      <button class='cancel' formType="reset">关闭</button>
+    </view>
   </form>
 </template>
 

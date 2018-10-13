@@ -22,7 +22,8 @@ Page({
     // 音乐播放列表
     musicListHasData: false,
     passShow:false,
-    peopleData: null
+    peopleData: null,
+    organizationShow: false
   },
   passBtn () {
     console.log(111)
@@ -37,6 +38,16 @@ Page({
     that.setData({
       passShow:false
 
+    })
+  },
+  cancelCooperation: function () {
+    this.setData({
+      organizationShow: false
+    })
+  },
+  cancel: function () {
+    this.setData({
+      passShow: false
     })
   },
   // 切换显示菜单

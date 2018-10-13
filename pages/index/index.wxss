@@ -24,16 +24,16 @@
 .login-btn .home-login {
   border-radius:3px;
   width: 526rpx;
-  height: 80rpx;
+  height: 100rpx;
   background-color: #ffc833;
   text-align: center;
-  line-height: 80rpx;
+  line-height: 100rpx;
   z-index: -1;
   box-shadow:1px 1px 10px #898989;
 }
 
 .login-btn .home-login  {
-  font-size: 26rpx;
+  font-size: 16px;
   color: #fff;
 }
 
@@ -43,7 +43,7 @@
 /* 登录 */
 .Broadcast .login {
   position: absolute;
-  width: 80%;
+  width: 96%;
   background-color: #eee;
   top: 440rpx;
   left: 0;
@@ -51,39 +51,47 @@
   margin: auto;
   opacity: 0;
   z-index: -1;
+  border-radius:3px;
+  overflow:hidden;
+  box-shadow:1px 1px 10px #898989;
 }
 .login-tilte{
-  height: 80rpx;
-  background-color: #ecefee;
-  font-size: 26rpx;
+  height: 100rpx;
+  background-color: #eeeeee;
+  font-size: 20px;
   text-align: center;
-  line-height: 80rpx;
+  line-height: 100rpx;
+  color: #5E5E5E;
 }
 
 .login-form {
   width: 100%;
-  height: 80rpx;
+  height: 100rpx;
   display: flex;
   background-color: #fff;
   overflow: hidden;
-  font-size: 28rpx;
-  line-height: 80rpx;
+  font-size: 34rpx;
+  line-height: 100rpx;
 }
 .login-form .Title {
-  width:60rpx;
-  margin:5px;
-  height:24px;
-  line-height:24px;
-  padding:0 5px;
+  width:100rpx;
+  height:60rpx;
+  line-height:60rpx;
+  padding:0 10px;
+  margin:20rpx 0;
+  font-size: 18px;
   border-right:1px solid #e6e6e6;
 }
 .login-form .input-box{
-  width:490rpx;
-  height:34px;
+  width:calc(100% - 180rpx);
+  margin: 0 10px;
+  height: 100rpx;
+  font-size: 18px;
 }
 .login-form .input-box input {
   width: 100%;
   height: 100%;
+  font-size: 18px;
 }
 
 .Broadcast .login>text {
@@ -92,59 +100,59 @@
 }
 
 .Broadcast .login .login-name>text {
-  font-size: 26rpx;
+  font-size: 16px;
   padding-right: 20rpx;
 }
 
 .Broadcast .login .login-name>input {
   display: inline-block;
-  font-size: 26rpx;
+  font-size: 16px;
   color: #d7d7d5;
 }
 
 .Broadcast .login .login-pass {
-  height: 80rpx;
+  height: 100rpx;
   background-color: #fff;
   padding-left: 40rpx;
 }
 
 .Broadcast .login .login-pass>text {
-  font-size: 26rpx;
+  font-size: 16px;
   padding-right: 20rpx;
 }
 
 .Broadcast .login .login-pass>input {
   display: inline-block;
-  font-size: 26rpx;
+  font-size: 16px;
   color: #d7d7d5;
 }
 
 .login-button {
   /* overflow: hidden; */
-  height: 70rpx;
+  height: 100rpx;
 
 }
 
 .cancel {
   text-align: center;
   width: 50%;
-  height:70rpx;
-  line-height: 70rpx;
+  height:100rpx;
+  line-height: 100rpx;
   display: inline-block;
   background-color: #eee;
-  font-size: 26rpx;
+  font-size: 34rpx;
   border-radius: 0;
   border: none;
 }
 
 .Signin {
   text-align: center;
-  height: 70rpx;
-  line-height: 70rpx;
+  height: 100rpx;
+  line-height: 100rpx;
   display: inline-block;
   width: 50%;
   background-color: #f7c720;
-  font-size: 26rpx;
+  font-size: 34rpx;
   border-radius: 0;
   border: none;
 }
@@ -160,7 +168,7 @@
   left: 0;
   right: 0;
   margin: auto;
-  width: 538rpx;
+  width: 90%;
   height: 540rpx;
   background-color: #ccc;
   opacity: 0;
@@ -168,38 +176,38 @@
 }
 
 .Broadcast .cooperation .cooperation-tilte {
-  height: 80rpx;
+  height: 100rpx;
   background-color: #ecefee;
-  font-size: 26rpx;
+  font-size: 16px;
   text-align: center;
-  line-height: 80rpx;
+  line-height: 100rpx;
 }
 
 .Broadcast .cooperation .cooperation-form {
   width: 100%;
-  height: 80rpx;
+  height: 100rpx;
   background-color: #fff;
   overflow: hidden;
-  font-size: 26rpx;
-  line-height: 80rpx;
+  font-size: 16px;
+  line-height: 100rpx;
   display: flex;
   border-bottom:1px solid #eeeeee;
 }
 
 .Broadcast .cooperation .cooperation-form .Title {
   width:120rpx;
-  margin:12rpx 20rpx;
+  margin:0 10rpx;
   border-right:1px solid #eee;
-  height:60rpx;
-  line-height:60rpx;
+  height:100rpx;
+  line-height:100rpx;
 }
 .cooperation-form .input-box {
-  width: 375rpx;
+  width: 355rpx;
 }
 .cooperation-form .input-box input {
-  height: 34px;
-  line-height: 34px;
-  font-size: 12px;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 16px;
 }
 .frame {
   margin-bottom: 2rpx;
@@ -219,31 +227,31 @@
   z-index: -1;
 }
 .first .first-tilte{
-  height: 80rpx;
+  height: 100rpx;
   background-color: #ecefee;
-  font-size: 26rpx;
+  font-size: 16px;
   text-align: center;
-  line-height: 80rpx;
+  line-height: 100rpx;
 }
 .first .firstn-form {
   width: 100%;
-  height: 80rpx;
+  height: 100rpx;
   background-color: #fff;
   overflow: hidden;
-  font-size: 26rpx;
-  line-height: 80rpx;
+  font-size: 16px;
+  line-height: 100rpx;
 }
 .first .Title {
   padding-left: 30rpx;
   padding-right: 20rpx;
   float: left;
-  width: 60rpx;
+  width: 100rpx;
 }
 .first .first-box {
   float: right;
   width: 300rpx;
-  height: 80rpx;
-  padding-right: 80rpx;
+  height: 100rpx;
+  padding-right: 100rpx;
   padding-top: 16rpx;
 }
 .first .confirm {
@@ -251,7 +259,7 @@
   height: 28px;
   text-align: center;
   background-color:#ffc833; 
-  font-size: 26rpx;
+  font-size: 16px;
   line-height: 28px;
 }
 
@@ -270,11 +278,11 @@
   z-index: -1;
 }
 .Success .Success-tilte {
-   height: 80rpx;
+   height: 100rpx;
    background-color: #ecefee;
-   font-size: 26rpx;
+   font-size: 16px;
    text-align: center;
-   line-height: 80rpx;
+   line-height: 100rpx;
 }
 .Success .Success-Tips {
   font-size: 22rpx;
@@ -299,8 +307,8 @@
   height: 28px;
   text-align: center;
   background-color:#ffc833; 
-  font-size: 26rpx;
-  line-height: 60rpx;
+  font-size: 16px;
+  line-height: 100rpx;
 }
 .Broadcast .show {
   opacity: 1;

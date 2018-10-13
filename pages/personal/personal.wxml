@@ -35,8 +35,8 @@
         </view> 
       </view> 
       <view class="modify" bindtap="passBtn">
-        点击修改密码 
-      </view> 
+        修改密码 
+      </view>
       <!-- 修改密码 --> 
       <view class="change-password-box" wx:if="{{passShow}}">
         <template is="changePassword"  data=""/>

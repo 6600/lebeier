@@ -1,6 +1,6 @@
 App({
   globaData: {
-    serve: 'https://515.run',
+    serve: 'https://lbecloud.com',
     navigation: [],
     user: {
       id: '',

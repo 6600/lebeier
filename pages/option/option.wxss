@@ -74,7 +74,7 @@ page {
   position: relative;
   box-shadow:1px 1px 10px #898989;
 }
-.option-Choice-music image {
+.option-Choice-music .music-playing {
   width:16px;
   height:16px;
   position:absolute;
@@ -98,11 +98,20 @@ page {
   text-align:center;
   background-color:#3d3a3a;
   color:white;
+  display: flex;
+  justify-content: center;
+}
+.play-button-img {
+  width:28px;
+  height:28px;
+  margin:6px;
 }
 .option-Choice-music .time {
   width:40%;
   text-align:center;
   background-color: #eeeeee;
+  display: flex;
+  justify-content: center;
 }
 .menu .home {
   background-color: #fdc640;

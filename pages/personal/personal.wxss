@@ -38,6 +38,7 @@ page, .personal-box {
   width: 600rpx;
   align-items: center;
   margin-left: 80rpx;
+  margin-bottom:40px;
 }
 .personal-list {
   line-height: 80rpx;
@@ -58,9 +59,7 @@ page, .personal-box {
 }
 .modify {
   width: 520rpx;
-  margin-top: 60rpx;
-  margin-right: 50rpx;
-  margin-left: 120rpx;
+  margin: 10px auto;
   background-color: #fdc73e;
   text-align: center;
   height: 80rpx;

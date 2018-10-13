@@ -19,7 +19,7 @@
   <!-- 登录界面 -->
   <view class="login alert-box {{showBox === 'login' ? 'show': ''}}" >
     <view class='login-tilte'>
-      <text>登录乐蓓儿音乐器</text>
+      <text>登录</text>
     </view>
     <form bindsubmit="SigninBtn" bindreset="cancel">
       <view class='login-form frame'>

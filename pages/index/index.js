@@ -40,6 +40,11 @@ Page({
       showBox: 'login'
     })
   },
+  cancel: function () {
+    this.setData({
+      showBox: 'button'
+    })
+  },
   homeshow: function () {
     var that = this;
     that.setData({

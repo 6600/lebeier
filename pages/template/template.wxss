@@ -124,64 +124,84 @@
 }
 
 /* 首次修改密码 */
-button {
+button::after {
   border: none;
 }
 .first{
   position: absolute;
-  width: 600rpx;
+  width: 96%;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   margin: auto;
-  height: 460rpx;
-  border-radius:2px;
+  height: 500rpx;
+  border-radius:3px;
   overflow:hidden;
 }
 .first .first-tilte{
-  height: 80rpx;
-  background-color: #ecefee;
-  font-size: 26rpx;
+  height: 100rpx;
+  background-color: #eeeeee;
+  font-size: 20px;
   text-align: center;
-  line-height: 80rpx;
+  line-height: 100rpx;
+  color: 5E5E5E;
 }
 .first .firstn-form {
   width: 100%;
-  height: 80rpx;
+  height: 100rpx;
   background-color: #fff;
   overflow: hidden;
   font-size: 26rpx;
-  line-height: 80rpx;
+  line-height: 100rpx;
   display:flex;
+  border-bottom:1px solid #ccc;
 }
 .first .Title {
   border-right:1px solid #ccc;
   padding:0 5px;
-  margin:6px 0;
-  line-height:21px;
+  margin:10px 0;
+  line-height:70rpx;
   width: 130rpx;
+  font-size: 180rpx;
+  color: #5E5E5E;
 }
 .first .first-box {
   float: right;
-  height: 80rpx;
-  line-height:80rpx;
+  height: 100rpx;
+  line-height:100rpx;
   margin:0 10px;
-  width:calc(100% - 200rpx);
+  width:calc(100% - 240rpx);
+  font-size: 16px;
 }
 .first .first-box input {
   width:100%;
   height:100%;
-  line-height:80rpx;
+  line-height:100rpx;
+  font-size: 16px;
+}
+.first .bottom-bar {
+  width: 100%;
+  height: 45px;
+  text-align: center;
+  font-size: 20px;
+  display:flex;
+  color: #5E5E5E;
+  border-radius:0 0 3px 3px;
+  overflow:hidden;
 }
 .first .confirm {
-  width: 100%;
-  height: 29px;
-  text-align: center;
+  width: 50%;
+  height: 100%;
+  line-height: 45px;
+  border-radius:0;
   background-color:#ffc833; 
-  font-size: 26rpx;
-  line-height: 29px;
-  border-radius: 0;
+}
+.first .cancel {
+  width: 50%;
+  height: 100%;
+  line-height: 45px;
+  border-radius:0;
 }
 
 .menu-option {
@@ -266,4 +286,17 @@ button {
 }
 .title-bar .division {
   margin: 0 5px;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+  color:#AEAEAE;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color:#AEAEAE;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color:#AEAEAE;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color:#AEAEAE;
 }
