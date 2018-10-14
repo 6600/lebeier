@@ -7,19 +7,10 @@
   <view class='option'>
     <!-- 音乐列表 -->
     <scroll-view scroll-y wx:if="{{isMusic}}" class="Four-seasons {{musicListHasData ? '': 'max'}}">
-      <view data-index="{{index}}" wx:for="{{cardList}}" class="option-Choice-music {{item.show ? 'show-music-menu' : ''}}"  bindtap='shouPlayMenu' wx:key="{{index}}">
-        <view data-index="{{index}}" class='text'>{{item.name}}</view>
+      <view data-index="{{index}}" wx:for="{{cardList}}" class="option-Choice-music {{item.show ? 'show-music-menu' : ''}}"  bindtap='shouPlayMenu' wx:key="{{index}}" catchtap='playMusic'>
+        <view data-index="{{index}}" data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.name}}"  class='text'>{{item.name}}</view>
+        <view data-index="{{index}}" data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.name}}"  class='time'>时长: {{item.music_time}}</view>
         <image class="music-playing" wx:if="{{isPlaying && playIndex === index}}" src='http://puge.oss-cn-beijing.aliyuncs.com/lebeier/i_disc.gif'></image>
-        <view class="menu-box">
-          <view class='play-button' data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.name}}" catchtap='playMusic'>
-            <image class='play-button-img' data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.name}}" src='http://puge.oss-cn-beijing.aliyuncs.com/lebeier/play-32.png'></image>
-            <text data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.name}}">播放音乐</text>
-          </view>
-          <view class='time'>
-            <image class='play-button-img' src='http://puge.oss-cn-beijing.aliyuncs.com/lebeier/time-32.png'></image>
-            <text>{{item.music_time}}</text>
-          </view>
-        </view>
       </view>
     </scroll-view>
     <!-- 卡片列表 -->
