@@ -14,7 +14,10 @@ page, .system-list {
   width: 100%;
   height:calc(100% - 224rpx);
   position: relative;
-  transition: left 1s;
+  transition: height 1s;
+}
+.open {
+  height: 100%;
 }
 .content-box {
   position:relative;

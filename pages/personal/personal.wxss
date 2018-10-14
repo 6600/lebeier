@@ -14,6 +14,10 @@ page, .personal-box {
   width: 100%;
   height:calc(100% - 224rpx);
   position: relative;
+  transition: height 1s;
+}
+.open {
+  height: 100%;
 }
 .content-box {
   position:relative;

@@ -15,6 +15,7 @@ page, .Music-List {
   width: 100%;
   height:calc(100% - 224rpx);
   position: relative;
+  transition: height 1s;
 }
 .Music-box {
   width: 100%;
@@ -37,6 +38,9 @@ page, .Music-List {
   margin: auto;
   max-height:calc(100% - 220rpx);
   overflow:hidden;
+}
+.open {
+  height: 100%;
 }
 .Music-List .Song {
   height: 110rpx;

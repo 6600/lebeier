@@ -10,7 +10,7 @@ page {
   width: 100%;
   height:calc(100% - 224rpx);
   position: relative;
-  transition: left 1s;
+  transition: height 1s;
 }
 .lock {
   position:absolute;
@@ -125,5 +125,8 @@ page {
 }
 .menu .home {
   background-color: #fdc640;
+}
+.open {
+  height: 100%;
 }
 @import "../template/template.wxss";

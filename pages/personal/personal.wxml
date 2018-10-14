@@ -2,7 +2,7 @@
 <import src ="../template/template.wxml"/>
 <template wx:if="{{!peopleData}}" is="login" />
 <view wx:else class='personal-box'>
-  <view class="content">
+  <view class="content {{isPlaying || musicListHasData ? '' : 'open'}}">
     <template is="switch" data="{{flag, style}}"/>
     <!-- //歌曲列表 -->
     <view class="content-box">

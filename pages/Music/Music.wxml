@@ -3,7 +3,7 @@
   <!-- 音乐播放模板 -->
   <import src ="../template/template.wxml"/>
   <template wx:if="{{showLogin}}" is="login" />
-  <view wx:else class="content {{musicListHasData ? '' : 'max'}}">
+  <view wx:else class="content {{musicListHasData ? '' : 'max'}} {{isPlaying || musicListHasData ? '' : 'open'}}">
     <template is="switch" data="{{flag, style}}"/>
     <!-- //歌曲列表 -->
     <view class="content-box">

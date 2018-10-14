@@ -1,14 +1,16 @@
 <!-- 音乐播放模板 -->
 <import src ="../template/template.wxml"/>
 <template wx:if="{{showLogin}}" is="login" />
-<view wx:else class="content">
+<view wx:else class="content {{isPlaying || musicListHasData ? '' : 'open'}}">
   <template is="switch"  data="{{flag, style}}"/>
   <template is="navigation"  data="{{navigation}}"/>
   <scroll-view scroll-y class="stage">
     <view class='stage-class'>
       <view class='stage-content ' wx:for="{{cardList}}"  catchtap='JumpProduct' wx:key="{{index}}">
         <view wx:if="{{item.status !== 'normal'}}" catchtap="stop" class="lock"></view>
-        <view data-id="{{item.id}}" data-name="{{item.name}}" class='text'>{{item.name}}</view>
+        <!-- 不同的字数显示不同字数大小 -->
+        <view wx:if="item.name.length <= 5" data-id="{{item.id}}" data-name="{{item.name}}" class='text'>{{item.name}}</view>
+        <view wx:else="item.name.length <= 18" style="font-size: 30px; line-height:30px;margin: 30px 0" data-id="{{item.id}}" data-name="{{item.name}}" class='text'>{{item.name}}</view>
         <image data-id="{{item.id}}" data-name="{{item.name}}" src='{{serve + item.image}}'></image>
       </view>
     </view>
