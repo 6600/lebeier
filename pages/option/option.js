@@ -46,6 +46,14 @@ Page({
   // 开始播放音乐
   playMusic: function (event) {
     const dataset = event.target.dataset
+    // 取消所有展开的菜单
+    let copyCardList = this.data.cardList
+    for (let ind in copyCardList) {
+      copyCardList[ind].showPlay = false
+    }
+    this.setData({
+      cardList: copyCardList
+    })
     // 将列表添加到全局播放列表
     App.player.musicList = this.data.cardList
     App.player.index = dataset.index
@@ -211,6 +219,19 @@ Page({
     console.log('拖动开始!')
     this.setData({
       isDraging: true
+    })
+  },
+  switchShowPlayButton: function (event) {
+    const index = event.target.dataset.index
+    // console.log(index)
+    let copyCardList = this.data.cardList
+    // 取消其他所有展开的菜单
+    for (let ind in copyCardList) {
+      copyCardList[ind].showPlay = false
+    }
+    copyCardList[index].showPlay = !copyCardList[index].showPlay
+    this.setData({
+      cardList: copyCardList
     })
   },
   // -------------------------------------------------------------------

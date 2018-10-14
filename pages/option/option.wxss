@@ -41,6 +41,21 @@ page {
   height:26px;
   margin:17px;
 }
+.play-button {
+  position:absolute;
+  right:-110px;
+  top:0;
+  background-color:#666666;
+  height:140rpx;
+  color:white;
+  width:110px;
+  text-align:center;
+  line-height:140rpx;
+  transition: right 0.5s;
+}
+.show-play {
+  right: 0;
+}
 .Four-seasons {
   position: absolute;
   left: 0;
