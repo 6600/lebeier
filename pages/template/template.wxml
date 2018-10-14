@@ -36,23 +36,26 @@
 
 <!-- 切换 -->
 <template name='switch'>
-  <image class="menu-img" src='{{style.menuImg}}' bindtap='bindflag'></image>
+  <image class="menu-img {{flag ? '' : 'drop'}}" src='{{style.menuImg}}' bindtap='bindflag'></image>
   <view class="menu {{flag ? '' : 'active'}}">
     <!-- <view class='return menu-option' bindtap='bindflag'>返回</view> -->
-    <navigator open-type="reLaunch" url="../Music/Music" class='home menu-option'>
-      <text>音乐列表</text>
-    </navigator>
     <navigator url="../personal/personal" class="info-text menu-option">
+      <image src="http://puge.oss-cn-beijing.aliyuncs.com/lebeier/%E4%B8%AA%E4%BA%BA.png"></image>
       <text>个人信息</text>
     </navigator>
+    <navigator open-type="reLaunch" url="../Music/Music" class='home menu-option'>
+      <image src="http://puge.oss-cn-beijing.aliyuncs.com/lebeier/%E9%9F%B3%E4%B9%901.png"></image>
+      <text>音乐</text>
+    </navigator>
     <navigator url="../System/System" class='menu-option-text menu-option'>
+      <image src="http://puge.oss-cn-beijing.aliyuncs.com/lebeier/%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86.png"></image>
       <text>系统信息</text>
     </navigator>
     <!-- <view bindtap='bindflag' class="return">
       <text>返回</text>
     </view> -->
   </view>
-  <view wx:if="{{!flag}}" class='shelter' bindtap='bindflag'></view>
+  <!-- <view wx:if="{{!flag}}" class='shelter' bindtap='bindflag'></view> -->
 </template>
 
 <!-- 修改密码 -->
