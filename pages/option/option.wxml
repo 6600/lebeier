@@ -6,6 +6,10 @@
   <template is="navigation"  data="{{navigation}}"/>
   <view class='option'>
     <!-- 音乐列表 -->
+    <view wx:if="{{isMusic}}" class="music-list-title-bar">
+      <image src="http://puge.oss-cn-beijing.aliyuncs.com/lebeier/%E9%9F%B3%E7%AC%A6%20%281%29.png"></image>
+      <text>{{itemName}}歌曲列表</text>
+    </view>
     <scroll-view scroll-y wx:if="{{isMusic}}" class="Four-seasons {{musicListHasData ? '': 'max'}}">
       <view data-index="{{index}}" wx:for="{{cardList}}" class="option-Choice-music {{item.show ? 'show-music-menu' : ''}}"  bindtap='shouPlayMenu' wx:key="{{index}}" catchtap='playMusic'>
         <view data-index="{{index}}" data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.name}}"  class='text'>{{item.name}}</view>

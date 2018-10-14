@@ -14,14 +14,6 @@
           <open-data class="user-avatar" type="userAvatarUrl"></open-data>
         </view> 
         <view class="personal-list">
-          机构名称 
-        <view class="shu"></view>{{peopleData.cooperation}} 
-        </view> 
-        <view class="personal-list">
-          机构地址 
-        <view class="shu"></view>{{peopleData.address}}  
-        </view> 
-        <view class="personal-list">
           用户名称 
         <view class="shu"></view>{{userData.username}} 
         </view>
@@ -29,6 +21,14 @@
           手机号码
         <view class="shu"></view>{{userData.mobile}} 
         </view>
+        <view class="personal-list">
+          机构名称 
+        <view class="shu"></view>{{peopleData.cooperation}} 
+        </view> 
+        <view class="personal-list">
+          机构地址 
+        <view class="shu"></view>{{peopleData.address}}  
+        </view> 
         <view class="personal-list">
           过期时间
           <view class="shu"></view>{{userData.expiretime}} 

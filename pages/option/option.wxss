@@ -27,15 +27,30 @@ page {
   position: relative;
   overflow: hidden;
 }
+.music-list-title-bar {
+  height: 60px;
+  line-height: 60px;
+  display: flex;
+  font-size:16px;
+  border-top:1px solid #e4e4e4;
+  border-bottom:1px solid #e4e4e4;
+  font-weight: bold;
+}
+.music-list-title-bar image {
+  width:26px;
+  height:26px;
+  margin:17px;
+}
 .Four-seasons {
   position: absolute;
   left: 0;
   right: 0;
-  top: 0;
+  top: 62px;
   bottom: 0;
   margin: auto;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 62px);
+  background-color: #fbfcfe;
 }
 .option .option-Choice {
   margin: 25rpx;
@@ -68,11 +83,12 @@ page {
 .option-Choice-music {
   border-radius:3px;
   overflow:hidden;
-  height: 50px;
+  height: 60px;
   transition: height 0.5s;
   position: relative;
   background-color: rgba(255, 255, 255, 0.80);
-  border-bottom:1px solid #ccc;
+  border-bottom:1px solid #e4e4e4;
+  padding:5px 0;
 }
 .option-Choice-music .music-playing {
   width:16px;
@@ -82,7 +98,7 @@ page {
   right:20px;
 }
 .option-Choice-music .text {
-  line-height:30px;
+  line-height:40px;
   font-size:16px;
   font-weight: bold;
   margin:0 10px;
@@ -106,6 +122,7 @@ page {
   margin: auto;
   max-height:calc(100% - 220rpx);
   overflow:hidden;
+  width:700rpx;
 }
 .menu .home {
   background-color: #fdc640;

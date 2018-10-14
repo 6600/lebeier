@@ -296,10 +296,10 @@ Page({
     // this.animate()
   },
   onLoad: function (option) {
-    console.log(option)
+    // console.log(decodeURIComponent(option.name))
     this.setData({
       itemID: option.id,
-      itemName: encodeURI(option.name),
+      itemName: decodeURIComponent(option.name),
     })
     // 获取信息
     wx.request({
