@@ -48,9 +48,9 @@
     <navigator url="../System/System" class='menu-option-text menu-option'>
       <text>系统信息</text>
     </navigator>
-    <view bindtap='bindflag' class="return">
+    <!-- <view bindtap='bindflag' class="return">
       <text>返回</text>
-    </view>
+    </view> -->
   </view>
   <view wx:if="{{!flag}}" class='shelter' bindtap='bindflag'></view>
 </template>

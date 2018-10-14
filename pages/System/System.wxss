@@ -87,7 +87,6 @@ page, .system-list {
 
 .menu .menu-option-text {
   background-color: #fdc640;
-  line-height: 260rpx;
 }
 @import "../template/template.wxss";
 

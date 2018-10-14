@@ -62,6 +62,7 @@
   text-align: center;
   line-height: 100rpx;
   color: #5E5E5E;
+  font-weight:bold;
 }
 
 .login-form {

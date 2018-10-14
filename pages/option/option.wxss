@@ -115,6 +115,5 @@ page {
 }
 .menu .home {
   background-color: #fdc640;
-  line-height: 260rpx;
 }
 @import "../template/template.wxss";

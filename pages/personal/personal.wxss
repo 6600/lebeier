@@ -95,6 +95,5 @@ page, .personal-box {
 
 .menu .info-text {
   background-color: #fdc640;
-  line-height: 260rpx;
 }
 @import "../template/template.wxss";
