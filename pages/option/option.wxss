@@ -113,6 +113,16 @@ page {
   display: flex;
   justify-content: center;
 }
+.option-box {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  max-height:calc(100% - 220rpx);
+  overflow:hidden;
+}
 .menu .home {
   background-color: #fdc640;
 }

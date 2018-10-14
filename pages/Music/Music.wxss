@@ -28,7 +28,16 @@ page, .Music-List {
   height: 100%;
   overflow:hidden;
 }
-
+.song-box {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  max-height:calc(100% - 220rpx);
+  overflow:hidden;
+}
 .Music-List .Song {
   height: 110rpx;
   text-align: center;
