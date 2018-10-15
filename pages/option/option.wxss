@@ -45,6 +45,7 @@ page {
   position:absolute;
   right:-110px;
   top:0;
+  display: flex;
   background-color:#666666;
   height:140rpx;
   color:white;
@@ -53,6 +54,11 @@ page {
   line-height:140rpx;
   transition: right 0.5s;
 }
+.play-button image {
+  width:28px;
+  height:28px;
+  margin:21px 12px;
+}
 .show-play {
   right: 0;
 }
@@ -60,11 +66,11 @@ page {
   position: absolute;
   left: 0;
   right: 0;
-  top: 62px;
+  top: 0;
   bottom: 0;
   margin: auto;
   width: 100%;
-  height: calc(100% - 62px);
+  height: 100%;
   background-color: #fbfcfe;
 }
 .option .option-Choice {
@@ -138,6 +144,7 @@ page {
   max-height:calc(100% - 220rpx);
   overflow:hidden;
   width:700rpx;
+  padding-bottom:80rpx;
 }
 .menu .home {
   background-color: #fdc640;

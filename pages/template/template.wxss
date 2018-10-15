@@ -219,9 +219,9 @@ button::after {
   margin: 1px;
 }
 .menu-option image {
-  width: 28px;
-  height: 28px;
-  margin:6px;
+  width: 24px;
+  height: 24px;
+  margin:8px;
 }
 .login-box {
   position: fixed;

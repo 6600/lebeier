@@ -90,7 +90,7 @@
     </view>
     <view class='cooperation-button '>
       <button class='cancel' formType="reset">取消</button>
-      <button class='Signin' formType="submit">登录</button>
+      <button class='Signin' formType="submit">申请</button>
     </view>
   </form>
   <!-- //申请成功弹框 -->

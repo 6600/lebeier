@@ -6,15 +6,15 @@
     <!-- //歌曲列表 -->
     <view class="content-box">
       <view class='system'>
-        <navigator class='about' url="../info/info?name=about">开发版本</navigator>
-        <navigator class='about' url="../info/info?name=Edition">开发版本</navigator>
-        <navigator class='about' url="../info/info?name=copyright">商业版权信息</navigator>
+        <view class='about' data-id="about" bindtap="turn">开发版本</view>
+        <view class='about' data-id="Edition" bindtap="turn">开发版本</view>
+        <view class='about' data-id="copyright" bindtap="turn">商业版权信息</view>
         <navigator class='about' open-type="reLaunch" url="../index/index">退出登录</navigator>
         <!-- 关于我们 -->
         <view class='Success' wx:if="{{information}}">
           <view class='Success-tilte'><text>关于我们</text></view>
-          <view class='Success-Tips'></view>
-          <view class='confirm' bindtap="confirm">确认</view>  
+          <view class='Success-Tips'>{{information}}</view>
+          <view class='confirm' bindtap="confirm">关闭</view>
         </view>
       </view>
     </view>

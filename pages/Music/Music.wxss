@@ -19,10 +19,9 @@ page, .Music-List {
 }
 .Music-box {
   width: 100%;
-  height: calc(100% - 100rpx);
+  height: 100%;
   position: relative;
   overflow: auto;
-  padding-top: 100rpx;
 }
 .content-box {
   width: 100%;

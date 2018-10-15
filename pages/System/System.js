@@ -165,6 +165,11 @@ Page({
       isDraging: true
     })
   },
+  turn: function (event) {
+    this.setData({
+      information: this.data.menuList[event.target.dataset.id]
+    })
+  },
   // -------------------------------------------------------------------
   onShow: function (option) {
     // 判断音乐列表是否为空
@@ -237,7 +242,7 @@ Page({
       complete: (e) => {
         // console.log(e)
         this.setData({
-          // menuList: e.data.data
+          menuList: e.data.data
         })
       }
     })

@@ -14,24 +14,24 @@
           <open-data class="user-avatar" type="userAvatarUrl"></open-data>
         </view> 
         <view class="personal-list">
-          用户名称 
-        <view class="shu"></view>{{userData.username}} 
+          <view class="text">用户名称</view>
+          <view class='value'>{{userData.username}}</view>
         </view>
         <view class="personal-list">
-          手机号码
-        <view class="shu"></view>{{userData.mobile}} 
+          <view class="text">手机号码</view>
+          <view class='value'>{{userData.mobile}}</view>
         </view>
         <view class="personal-list">
-          机构名称 
-        <view class="shu"></view>{{peopleData.cooperation}} 
+          <view class="text">机构名称</view> 
+          <view class='value'>{{peopleData.cooperation}}</view>
         </view> 
         <view class="personal-list">
-          机构地址 
-        <view class="shu"></view>{{peopleData.address}}  
+          <view class="text">机构地址</view>
+          <view class='value'>{{peopleData.address}}</view>
         </view> 
         <view class="personal-list">
-          过期时间
-          <view class="shu"></view>{{userData.expiretime}} 
+          <view class="text">过期时间</view>
+          <view class='value'>{{userData.expiretime}}</view>
         </view> 
       </view> 
       <view class="modify" bindtap="passBtn">

@@ -35,6 +35,7 @@ page {
   margin: auto;
   width: 580rpx;
   height: 810rpx;
+  padding-bottom:80rpx;
 }
 .stage-class .stage-content {
   margin-bottom: 30rpx; 
