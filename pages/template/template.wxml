@@ -1,5 +1,5 @@
 <template name='Playback'>
-  <view class="Playback-box {{isPlaying || musicListHasData? 'play' : ''}}" style="background: {{style.musicBarBackground}}">
+  <view class="Playback-box {{musicListHasData? 'can-play' : ''}} {{isPlaying ? 'playing' : ''}}" style="background: {{style.musicBarBackground}}">
     <view class='Black-gum'>
       <image src='/image/index/heijiao.png'></image>
     </view>

@@ -10,7 +10,7 @@
   border-top-right-radius:15rpx;
   transition: bottom 0.5s;
 }
-.play {
+.can-play, .playing {
   bottom: 0;
 }
 .Black-gum {
@@ -263,7 +263,7 @@ button::after {
     transition: 0.6s;
   }
 }
-.play .Black-gum image {
+.playing .Black-gum image {
   animation: 3s rotatefresh infinite;
 }
 
