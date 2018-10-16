@@ -29,6 +29,7 @@
   text-align: center;
   line-height: 100rpx;
   z-index: -1;
+  font-weight:bold;
   box-shadow:1px 1px 10px #898989;
 }
 

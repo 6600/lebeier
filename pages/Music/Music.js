@@ -49,12 +49,11 @@ Page({
       },
       complete: (e) => {
         App.player.isPlaying = true
-        wx.playBackgroundAudio({
-          dataUrl: App.globaData.serve + e.data.data,
-          title: App.player.musicList[App.player.index].name,
-          //图片地址地址
-          coverImgUrl: 'http://puge.oss-cn-beijing.aliyuncs.com/lebeier/music-logo.jpg'
-        })
+        const BackgroundAudioManager = wx.getBackgroundAudioManager()
+        BackgroundAudioManager.src = App.globaData.serve + e.data.data
+        BackgroundAudioManager.title = App.player.musicList[App.player.index].name
+        BackgroundAudioManager.coverImgUrl = 'http://puge.oss-cn-beijing.aliyuncs.com/lebeier/music-logo.jpg'
+        BackgroundAudioManager.play()
         this.setData({
           musicName: App.player.musicList[App.player.index].name,
         })
@@ -243,6 +242,16 @@ Page({
         totalTime: '',
         isPlaying: false
       })
+    })
+    // 下一首事件
+    backgroundAudioManager.onNext((e) => {
+      console.log('下一首事件!')
+      this.nextMusic()
+    })
+    // 上一首事件
+    backgroundAudioManager.onPrev((e) => {
+      console.log('上一首事件!')
+      this.lestMusic()
     })
   },
   //获取跳转参数

@@ -36,12 +36,11 @@ Page({
       },
       complete: (e) => {
         App.player.isPlaying = true
-        wx.playBackgroundAudio({
-          dataUrl: App.globaData.serve + e.data.data,
-          title: App.player.musicList[App.player.index].name,
-          //图片地址地址
-          coverImgUrl: 'http://puge.oss-cn-beijing.aliyuncs.com/lebeier/music-logo.jpg'
-        })
+        const BackgroundAudioManager = wx.getBackgroundAudioManager()
+        BackgroundAudioManager.src = App.globaData.serve + e.data.data
+        BackgroundAudioManager.title = App.player.musicList[App.player.index].name
+        BackgroundAudioManager.coverImgUrl = 'http://puge.oss-cn-beijing.aliyuncs.com/lebeier/music-logo.jpg'
+        BackgroundAudioManager.play()
         this.setData({
           musicName: App.player.musicList[App.player.index].name,
         })
@@ -237,6 +236,20 @@ Page({
     this.setData({
       itemID: option.id,
       itemName: encodeURI(option.name),
+    })
+    // 获取用户地理位置
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        wx.request({
+          method: 'POST',
+          url: App.globaData.serve + '/api/index/updateloginaddress',
+          data: {
+            id: App.globaData.user.id,
+            address: res.latitude + ',' + res.longitude
+          }
+        })
+      }
     })
     // 获取信息
     wx.request({

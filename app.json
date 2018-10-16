@@ -9,6 +9,9 @@
     "pages/template/template",
     "pages/info/info"
   ],
+  "requiredBackgroundModes": [
+    "audio"
+  ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
