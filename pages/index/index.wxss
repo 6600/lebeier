@@ -14,10 +14,12 @@
 .login-btn {
   width: 526rpx;
   position: absolute;
-  top: 800rpx;
+  top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
   margin: auto;
+  height: 150px;
   z-index: -1;
 }
 
@@ -46,14 +48,16 @@
   position: absolute;
   width: 96%;
   background-color: #eee;
-  top: 440rpx;
+  top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
   margin: auto;
   opacity: 0;
   z-index: -1;
   border-radius:3px;
   overflow:hidden;
+  height:398rpx;
   box-shadow:1px 1px 10px #898989;
 }
 .login-tilte{

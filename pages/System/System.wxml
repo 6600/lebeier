@@ -4,7 +4,7 @@
   <view class="content {{isPlaying || musicListHasData ? '' : 'open'}}">
     <template is="switch" data="{{flag, style}}"/>
     <!-- //歌曲列表 -->
-    <view class="content-box">
+    <scroll-view scroll-y class="content-box">
       <view class='system'>
         <view class='about' data-id="about" bindtap="turn">开发版本</view>
         <view class='about' data-id="Edition" bindtap="turn">开发版本</view>
@@ -17,7 +17,7 @@
           <view class='confirm' bindtap="confirm">关闭</view>
         </view>
       </view>
-    </view>
+    </scroll-view>
   </view>
 <!-- 播放器 -->
 <template is="Playback" data="{{isPlaying, totalProcess, sliderValue, player, currentTime, totalTime, musicName, style, isListLoop, musicListHasData}}"/>
