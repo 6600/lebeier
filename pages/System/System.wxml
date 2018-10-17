@@ -9,7 +9,7 @@
         <view class='about' data-id="about" bindtap="turn">开发版本</view>
         <view class='about' data-id="Edition" bindtap="turn">开发版本</view>
         <view class='about' data-id="copyright" bindtap="turn">商业版权信息</view>
-        <navigator class='about' open-type="reLaunch" url="../index/index">退出登录</navigator>
+        <navigator class='about' open-type="reLaunch" bindtap="loginOut" url="../index/index">退出登录</navigator>
         <!-- 关于我们 -->
         <view class='Success' wx:if="{{information}}">
           <view class='Success-tilte'><text>关于我们</text></view>
