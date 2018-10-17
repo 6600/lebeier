@@ -31,7 +31,7 @@
         </view> 
         <view class="personal-list">
           <view class="text">过期时间</view>
-          <view class='value'>{{userData.expiretime}}</view>
+          <view class='value timeout'>{{userData.expiretime}}</view>
         </view> 
       </view> 
       <view class="modify" bindtap="passBtn">

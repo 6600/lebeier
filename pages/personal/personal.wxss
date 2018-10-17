@@ -27,7 +27,9 @@ page, .personal-box {
   background-color:white;
   overflow:hidden;
 }
-
+.timeout {
+  color: red;
+}
 .Head-portrait {
   padding-top: 90rpx;
   /* background-color: red; */
