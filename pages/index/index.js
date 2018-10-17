@@ -12,7 +12,8 @@ Page({
     interval: 5000,
     duration: 1300,
     bg: '#C79C77',
-    swiperImg: App.globaData.style.swiperImg,
+    swiperImg: '',
+    serve: App.globaData.serve,
     Hei: "" //这是swiper要动态设置的高度属性
   },
   imgH: function (e) {
@@ -203,7 +204,9 @@ Page({
       url: App.globaData.serve + '/api/index/getconfig',
       complete: (e) => {
         App.globaData.style = e.data.data
+        console.log(App.globaData.style.swiperImg)
         this.setData({
+          swiperImg: App.globaData.style.swiperImg,
           loading: false
         })
       }

@@ -1,7 +1,10 @@
 
-.Broadcast {
+page, .Broadcast, .home-swiper {
   position: relative;
   overflow: hidden;
+  height:100%;
+  width:100%;
+
 }
 
 .Broadcast image {
