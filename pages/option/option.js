@@ -66,7 +66,8 @@ Page({
       method: 'POST',
       url: App.globaData.serve + '/api/index/getmusic',
       data: {
-        id: dataset.id
+        id: dataset.id,
+        verification: App.globaData.user.verification
       },
       complete: (e) => {
         App.player.isPlaying = true
@@ -91,7 +92,8 @@ Page({
       method: 'POST',
       url: App.globaData.serve + '/api/index/getmusic',
       data: {
-        id: App.player.musicList[App.player.index].id
+        id: App.player.musicList[App.player.index].id,
+        verification: App.globaData.user.verification
       },
       complete: (e) => {
         App.player.isPlaying = true
@@ -325,7 +327,9 @@ Page({
       method: 'POST',
       url: App.globaData.serve + '/api/index/getCategory',
       data: {
-        id: option.id
+        uid: App.globaData.user.id,
+        pid: option.id,
+        verification: App.globaData.user.verification
       },
       complete: (e) => {
         console.log(e)
@@ -343,7 +347,9 @@ Page({
             method: 'POST',
             url: App.globaData.serve + '/api/index/getClassMusic',
             data: {
-              id: option.id
+              uid: App.globaData.user.id,
+              gid: option.id,
+              verification: App.globaData.user.verification
             },
             complete: (e) => {
               console.log(e)

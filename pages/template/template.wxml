@@ -65,19 +65,19 @@
     <view class='firstn-form frame '>
       <view class='Title'>原密码</view>
       <view class='first-box'>
-        <input name="password" type='text' placeholder='请输入原密码'></input>
+        <input name="password" type='password' placeholder='请输入原密码'></input>
       </view>
     </view>
     <view class='firstn-form frame '>
       <view class='Title'>新密码</view>
       <view class='first-box'>
-        <input name="repassword" type='text' placeholder='请输入新密码'></input>
+        <input name="repassword" type='password' placeholder='请输入新密码'></input>
       </view>
     </view>
     <view class='firstn-form frame '>
       <view class='Title'>重复新密码</view>
       <view class='first-box'>
-        <input name="repasswordCheck" type='text' placeholder='请重复新密码'></input>
+        <input name="repasswordCheck" type='password' placeholder='请重复新密码'></input>
       </view>
     </view>
     <view class="bottom-bar">

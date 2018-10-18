@@ -49,7 +49,8 @@ Page({
       method: 'POST',
       url: App.globaData.serve + '/api/index/getmusic',
       data: {
-        id: App.player.musicList[App.player.index].id
+        id: App.player.musicList[App.player.index].id,
+        verification: App.globaData.user.verification
       },
       complete: (e) => {
         App.player.isPlaying = true
@@ -245,7 +246,8 @@ Page({
       complete: (e) => {
         // console.log(e)
         this.setData({
-          menuList: e.data.data
+          menuList: e.data.data,
+          verification: App.globaData.user.verification
         })
       }
     })

@@ -32,7 +32,8 @@ Page({
       method: 'POST',
       url: App.globaData.serve + '/api/index/getmusic',
       data: {
-        id: App.player.musicList[App.player.index].id
+        id: App.player.musicList[App.player.index].id,
+        verification: App.globaData.user.verification
       },
       complete: (e) => {
         App.player.isPlaying = true
@@ -237,26 +238,14 @@ Page({
       itemID: option.id,
       itemName: encodeURI(option.name),
     })
-    // 获取用户地理位置
-    wx.getLocation({
-      type: 'wgs84',
-      success: function (res) {
-        wx.request({
-          method: 'POST',
-          url: App.globaData.serve + '/api/index/updateloginaddress',
-          data: {
-            id: App.globaData.user.id,
-            address: res.latitude + ',' + res.longitude
-          }
-        })
-      }
-    })
     // 获取信息
     wx.request({
       method: 'POST',
       url: App.globaData.serve + '/api/index/getCategory',
       data: {
-        id: option.id
+        uid: App.globaData.user.id,
+        pid: option.id ? option.id : 0,
+        verification: App.globaData.user.verification
       },
       complete: (e) => {
         const value = e.data
@@ -282,9 +271,16 @@ Page({
     })
   },
   JumpProduct: function (event) {
-    wx.navigateTo({
-      url: `../option/option?name=${encodeURIComponent(event.target.dataset.name)}&&id=${event.target.dataset.id}`,
-    })
+    console.log(this.data.itemID)
+    if (this.data.itemID) {
+      wx.navigateTo({
+        url: `../option/option?name=${encodeURIComponent(event.target.dataset.name)}&&id=${event.target.dataset.id}`,
+      })
+    } else {
+      wx.navigateTo({
+        url: `../Mumo/Mumo?name=${encodeURIComponent(event.target.dataset.name)}&&id=${event.target.dataset.id}`,
+      })
+    }
   },
   bindflag: function () {
     console.log(this.data.flag)

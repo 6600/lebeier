@@ -74,7 +74,7 @@ Page({
     }
     wx.request({
       method: 'POST',
-      url: App.globaData.serve + '/api/user/resetpwd',
+      url: App.globaData.serve + '/api/userdemo/resetpwd',
       data: sendData,
       complete: (e) => {
         console.log(e)
@@ -84,9 +84,10 @@ Page({
           // 增加账户登录次数
           wx.request({
             method: 'POST',
-            url: App.globaData.serve + '/api/user/loginnum',
+            url: App.globaData.serve + '/api/userdemo/loginnum',
             data: {
-              id: App.globaData.user.id
+              id: App.globaData.user.id,
+              verification: App.globaData.user.verification
             },
           })
           wx.redirectTo({ url: '/pages/Music/Music' })
@@ -134,6 +135,8 @@ Page({
   //确定登录
   SigninBtn:function (e) {
     let sendData = e.detail.value
+    App.globaData.user.verification = Date.parse(new Date())
+    sendData.verification = App.globaData.user.verification
     if (sendData.account === '' || sendData.password === '') {
       wx.showModal({
         title: '输入错误',
@@ -146,7 +149,7 @@ Page({
     console.log('确定登陆')
     wx.request({
       method: 'POST',
-      url: App.globaData.serve + '/api/user/login',
+      url: App.globaData.serve + '/api/userdemo/login',
       data: sendData,
       complete: (e) => {
         const value = e.data
@@ -169,8 +172,23 @@ Page({
             })
             return
           } else {
+            // 获取用户地理位置
+            wx.getLocation({
+              type: 'wgs84',
+              success: function (res) {
+                wx.request({
+                  method: 'POST',
+                  url: App.globaData.serve + '/api/indexdemo/updateloginaddress',
+                  data: {
+                    id: App.globaData.user.id,
+                    address: res.latitude + ',' + res.longitude,
+                    verification: App.globaData.user.verification
+                  }
+                })
+              }
+            })
             // 进入主页
-            wx.redirectTo({ url: '/pages/Music/Music' })
+            wx.redirectTo({ url: '/pages/Mumo/Mumo' })
           }
         } else {
           wx.showModal({
@@ -201,7 +219,7 @@ Page({
     // 获取配置信息
     wx.request({
       method: 'GET',
-      url: App.globaData.serve + '/api/index/getconfig',
+      url: App.globaData.serve + '/api/indexdemo/getconfig',
       complete: (e) => {
         App.globaData.style = e.data.data
         console.log(App.globaData.style.swiperImg)

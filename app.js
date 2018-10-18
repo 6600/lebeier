@@ -9,7 +9,9 @@ App({
       mobile: '',
       token: '',
       // 过期时间
-      expiretime: ''
+      expiretime: '',
+      // 用于用户登陆的唯一标识
+      verification: ''
     },
     // 自动播放下一首
     autoPlayNext: true,
