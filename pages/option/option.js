@@ -64,15 +64,16 @@ Page({
     //请求音乐URL
     wx.request({
       method: 'POST',
-      url: App.globaData.serve + '/api/index/getmusic',
+      url: App.globaData.serve + '/api/indexdemo/getmusic',
       data: {
-        id: dataset.id,
+        uid: App.globaData.user.id,
+        mid: App.player.musicList[App.player.index].id,
         verification: App.globaData.user.verification
       },
       complete: (e) => {
         App.player.isPlaying = true
         const BackgroundAudioManager = wx.getBackgroundAudioManager()
-        BackgroundAudioManager.src = App.globaData.serve + e.data.data
+        BackgroundAudioManager.src = App.globaData.serve + e.data.data.url
         BackgroundAudioManager.title = dataset.name
         BackgroundAudioManager.coverImgUrl = 'http://puge.oss-cn-beijing.aliyuncs.com/lebeier/music-logo.jpg'
         BackgroundAudioManager.play()
@@ -90,9 +91,10 @@ Page({
     //请求音乐URL
     wx.request({
       method: 'POST',
-      url: App.globaData.serve + '/api/index/getmusic',
+      url: App.globaData.serve + '/api/indexdemo/getmusic',
       data: {
-        id: App.player.musicList[App.player.index].id,
+        uid: App.globaData.user.id,
+        mid: App.player.musicList[App.player.index].id,
         verification: App.globaData.user.verification
       },
       complete: (e) => {
@@ -101,8 +103,9 @@ Page({
         this.setData({
           musicListHasData: true
         })
+        console.log(e.data)
         const BackgroundAudioManager = wx.getBackgroundAudioManager()
-        BackgroundAudioManager.src = App.globaData.serve + e.data.data
+        BackgroundAudioManager.src = App.globaData.serve + e.data.data.url
         BackgroundAudioManager.title = App.player.musicList[App.player.index].name
         BackgroundAudioManager.coverImgUrl = 'http://puge.oss-cn-beijing.aliyuncs.com/lebeier/music-logo.jpg'
         BackgroundAudioManager.play()
@@ -345,7 +348,7 @@ Page({
           // 如果请求不到卡片那么请求音乐列表
           wx.request({
             method: 'POST',
-            url: App.globaData.serve + '/api/index/getClassMusic',
+            url: App.globaData.serve + '/api/indexdemo/getClassMusic',
             data: {
               uid: App.globaData.user.id,
               gid: option.id,

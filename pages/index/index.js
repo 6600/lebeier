@@ -115,7 +115,7 @@ Page({
     console.log(sendData)
     wx.request({
       method: 'POST',
-      url: App.globaData.serve + '/api/index/cooperation',
+      url: App.globaData.serve + '/api/indexdemo/cooperation',
       data: sendData,
       complete: (e) => {
         if (e.data.code === 1) {
