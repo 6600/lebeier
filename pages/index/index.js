@@ -74,7 +74,7 @@ Page({
     }
     wx.request({
       method: 'POST',
-      url: App.globaData.serve + '/api/userdemo/resetpwd',
+      url: App.globaData.serve + '/api/user/resetpwd',
       data: sendData,
       complete: (e) => {
         console.log(e)
@@ -84,7 +84,7 @@ Page({
           // 增加账户登录次数
           wx.request({
             method: 'POST',
-            url: App.globaData.serve + '/api/userdemo/loginnum',
+            url: App.globaData.serve + '/api/user/loginnum',
             data: {
               id: App.globaData.user.id,
               verification: App.globaData.user.verification
@@ -115,7 +115,7 @@ Page({
     console.log(sendData)
     wx.request({
       method: 'POST',
-      url: App.globaData.serve + '/api/indexdemo/cooperation',
+      url: App.globaData.serve + '/api/index/cooperation',
       data: sendData,
       complete: (e) => {
         if (e.data.code === 1) {
@@ -149,7 +149,7 @@ Page({
     console.log('确定登陆')
     wx.request({
       method: 'POST',
-      url: App.globaData.serve + '/api/userdemo/login',
+      url: App.globaData.serve + '/api/user/login',
       data: sendData,
       complete: (e) => {
         const value = e.data
@@ -178,7 +178,7 @@ Page({
               success: function (res) {
                 wx.request({
                   method: 'POST',
-                  url: App.globaData.serve + '/api/indexdemo/updateloginaddress',
+                  url: App.globaData.serve + '/api/index/updateloginaddress',
                   data: {
                     id: App.globaData.user.id,
                     address: res.latitude + ',' + res.longitude,
@@ -219,7 +219,7 @@ Page({
     // 获取配置信息
     wx.request({
       method: 'GET',
-      url: App.globaData.serve + '/api/indexdemo/getconfig',
+      url: App.globaData.serve + '/api/index/getconfig',
       complete: (e) => {
         App.globaData.style = e.data.data
         console.log(App.globaData.style.swiperImg)

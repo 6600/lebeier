@@ -21,6 +21,16 @@ page {
   height:100%;
   z-index:10;
 }
+.lock image {
+  position:absolute;
+  left:0;
+  top:0;
+  width:100px;
+  height:90px;
+  right:0;
+  bottom:0;
+  margin:auto;
+}
 .option {
   width: 100%;
   height: calc(100% - 80rpx);

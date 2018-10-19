@@ -24,7 +24,7 @@ Page({
     console.log(option)
     wx.request({
       method: 'GET',
-      url: App.globaData.serve + '/api/indexdemo/getSystem',
+      url: App.globaData.serve + '/api/index/getSystem',
       complete: (e) => {
         // console.log(e)
         this.setData({

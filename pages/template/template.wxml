@@ -43,7 +43,7 @@
       <image src="http://puge.oss-cn-beijing.aliyuncs.com/lebeier/top-bar/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF.png"></image>
       <text>个人信息</text>
     </navigator>
-    <navigator open-type="reLaunch" url="../Music/Music" class='home menu-option'>
+    <navigator open-type="reLaunch" url="../Mumo/Mumo" class='home menu-option'>
       <image src="http://puge.oss-cn-beijing.aliyuncs.com/lebeier/top-bar/%E9%9F%B3%E4%B9%90%E5%88%97%E8%A1%A8.png"></image>
       <text>音乐</text>
     </navigator>
@@ -95,7 +95,7 @@
 
 <template name='navigation'>
   <view class='title-bar'>
-    <navigator url="../Music/Music" open-type="reLaunch">音乐</navigator>
+    <navigator url="../Mumo/Mumo" open-type="reLaunch">音乐</navigator>
     <view wx:for="{{navigation}}" data-index="{{navigation.length - index - 1}}" wx:key="index">
       <text class="division" data-index="{{navigation.length - index - 1}}">></text>
       <text data-index="{{navigation.length - index - 1}}" bindtap='back'>{{item.name}}</text>

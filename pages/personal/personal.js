@@ -106,7 +106,7 @@ Page({
     //请求音乐URL
     wx.request({
       method: 'POST',
-      url: App.globaData.serve + '/api/indexdemo/getmusic',
+      url: App.globaData.serve + '/api/index/getmusic',
       data: {
         uid: App.globaData.user.id,
         mid: App.player.musicList[App.player.index].id,
@@ -153,47 +153,23 @@ Page({
   },
   // 切换上一首/下一首
   lestMusic: function () {
-    // 判断是否为列表循环
-    if (App.player.isListLoop) {
-      let newIndex = App.player.index - 1
-      // 循环播放
-      if (newIndex < 0) newIndex = App.player.musicList.length - 1
-      App.player.index = newIndex
-      // console.log(App.player.index)
-      this.startMusic()
-      this.setData({
-        musicName: App.player.musicList[App.player.index].name
-      })
-    } else {
-      // 单曲循环设置播放进度为0即可
-      this.setData({
-        sliderValue: 0,
-        currentTime: 0
-      })
-      wx.seekBackgroundAudio({
-        position: 0
-      })
-    }
+    let newIndex = App.player.index - 1
+    // 循环播放
+    if (newIndex < 0) newIndex = App.player.musicList.length - 1
+    App.player.index = newIndex
+    // console.log(App.player.index)
+    this.startMusic()
+    this.setData({
+      musicName: App.player.musicList[App.player.index].music_name
+    })
   },
   nextMusic: function () {
-    // 判断是否为列表循环
-    if (App.player.isListLoop) {
-      let newIndex = App.player.index + 1
-      // 循环播放
-      if (newIndex > App.player.musicList.length - 1) newIndex = 0
-      App.player.index = newIndex
-      console.log(App.player.index)
-      this.startMusic()
-    } else {
-      // 单曲循环设置播放进度为0即可
-      this.setData({
-        sliderValue: 0,
-        currentTime: 0
-      })
-      wx.seekBackgroundAudio({
-        position: 0
-      })
-    }
+    let newIndex = App.player.index + 1
+    // 循环播放
+    if (newIndex > App.player.musicList.length - 1) newIndex = 0
+    App.player.index = newIndex
+    console.log(App.player.index)
+    this.startMusic()
   },
   hanleSliderChange: function (e) {
     const sliderValue = e.detail.value
@@ -229,7 +205,7 @@ Page({
     // 请求个人信息
     wx.request({
       method: 'POST',
-      url: App.globaData.serve + '/api/indexdemo/getuserinfo',
+      url: App.globaData.serve + '/api/index/getuserinfo',
       data: {
         id: App.globaData.user.id,
         verification: App.globaData.user.verification
