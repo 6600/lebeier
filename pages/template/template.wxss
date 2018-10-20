@@ -197,7 +197,7 @@ button::after {
   height: 100%;
   line-height: 45px;
   border-radius:0;
-  background-color:#ffc833; 
+  background-color:#ffc833;
 }
 .first .cancel {
   width: 50%;
