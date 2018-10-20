@@ -224,14 +224,14 @@ page, .Broadcast, .home-swiper {
 /* 首次修改密码 */
 .first{
   position: absolute;
-  width: 600rpx;
+  width: 95%;
   background-color: #eee;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   margin: auto;
-  height:187px;
+  height:238px;
   opacity: 0;
   z-index: -1;
 }
@@ -249,19 +249,20 @@ page, .Broadcast, .home-swiper {
   overflow: hidden;
   font-size: 16px;
   line-height: 100rpx;
+  display: flex;
 }
 .first .Title {
-  padding-left: 30rpx;
-  padding-right: 20rpx;
-  float: left;
-  width: 100rpx;
+  width: 140rpx;
+  border-right:1px solid #ccc;
+  margin:9px 5px;
+  line-height:30px;
 }
 .first .first-box {
-  float: right;
-  width: 300rpx;
-  height: 100rpx;
-  padding-right: 100rpx;
-  padding-top: 16rpx;
+  width:calc(100% - 170rpx);
+  margin:7px 0;
+}
+.first-box input {
+  margin:5px 0;
 }
 .first .confirm {
   width: 100%;

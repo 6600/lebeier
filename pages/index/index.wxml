@@ -110,13 +110,19 @@
     <view class='firstn-form frame '>
       <view class='Title'>原密码</view>
       <view class='first-box'>
-        <input name="password" type='text' placeholder='请输入新密码'></input>
+        <input name="password" type='text' placeholder='请输入原密码'></input>
       </view>
     </view>
-        <view class='firstn-form frame '>
+    <view class='firstn-form frame '>
       <view class='Title'>新密码</view>
       <view class='first-box'>
-        <input name="repassword" type='text' placeholder='请输入机构名称'></input>
+        <input name="newpassword" type='text' placeholder='请输入新密码'></input>
+      </view>
+    </view>
+    <view class='firstn-form frame '>
+      <view class='Title'>重复密码</view>
+      <view class='first-box'>
+        <input name="repassword" type='text' placeholder='请重复新密码'></input>
       </view>
     </view>
     <button class='confirm' formType="submit">确认</button>

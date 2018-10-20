@@ -55,19 +55,20 @@ Page({
   // 用户首次进入提醒修改密码
   changePassword: function (e) {
     let sendData = e.detail.value
-    sendData.id = App.globaData.user.id
+    sendData.uid = App.globaData.user.id
     sendData.account = App.globaData.user.username
-    if (sendData.password === '' || sendData.repassword === '') {
-      console.log('取消修改密码!')
-      this.setData({
-        passShow: false
+    if (sendData.password === '' || sendData.repassword === '' || sendData.newpassword === '') {
+      wx.showModal({
+        title: '警告',
+        content: '第一次登陆必须修改密码!',
+        showCancel: false
       })
       return
     }
-    if (sendData.repasswordCheck !== sendData.repassword) {
+    if (sendData.repassword !== sendData.newpassword) {
       wx.showModal({
-        title: '错误',
-        content: '密码和确认密码输入不一致!',
+        title: '警告',
+        content: '新密码与重复密码不一致',
         showCancel: false
       })
       return
@@ -81,16 +82,7 @@ Page({
         const value = e.data
         if (value.code === 1) {
           console.log('修改密码成功!')
-          // 增加账户登录次数
-          wx.request({
-            method: 'POST',
-            url: App.globaData.serve + '/api/user/loginnum',
-            data: {
-              id: App.globaData.user.id,
-              verification: App.globaData.user.verification
-            },
-          })
-          wx.redirectTo({ url: '/pages/Music/Music' })
+          wx.redirectTo({ url: '/pages/Mumo/Mumo' })
         } else {
           wx.showModal({
             title: '错误',
