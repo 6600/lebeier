@@ -207,10 +207,11 @@ Page({
       method: 'POST',
       url: App.globaData.serve + '/api/index/getuserinfo',
       data: {
-        id: App.globaData.user.id,
+        uid: App.globaData.user.id,
         verification: App.globaData.user.verification
       },
       complete: (e) => {
+        e.data.data.overdueTime = JSON.parse(e.data.data.overdueTime)
         this.setData({
           peopleData: e.data.data
         })
@@ -274,13 +275,5 @@ Page({
     })
     // ----------------------------------------------------------------------------
     // this.animate()
-  },
-  // 加载完毕事件
-  onLoad: function (option) {
-    wx.getUserInfo({
-      success: function (res) {
-        console.log(res)
-      }
-    })
   }
 })

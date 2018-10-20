@@ -29,9 +29,10 @@
           <view class="text">机构地址</view>
           <view class='value'>{{peopleData.address}}</view>
         </view> 
-        <view class="personal-list">
-          <view class="text">过期时间</view>
-          <view class='value timeout'>{{userData.expiretime}}</view>
+        <view class='end-time'>产品到期时间</view>
+        <view class="personal-list" wx:for="{{peopleData.overdueTime}}" wx:key="{{index}}">
+          <view class="text">{{index}}</view>
+          <view class='value'>{{item}}</view>
         </view> 
       </view> 
       <view class="modify" bindtap="passBtn">

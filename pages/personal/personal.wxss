@@ -50,7 +50,6 @@ page, .personal-box {
   margin-left: 50rpx;
   margin-right: 50rpx;
   color: #ccc;
-  height: 80rpx;
   border-bottom: 3rpx solid #ccc;
   font-size: 24rpx;
   display:flex;
@@ -60,10 +59,12 @@ page, .personal-box {
   margin:10px 0;
   padding-right:10px;
   color: #5E5E5E;
+  width:65px;
 }
 .personal-list .value{
   line-height:80rpx;
   margin:0 10px;
+  width:calc(100% - 100px);
 }
 .personal-list .shu{
   margin-right: 20rpx;
@@ -75,6 +76,12 @@ page, .personal-box {
 }
 .end-time {
   color: red;
+  text-align:center;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin:0 25px;
+  font-size: 24rpx;
+  border-bottom:3rpx solid #ccc;
 }
 .modify {
   width: 520rpx;

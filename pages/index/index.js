@@ -180,7 +180,7 @@ Page({
                   method: 'POST',
                   url: App.globaData.serve + '/api/index/updateloginaddress',
                   data: {
-                    id: App.globaData.user.id,
+                    uid: App.globaData.user.id,
                     address: res.latitude + ',' + res.longitude,
                     verification: App.globaData.user.verification
                   }
