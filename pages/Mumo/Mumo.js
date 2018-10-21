@@ -231,6 +231,18 @@ Page({
             showLogin: false,
             cardList: e.data.data
           })
+        } else if (value.code === 40102) {
+          wx.showModal({
+            title: '提示',
+            content: value.msg,
+            showCancel: false,
+            complete: (e) => {
+              // 返回登陆页
+              wx.navigateTo({
+                url: `../index/index`,
+              })
+            }
+          })
         } else {
           wx.showModal({
             title: '提示',

@@ -57,11 +57,11 @@ page {
   top:0;
   display: flex;
   background-color:#666666;
-  height:140rpx;
+  height:60px;
   color:white;
   width:110px;
   text-align:center;
-  line-height:140rpx;
+  line-height:60px;
   transition: right 0.5s;
 }
 .play-button image {

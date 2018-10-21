@@ -113,15 +113,42 @@ Page({
         verification: App.globaData.user.verification
       },
       complete: (e) => {
-        App.player.isPlaying = true
-        const BackgroundAudioManager = wx.getBackgroundAudioManager()
-        BackgroundAudioManager.src = App.globaData.serve + e.data.data.url
-        BackgroundAudioManager.title = App.player.musicList[App.player.index].name
-        BackgroundAudioManager.coverImgUrl = 'http://puge.oss-cn-beijing.aliyuncs.com/lebeier/music-logo.jpg'
-        BackgroundAudioManager.play()
-        this.setData({
-          musicName: App.player.musicList[App.player.index].name,
-        })
+        const value = e.data
+        if (value.code === 1) {
+          App.player.isPlaying = true
+          const BackgroundAudioManager = wx.getBackgroundAudioManager()
+          BackgroundAudioManager.src = App.globaData.serve + e.data.data.url
+          BackgroundAudioManager.title = App.player.musicList[App.player.index].name
+          BackgroundAudioManager.coverImgUrl = 'http://puge.oss-cn-beijing.aliyuncs.com/lebeier/music-logo.jpg'
+          BackgroundAudioManager.play()
+          this.setData({
+            musicName: App.player.musicList[App.player.index].name,
+          })
+        } else if (value.code === 40102) {
+          wx.showModal({
+            title: '提示',
+            content: value.msg,
+            showCancel: false,
+            complete: (e) => {
+              // 返回登陆页
+              wx.navigateTo({
+                url: `../index/index`,
+              })
+            }
+          })
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: value.msg,
+            showCancel: false,
+            complete: (e) => {
+              // 返回上一页
+              wx.navigateBack({
+                delta: 1
+              })
+            }
+          })
+        }
       }
     })
   },
@@ -211,10 +238,37 @@ Page({
         verification: App.globaData.user.verification
       },
       complete: (e) => {
-        e.data.data.overdueTime = JSON.parse(e.data.data.overdueTime)
-        this.setData({
-          peopleData: e.data.data
-        })
+        const value = e.data
+        if (value.code === 1) {
+          e.data.data.overdueTime = JSON.parse(e.data.data.overdueTime)
+          this.setData({
+            peopleData: e.data.data
+          })
+        } else if (value.code === 40102) {
+          wx.showModal({
+            title: '提示',
+            content: value.msg,
+            showCancel: false,
+            complete: (e) => {
+              // 返回登陆页
+              wx.navigateTo({
+                url: `../index/index`,
+              })
+            }
+          })
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: value.msg,
+            showCancel: false,
+            complete: (e) => {
+              // 返回上一页
+              wx.navigateBack({
+                delta: 1
+              })
+            }
+          })
+        }
       }
     })
     // 判断音乐列表是否为空
