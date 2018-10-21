@@ -71,6 +71,10 @@ Page({
   // 切换列表循环 or 单曲循环
   switchLoop: function () {
     App.player.isListLoop = !App.player.isListLoop
+    wx.showToast({
+      icon: 'info',
+      title: App.player.isListLoop ? '列表播放模式' : '单曲循环模式'
+    })
     console.log('切换歌曲循环模式', App.player.isListLoop)
     this.setData({
       isListLoop: App.player.isListLoop
