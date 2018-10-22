@@ -106,7 +106,7 @@
   </view>
   <!-- //首次修改密码 -->
   <form bindsubmit="changePassword" class="first alert-box {{showBox === 'changePassword' ? 'show': ''}}">
-    <view class='first-tilte'>首次修改密码</view>
+    <view class='first-tilte'>首次登陆修改密码</view>
     <view class='firstn-form frame '>
       <view class='Title'>原密码</view>
       <view class='first-box'>

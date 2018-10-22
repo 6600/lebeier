@@ -94,7 +94,7 @@ page {
   background-color: skyblue;
 }
 .option-Choice .text {
-  line-height: 380rpx;
+  line-height: 35px;
   width: 300rpx;
   font-size: 35px;
   color: white;
@@ -102,6 +102,8 @@ page {
   position: absolute;
   left: 0;
   top: 0;
+  bottom: 0;
+  margin: auto;
 }
 .option-Choice>image{
   width: 300rpx;

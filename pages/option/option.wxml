@@ -27,7 +27,7 @@
         <view wx:if="{{item.status !== 'normal'}}" catchtap="stop" class="lock">
           <image src='http://puge.oss-cn-beijing.aliyuncs.com/lebeier/lock-white.png'></image>
         </view>
-        <view data-id="{{item.id}}" data-name="{{item.name}}" class='text'>{{item.name}}</view>
+        <view data-id="{{item.id}}" data-name="{{item.name}}" style="height: {{item.name.length / 4 * 35}}px;" class='text'>{{item.name}}</view>
         <image wx:if="{{item.image}}" data-id="{{item.id}}" data-name="{{item.name}}" src='{{serve + item.image}}'></image>
       </view>
     </scroll-view>
