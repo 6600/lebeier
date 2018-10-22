@@ -32,7 +32,7 @@
         <view class='end-time'>产品到期时间</view>
         <view class="personal-list" wx:for="{{peopleData.overdueTime}}" wx:key="{{index}}">
           <view class="text">{{index}}</view>
-          <view class='value'>{{item}}</view>
+          <view class='value timeout'>{{item}}</view>
         </view> 
       </view> 
       <view class="modify" bindtap="passBtn">

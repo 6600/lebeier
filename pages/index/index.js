@@ -113,8 +113,8 @@ Page({
         if (e.data.code === 1) {
           console.log('申请成功!')
           wx.showModal({
-            title: '申请成功',
-            content: e.data.msg,
+            title: '提示',
+            content: '申请成功',
             showCancel: false
           })
           this.setData({

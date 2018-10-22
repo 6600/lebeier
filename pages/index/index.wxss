@@ -22,7 +22,7 @@ page, .Broadcast, .home-swiper {
   right: 0;
   bottom: 0;
   margin: auto;
-  height: 130px;
+  height: 110px;
   z-index: -1;
 }
 
@@ -83,7 +83,7 @@ page, .Broadcast, .home-swiper {
   line-height: 100rpx;
 }
 .login-form .Title {
-  width:100rpx;
+  width:160rpx;
   height:60rpx;
   line-height:60rpx;
   padding:0 10px;

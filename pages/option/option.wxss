@@ -155,6 +155,7 @@ page {
   margin: auto;
   max-height:calc(100% - 20rpx);
   overflow:hidden;
+  min-height: 960rpx;
   width:700rpx;
   padding-bottom:80rpx;
 }
