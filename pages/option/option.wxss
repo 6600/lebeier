@@ -151,7 +151,7 @@ page {
   top: 0;
   bottom: 0;
   margin: auto;
-  max-height:calc(100% - 220rpx);
+  max-height:calc(100% - 20rpx);
   overflow:hidden;
   width:700rpx;
   padding-bottom:80rpx;

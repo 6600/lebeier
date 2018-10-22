@@ -22,7 +22,7 @@ page, .Broadcast, .home-swiper {
   right: 0;
   bottom: 0;
   margin: auto;
-  height: 110px;
+  height: 130px;
   z-index: -1;
 }
 

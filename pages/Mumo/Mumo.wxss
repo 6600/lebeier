@@ -40,11 +40,11 @@ page {
   position: absolute;
   left: 0;
   right: 0;
-  top: 0;
+  top: 80rpx;
   bottom: 0;
   margin: auto;
   width: 580rpx;
-  height: 810rpx;
+  max-height: calc(100% - 30rpx);
   padding-bottom:80rpx;
 }
 .stage-class .stage-content {

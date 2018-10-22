@@ -22,15 +22,13 @@
       </view>
     </scroll-view>
     <!-- 卡片列表 -->
-    <scroll-view scroll-y wx:else class='Four-seasons'>
-      <view class="option-box" style="height: {{cardList.length / 2 * 430}}rpx;">
-        <view class='option-Choice' wx:for="{{cardList}}"  bindtap='tomenu' wx:key="{{index}}">
-          <view wx:if="{{item.status !== 'normal'}}" catchtap="stop" class="lock">
-            <image src='http://puge.oss-cn-beijing.aliyuncs.com/lebeier/lock-white.png'></image>
-          </view>
-          <view data-id="{{item.id}}" data-name="{{item.name}}" class='text'>{{item.name}}</view>
-          <image wx:if="{{item.image}}" data-id="{{item.id}}" data-name="{{item.name}}" src='{{serve + item.image}}'></image>
+    <scroll-view scroll-y wx:else class="option-box" style="height: {{cardList.length / 2 * 480}}rpx;">
+      <view class='option-Choice' wx:for="{{cardList}}"  bindtap='tomenu' wx:key="{{index}}">
+        <view wx:if="{{item.status !== 'normal'}}" catchtap="stop" class="lock">
+          <image src='http://puge.oss-cn-beijing.aliyuncs.com/lebeier/lock-white.png'></image>
         </view>
+        <view data-id="{{item.id}}" data-name="{{item.name}}" class='text'>{{item.name}}</view>
+        <image wx:if="{{item.image}}" data-id="{{item.id}}" data-name="{{item.name}}" src='{{serve + item.image}}'></image>
       </view>
     </scroll-view>
   </view>

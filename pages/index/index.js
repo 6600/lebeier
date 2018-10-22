@@ -158,7 +158,7 @@ Page({
           console.log('登陆成功')
           // 判断是否需要修改密码
           // console.log(userinfo.login_num)
-          if (userinfo.score !== undefined && userinfo.score === 0) {
+          if (userinfo.login_num !== undefined && userinfo.login_num === 0) {
             this.setData({
               showBox: 'changePassword'
             })

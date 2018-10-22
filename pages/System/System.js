@@ -151,6 +151,7 @@ Page({
     BackgroundAudioManager.stop()
   },
   turn: function (event) {
+    console.log(this.data.menuList)
     this.setData({
       information: this.data.menuList[event.target.dataset.id]
     })
@@ -222,8 +223,12 @@ Page({
     // ----------------------------------------------------------------------------
     // this.animate()
     wx.request({
-      method: 'GET',
+      method: 'POST',
       url: App.globaData.serve + '/api/index/getSystem',
+      data: {
+        uid: App.globaData.user.id,
+        verification: App.globaData.user.verification
+      },
       complete: (e) => {
         // console.log(e)
         this.setData({
