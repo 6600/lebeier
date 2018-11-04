@@ -24,7 +24,7 @@
 }
 .suspend {
   position: absolute;
-  top:108rpx;
+  bottom:4rpx;
   left:405rpx;
   margin-left: -15px;
 }
@@ -35,7 +35,7 @@
 .First {
   position: absolute;
   left: 240rpx;
-  top: 123rpx;
+  bottom:10rpx;
 }
 .First>image {
   width: 31px;
@@ -43,8 +43,8 @@
 }
 .lower {
   position: absolute;
-  top:123rpx;
-  left:510rpx;
+  bottom:8rpx;
+  left:520rpx;
 }
 .lower>image {
   width: 31px;
@@ -52,7 +52,7 @@
 }
 .loop {
   position: absolute;
-  top:123rpx;
+  bottom:10rpx;
   right:40rpx;
 }
 .loop>image {
@@ -80,8 +80,8 @@
   width:calc(100% - 250rpx);
   height:40rpx;
   position:absolute;
-  left:100px;
-  top:40rpx;
+  left:220rpx;
+  bottom:110rpx;
   display:flex;
 }
 .drag-bar .time {
@@ -95,21 +95,23 @@
   height: 0;
   display: flex;
   z-index:999;
-  line-height: 40px;
+  line-height: 120rpx;
   transition: height 1s;
   background-color: white;
   border-radius:0 3px 3px 0;
   overflow:hidden;
 }
 .active {
-  height:40px;
+  height:120rpx;
 }
 .music-name {
   position:absolute;
   top:17rpx;
   left:239rpx;
   color:#333333;
-  font-size:12px;
+  font-size:30rpx;
+  height:60prx;
+  line-height:60rpx
 }
 
 /* 切换 */
@@ -215,13 +217,14 @@ button::after {
   width:calc(33.33% - 1px);
   color:white;
   justify-content:center;
-  font-size:14px;
+  font-size: 24rpx;
   margin: 1px;
+  position: relative;
 }
 .menu-option image {
-  width: 24px;
-  height: 24px;
-  margin:8px;
+  width: 60rpx;
+  height: 60rpx;
+  padding:30rpx 10rpx;
 }
 .login-box {
   position: fixed;

@@ -17,10 +17,9 @@ page, .Broadcast, .home-swiper {
 .login-btn {
   width: 526rpx;
   position: absolute;
-  top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 20%;
   margin: auto;
   height: 110px;
   z-index: -1;
@@ -39,7 +38,7 @@ page, .Broadcast, .home-swiper {
 }
 
 .login-btn .home-login  {
-  font-size: 16px;
+  font-size: 30rpx;
   color: #fff;
 }
 
@@ -66,7 +65,7 @@ page, .Broadcast, .home-swiper {
 .login-tilte{
   height: 100rpx;
   background-color: #eeeeee;
-  font-size: 20px;
+  font-size: 34rpx;
   text-align: center;
   line-height: 100rpx;
   color: #5E5E5E;
@@ -88,7 +87,7 @@ page, .Broadcast, .home-swiper {
   line-height:60rpx;
   padding:0 10px;
   margin:20rpx 0;
-  font-size: 18px;
+  font-size:30rpx;
   border-right:1px solid #e6e6e6;
 }
 .login-form .input-box{
@@ -100,7 +99,7 @@ page, .Broadcast, .home-swiper {
 .login-form .input-box input {
   width: 100%;
   height: 100%;
-  font-size: 18px;
+  font-size: 30rpx;
 }
 
 .Broadcast .login>text {
@@ -109,13 +108,13 @@ page, .Broadcast, .home-swiper {
 }
 
 .Broadcast .login .login-name>text {
-  font-size: 16px;
+  font-size: 30rpx;
   padding-right: 20rpx;
 }
 
 .Broadcast .login .login-name>input {
   display: inline-block;
-  font-size: 16px;
+  font-size: 30rpx;
   color: #d7d7d5;
 }
 
@@ -126,13 +125,13 @@ page, .Broadcast, .home-swiper {
 }
 
 .Broadcast .login .login-pass>text {
-  font-size: 16px;
+  font-size: 30rpx;
   padding-right: 20rpx;
 }
 
 .Broadcast .login .login-pass>input {
   display: inline-block;
-  font-size: 16px;
+  font-size: 30rpx;
   color: #d7d7d5;
 }
 
@@ -173,12 +172,13 @@ page, .Broadcast, .home-swiper {
 
 .Broadcast .cooperation {
   position: absolute;
-  top: 300rpx;
+  top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
   margin: auto;
   width: 90%;
-  height: 540rpx;
+  height: 700rpx;
   background-color: #ccc;
   opacity: 0;
   z-index: -1;
@@ -187,7 +187,7 @@ page, .Broadcast, .home-swiper {
 .Broadcast .cooperation .cooperation-tilte {
   height: 100rpx;
   background-color: #ecefee;
-  font-size: 16px;
+  font-size: 30rpx;
   text-align: center;
   line-height: 100rpx;
 }
@@ -197,7 +197,7 @@ page, .Broadcast, .home-swiper {
   height: 100rpx;
   background-color: #fff;
   overflow: hidden;
-  font-size: 16px;
+  font-size: 30rpx;
   line-height: 100rpx;
   display: flex;
   border-bottom:1px solid #eeeeee;
@@ -211,12 +211,12 @@ page, .Broadcast, .home-swiper {
   line-height:100rpx;
 }
 .cooperation-form .input-box {
-  width: 355rpx;
+  width:calc(100% - 150rpx);
 }
 .cooperation-form .input-box input {
   height: 100rpx;
   line-height: 100rpx;
-  font-size: 16px;
+  font-size: 30rpx;
 }
 .frame {
   margin-bottom: 2rpx;
@@ -238,7 +238,7 @@ page, .Broadcast, .home-swiper {
 .first .first-tilte{
   height: 100rpx;
   background-color: #ecefee;
-  font-size: 16px;
+  font-size: 30rpx;
   text-align: center;
   line-height: 100rpx;
 }
@@ -247,7 +247,7 @@ page, .Broadcast, .home-swiper {
   height: 100rpx;
   background-color: #fff;
   overflow: hidden;
-  font-size: 16px;
+  font-size: 30rpx;
   line-height: 100rpx;
   display: flex;
 }
@@ -269,7 +269,7 @@ page, .Broadcast, .home-swiper {
   height: 100rpx;
   text-align: center;
   background-color:#ffc833; 
-  font-size: 16px;
+  font-size: 30rpx;
   line-height: 100rpx;
   border-radius:0;
 }
@@ -291,7 +291,7 @@ page, .Broadcast, .home-swiper {
 .Success .Success-tilte {
    height: 100rpx;
    background-color: #ecefee;
-   font-size: 16px;
+   font-size: 30rpx;
    text-align: center;
    line-height: 100rpx;
 }
@@ -318,7 +318,7 @@ page, .Broadcast, .home-swiper {
   height: 28px;
   text-align: center;
   background-color:#ffc833; 
-  font-size: 16px;
+  font-size: 30rpx;
   line-height: 100rpx;
 }
 .Broadcast .show {

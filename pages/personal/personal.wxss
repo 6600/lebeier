@@ -59,12 +59,13 @@ page, .personal-box {
   margin:10px 0;
   padding-right:10px;
   color: #5E5E5E;
-  width:65px;
+  width: 140rpx;
+  line-height:80rpx;
 }
 .personal-list .value{
-  line-height:60rpx;
-  margin:10rpx 10px;
-  width:calc(100% - 100px);
+  line-height:80rpx;
+  margin:10rpx 20rpx;
+  width:calc(100% - 140rpx);
 }
 .personal-list .shu{
   margin-right: 20rpx;
@@ -85,7 +86,7 @@ page, .personal-box {
 }
 .modify {
   width: 520rpx;
-  margin: 10px auto;
+  margin: 20px auto;
   background-color: #fdc73e;
   text-align: center;
   height: 80rpx;

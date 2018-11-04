@@ -69,7 +69,7 @@
         <text>手机号*</text>
       </view>
       <view class='input-box'>
-        <input name="phone" type='text' placeholder='请输入手机号'></input>
+        <input name="phone" type='number' maxlength="11" placeholder='请输入手机号'></input>
       </view>
     </view>
     <view class='cooperation-form'>

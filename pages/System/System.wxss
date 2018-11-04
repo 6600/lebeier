@@ -62,7 +62,6 @@ page, .system-list {
   border: 1rpx solid #ccc;
 }
 .Success .Success-tilte {
-
    height: 80rpx;
    background-color: #ecefee;
    font-size: 26rpx;
@@ -71,6 +70,7 @@ page, .system-list {
 }
 .Success .Success-Tips {
   height: 480rpx;
+  width:calc(100% - 20rpx);
 }
 
 .Success .confirm {

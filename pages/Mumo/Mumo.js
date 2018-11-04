@@ -26,7 +26,17 @@ Page({
   // ------------------------ 音乐播放方法 ----------------------------
   // 开始播放音乐
   startMusic: function () {
+    const BackgroundAudioManager = wx.getBackgroundAudioManager()
     console.log('开始播放音乐!')
+    if (BackgroundAudioManager.paused) {
+      console.log('恢复音乐播放!')
+      this.setData({
+        isPlaying: true
+      })
+      App.player.isPlaying = true
+      BackgroundAudioManager.play()
+      return
+    }
     //请求音乐URL
     wx.request({
       method: 'POST',
@@ -38,7 +48,7 @@ Page({
       },
       complete: (e) => {
         App.player.isPlaying = true
-        const BackgroundAudioManager = wx.getBackgroundAudioManager()
+        console.log(App.globaData.serve + e.data.data.url, BackgroundAudioManager.src)
         BackgroundAudioManager.src = App.globaData.serve + e.data.data.url
         BackgroundAudioManager.title = App.player.musicList[App.player.index].name
         BackgroundAudioManager.coverImgUrl = 'http://puge.oss-cn-beijing.aliyuncs.com/lebeier/music-logo.jpg'
@@ -55,6 +65,7 @@ Page({
     this.setData({
       isPlaying: false
     })
+    App.player.isPlaying = false
     wx.pauseBackgroundAudio({})
     console.log('暂停播放')
   },
@@ -144,7 +155,7 @@ Page({
     let navigation = []
     for (let ind = 0; ind < pages.length; ind++) {
       const value = pages[ind]
-      console.log(value.options.name)
+      // console.log(value.options.name)
       if (value.options && value.options.name) {
         navigation.push({
           name: decodeURIComponent(value.options.name),

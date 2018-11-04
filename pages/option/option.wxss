@@ -63,6 +63,7 @@ page {
   text-align:center;
   line-height:70px;
   transition: right 0.5s;
+  font-size:20px;
 }
 .play-button image {
   width:28px;
@@ -153,7 +154,7 @@ page {
   top: 0;
   bottom: 0;
   margin: auto;
-  max-height:calc(100% - 20rpx);
+  max-height:calc(100% - 80rpx);
   overflow:hidden;
   min-height: 960rpx;
   width:700rpx;
