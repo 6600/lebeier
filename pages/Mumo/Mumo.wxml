@@ -11,9 +11,9 @@
           <image src='http://puge.oss-cn-beijing.aliyuncs.com/lebeier/lock-white.png'></image>
         </view>
         <!-- 不同的字数显示不同字数大小 -->
-        <view wx:if="item.name.length <= 5" data-id="{{item.id}}" data-name="{{item.name}}" class='text'>{{item.name}}</view>
-        <view wx:else="item.name.length <= 18" style="font-size: 30px; line-height:30px;margin: 30px 0" data-id="{{item.id}}" data-name="{{item.name}}" class='text'>{{item.name}}</view>
-        <image data-id="{{item.id}}" data-name="{{item.name}}" src='{{serve + item.image}}'></image>
+        <view wx:if="item.name.length <= 5" data-id="{{item.id}}" data-name="{{item.nickname}}" class='text'>{{item.nickname}}</view>
+        <view wx:else="item.name.length <= 18" style="font-size: 30px; line-height:30px;margin: 30px 0" data-id="{{item.id}}" data-name="{{item.nickname}}" class='text'>{{item.nickname}}</view>
+        <image data-id="{{item.id}}" data-name="{{item.nickname}}" src='{{serve + item.image}}'></image>
       </view>
     </scroll-view>
   </view>
